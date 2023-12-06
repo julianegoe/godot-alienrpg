@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwelb4pnlj0la"]
+
+[ext_resource type="Script" path="res://scenes/UI/compass.gd" id="1_7yjee"]
+[ext_resource type="Texture2D" uid="uid://b77s5bgaammd0" path="res://assets/compass.png" id="1_wpsid"]
+
+[node name="Compass" type="Node2D"]
+scale = Vector2(0.6, 0.6)
+script = ExtResource("1_7yjee")
+
+[node name="Body" type="Sprite2D" parent="."]
+texture = ExtResource("1_wpsid")
+hframes = 2
+
+[node name="Needle" type="Sprite2D" parent="."]
+texture = ExtResource("1_wpsid")
+hframes = 2
+frame = 1

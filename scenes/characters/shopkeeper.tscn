@@ -1,0 +1,83 @@
+[gd_scene load_steps=10 format=3 uid="uid://c3hudrn0egb03"]
+
+[ext_resource type="Script" path="res://scenes/characters/shopkeeper.gd" id="1_7mv5s"]
+[ext_resource type="Texture2D" uid="uid://8v88328oev5g" path="res://assets/shopkeeper.png" id="1_pnalc"]
+[ext_resource type="Resource" uid="uid://dppsjg1cqqoo2" path="res://resources/npc_dialogues/shopkeeper_dialogue.tres" id="2_ewf5d"]
+[ext_resource type="Texture2D" uid="uid://bmbfe6gq4bt8o" path="res://assets/character_shadow.png" id="2_rumm7"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_43u3f"]
+radius = 3.0
+height = 12.0
+
+[sub_resource type="Animation" id="Animation_nutqq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Character:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_15c01"]
+resource_name = "idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Character:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 1, 1, 1, 1, 1, 1, 2, 2]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bk60k"]
+_data = {
+"RESET": SubResource("Animation_nutqq"),
+"idle": SubResource("Animation_15c01")
+}
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nehiw"]
+radius = 31.0
+
+[node name="Shopkeeper" type="CharacterBody2D" groups=["NPC"]]
+y_sort_enabled = true
+script = ExtResource("1_7mv5s")
+dialogue = ExtResource("2_ewf5d")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_43u3f")
+
+[node name="Character" type="Sprite2D" parent="."]
+position = Vector2(0, -14)
+texture = ExtResource("1_pnalc")
+hframes = 3
+
+[node name="Shadow" type="Sprite2D" parent="."]
+self_modulate = Color(1, 1, 1, 0.545098)
+texture = ExtResource("2_rumm7")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_bk60k")
+}
+autoplay = "idle"
+
+[node name="Components" type="Node" parent="."]
+
+[node name="Vicinity" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vicinity"]
+position = Vector2(0, -14)
+shape = SubResource("CircleShape2D_nehiw")
+debug_color = Color(0.917647, 0.52549, 0.690196, 0.419608)

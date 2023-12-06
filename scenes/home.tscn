@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://djckkuykplo5g"]
+
+[ext_resource type="Texture2D" uid="uid://rcnasssd4o6v" path="res://assets/home_topdown.png" id="1_qkx2l"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7381m"]
+size = Vector2(68, 115)
+
+[node name="Home" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-7, 14.5)
+shape = SubResource("RectangleShape2D_7381m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_qkx2l")

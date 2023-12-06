@@ -1,0 +1,122 @@
+[gd_scene load_steps=8 format=3 uid="uid://dvqjtowi8nfu5"]
+
+[ext_resource type="Script" path="res://scenes/UI/speechbubble.gd" id="1_hq5u3"]
+[ext_resource type="Texture2D" uid="uid://4kyv500msmof" path="res://assets/ninepatch_dialogue.png" id="1_n8or5"]
+[ext_resource type="FontFile" uid="uid://cjjhxrf0ersuw" path="res://assets/fonts/VT323-Regular.ttf" id="2_1qjug"]
+[ext_resource type="Texture2D" uid="uid://cdft18886ql6v" path="res://assets/ui/next_arrow.png" id="5_ukqdw"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o8gfs"]
+content_margin_left = 3.0
+content_margin_top = 3.0
+content_margin_right = 3.0
+content_margin_bottom = 5.0
+texture = ExtResource("1_n8or5")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[sub_resource type="Animation" id="Animation_dl43h"]
+resource_name = "jump"
+length = 0.5
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [1.0, 0.0, -1.0, 0.0, 1.0, 0.0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_5bi1d"]
+_data = {
+"jump": SubResource("Animation_dl43h")
+}
+
+[node name="Speechbubble" type="Panel"]
+z_index = 100
+clip_contents = true
+offset_right = 63.0
+offset_bottom = 41.0
+focus_neighbor_bottom = NodePath("NextButtonContainer/NextButton")
+focus_next = NodePath("NextButtonContainer/NextButton")
+theme_override_styles/panel = SubResource("StyleBoxTexture_o8gfs")
+script = ExtResource("1_hq5u3")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 62.0
+offset_bottom = 32.0
+theme_override_constants/margin_left = 3
+theme_override_constants/margin_top = 3
+theme_override_constants/margin_right = 3
+theme_override_constants/margin_bottom = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 1
+
+[node name="CharacterName" type="Label" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/font_color = Color(0.745098, 0.054902, 0.439216, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_1qjug")
+theme_override_font_sizes/font_size = 5
+text = "Shopkeeper"
+
+[node name="CharacterText" type="RichTextLabel" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("2_1qjug")
+theme_override_font_sizes/normal_font_size = 6
+text = "Hier ist ein Test Text. Und noch mehr Text. Wie viel passt hier hin bevor es ungemütlich wird."
+fit_content = true
+
+[node name="AnswerContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="NextButtonContainer" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.841
+anchor_top = 0.78
+anchor_right = 0.952
+anchor_bottom = 0.878
+offset_left = 0.0169983
+offset_top = 0.0199986
+offset_right = 0.0239983
+offset_bottom = 0.0019989
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="NextButton" type="TextureButton" parent="NextButtonContainer"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -7.0
+offset_top = -3.11432
+offset_bottom = 0.885684
+grow_horizontal = 0
+grow_vertical = 0
+size_flags_horizontal = 8
+size_flags_vertical = 8
+texture_normal = ExtResource("5_ukqdw")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="NextButtonContainer/NextButton"]
+libraries = {
+"": SubResource("AnimationLibrary_5bi1d")
+}
+autoplay = "jump"
+
+[connection signal="item_rect_changed" from="MarginContainer" to="." method="_on_margin_container_item_rect_changed"]
