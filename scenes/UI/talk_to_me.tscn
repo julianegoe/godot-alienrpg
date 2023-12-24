@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://deq64u7fghh4g"]
 
-[ext_resource type="Texture2D" uid="uid://c40ik1bbr6xtw" path="res://assets/can_talk_icon.png" id="1_a6bul"]
+[ext_resource type="Texture2D" uid="uid://c40ik1bbr6xtw" path="res://assets/ui/can_talk_icon.png" id="1_a6bul"]
 [ext_resource type="Script" path="res://scenes/UI/talk_to_me.gd" id="1_ychfo"]
 
 [sub_resource type="Animation" id="Animation_3njx0"]

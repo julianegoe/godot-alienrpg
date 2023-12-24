@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c12omqhbcrps0"
-path="res://.godot/imported/quest_map.png-04ef25afd9c30d29a4608b2dc913081a.ctex"
+uid="uid://c40ik1bbr6xtw"
+path="res://.godot/imported/can_talk_icon.png-e3b2f5e196124ceae416c12010931670.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/quest_map.png"
-dest_files=["res://.godot/imported/quest_map.png-04ef25afd9c30d29a4608b2dc913081a.ctex"]
+source_file="res://assets/ui/can_talk_icon.png"
+dest_files=["res://.godot/imported/can_talk_icon.png-e3b2f5e196124ceae416c12010931670.ctex"]
 
 [params]
 

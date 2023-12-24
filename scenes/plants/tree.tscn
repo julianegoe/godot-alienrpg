@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b11c7dfrxe8su"]
 
-[ext_resource type="Texture2D" uid="uid://b6wef3pokcbvo" path="res://assets/terrain/tree.png" id="1_13i72"]
+[ext_resource type="Texture2D" uid="uid://b6wef3pokcbvo" path="res://assets/vegetation/tree.png" id="1_ql5vp"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_d2nx1"]
 radius = 6.0
@@ -10,7 +10,7 @@ height = 21.0
 y_sort_enabled = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_13i72")
+texture = ExtResource("1_ql5vp")
 offset = Vector2(0, -13)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmbfe6gq4bt8o"
-path="res://.godot/imported/character_shadow.png-c2ada23399d6b7bf6121e417fa131b73.ctex"
+uid="uid://8v88328oev5g"
+path="res://.godot/imported/shopkeeper.png-13e83e64c497a4531e229df3195bf54d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/character_shadow.png"
-dest_files=["res://.godot/imported/character_shadow.png-c2ada23399d6b7bf6121e417fa131b73.ctex"]
+source_file="res://assets/characters/shopkeeper.png"
+dest_files=["res://.godot/imported/shopkeeper.png-13e83e64c497a4531e229df3195bf54d.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dk500efwpek7w"
-path="res://.godot/imported/buildings.png-93e0954f6f5c1ad433b73f9ff2e9fc87.ctex"
+uid="uid://4kyv500msmof"
+path="res://.godot/imported/ninepatch_dialogue.png-f615ca6b6d7e019fbe7db50196752b49.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/buildings.png"
-dest_files=["res://.godot/imported/buildings.png-93e0954f6f5c1ad433b73f9ff2e9fc87.ctex"]
+source_file="res://assets/ui/ninepatch_dialogue.png"
+dest_files=["res://.godot/imported/ninepatch_dialogue.png-f615ca6b6d7e019fbe7db50196752b49.ctex"]
 
 [params]
 

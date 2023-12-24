@@ -1,7 +1,7 @@
 [gd_scene load_steps=8 format=3 uid="uid://dvqjtowi8nfu5"]
 
 [ext_resource type="Script" path="res://scenes/UI/speechbubble.gd" id="1_hq5u3"]
-[ext_resource type="Texture2D" uid="uid://4kyv500msmof" path="res://assets/ninepatch_dialogue.png" id="1_n8or5"]
+[ext_resource type="Texture2D" uid="uid://4kyv500msmof" path="res://assets/ui/ninepatch_dialogue.png" id="1_n8or5"]
 [ext_resource type="FontFile" uid="uid://cjjhxrf0ersuw" path="res://assets/fonts/VT323-Regular.ttf" id="2_1qjug"]
 [ext_resource type="Texture2D" uid="uid://cdft18886ql6v" path="res://assets/ui/next_arrow.png" id="5_ukqdw"]
 

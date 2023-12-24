@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4kyv500msmof"
-path="res://.godot/imported/ninepatch_dialogue.png-1c0929b784e75615a5a84378651e8f33.ctex"
+uid="uid://bw71se83tg63y"
+path="res://.godot/imported/player_v2.png-33dc8f3d7723663247668de2745842b5.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ninepatch_dialogue.png"
-dest_files=["res://.godot/imported/ninepatch_dialogue.png-1c0929b784e75615a5a84378651e8f33.ctex"]
+source_file="res://assets/characters/player_v2.png"
+dest_files=["res://.godot/imported/player_v2.png-33dc8f3d7723663247668de2745842b5.ctex"]
 
 [params]
 

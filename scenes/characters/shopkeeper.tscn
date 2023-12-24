@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://c3hudrn0egb03"]
 
 [ext_resource type="Script" path="res://scenes/characters/shopkeeper.gd" id="1_7mv5s"]
-[ext_resource type="Texture2D" uid="uid://8v88328oev5g" path="res://assets/shopkeeper.png" id="1_pnalc"]
 [ext_resource type="Resource" uid="uid://dppsjg1cqqoo2" path="res://resources/npc_dialogues/shopkeeper_dialogue.tres" id="2_ewf5d"]
-[ext_resource type="Texture2D" uid="uid://bmbfe6gq4bt8o" path="res://assets/character_shadow.png" id="2_rumm7"]
+[ext_resource type="Texture2D" uid="uid://bmbfe6gq4bt8o" path="res://assets/shadows/character_shadow.png" id="2_rumm7"]
+[ext_resource type="Texture2D" uid="uid://8v88328oev5g" path="res://assets/characters/shopkeeper.png" id="3_okoxf"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_43u3f"]
 radius = 3.0
@@ -60,7 +60,7 @@ shape = SubResource("CapsuleShape2D_43u3f")
 
 [node name="Character" type="Sprite2D" parent="."]
 position = Vector2(0, -14)
-texture = ExtResource("1_pnalc")
+texture = ExtResource("3_okoxf")
 hframes = 3
 
 [node name="Shadow" type="Sprite2D" parent="."]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c40ik1bbr6xtw"
-path="res://.godot/imported/can_talk_icon.png-7122d99199d8a8fab25b66dc1b5b6c78.ctex"
+uid="uid://b6wef3pokcbvo"
+path="res://.godot/imported/tree.png-82c68a6101932a4d80e895917ae1ee8e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/can_talk_icon.png"
-dest_files=["res://.godot/imported/can_talk_icon.png-7122d99199d8a8fab25b66dc1b5b6c78.ctex"]
+source_file="res://assets/vegetation/tree.png"
+dest_files=["res://.godot/imported/tree.png-82c68a6101932a4d80e895917ae1ee8e.ctex"]
 
 [params]
 

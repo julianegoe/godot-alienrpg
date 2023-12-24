@@ -1,8 +1,8 @@
 [gd_scene load_steps=15 format=3 uid="uid://crvo6u3r2wtnv"]
 
 [ext_resource type="Script" path="res://scenes/player.gd" id="1_os17o"]
-[ext_resource type="Texture2D" uid="uid://bw71se83tg63y" path="res://assets/player_v2.png" id="2_rwhfd"]
-[ext_resource type="Texture2D" uid="uid://bmbfe6gq4bt8o" path="res://assets/character_shadow.png" id="2_sjm4h"]
+[ext_resource type="Texture2D" uid="uid://bw71se83tg63y" path="res://assets/characters/player_v2.png" id="2_go1nr"]
+[ext_resource type="Texture2D" uid="uid://bmbfe6gq4bt8o" path="res://assets/shadows/character_shadow.png" id="3_4lhx7"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0bvgs"]
 radius = 3.0
@@ -185,15 +185,14 @@ metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -12)
-texture = ExtResource("2_rwhfd")
+texture = ExtResource("2_go1nr")
 hframes = 33
 
 [node name="Shadow" type="Sprite2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.596078)
-y_sort_enabled = true
 position = Vector2(0, 1)
 scale = Vector2(1, 0.991171)
-texture = ExtResource("2_sjm4h")
+texture = ExtResource("3_4lhx7")
 
 [node name="ControllerContainer" type="Node" parent="."]
 
