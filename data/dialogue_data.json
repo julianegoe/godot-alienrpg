@@ -5,7 +5,7 @@
 	  {
 		"index": 0,
 		"text": "Hallo...{p=0.5} Sind Sie...{p=0.5} neu in der Stadt?",
-		"answers": [
+		"choices": [
 		  {
 			"index": 0,
 			"text": "Ja.",
@@ -22,20 +22,20 @@
 			}
 		  }
 		],
-		"endTree": false,
+		"nextNode": null,
 	  },
 	  {
 		"index": 1,
 		"text": "Diese Stadt hat lange keine neuen Leute gesehen. Viel Glück.",
-		"answers": [
+		"choices": [
 		],
-		"endTree": true,
+		"nextNode": null,
 	  },
 	{
 		"index": 2,
 		"text": "Komisch. Ich habe Sie hier noch nie gesehen.",
-		"answers": [],
-		"endTree": true,
+		"choices": [],
+		"nextNode": null,
 	  }
 	]
   }

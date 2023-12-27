@@ -1,6 +1,5 @@
 extends Node2D
 
-func _ready():
+func play_animation():
 	$AnimationPlayer.play("jump")
-
 

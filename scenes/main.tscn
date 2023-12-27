@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_lnha0"]
 [ext_resource type="PackedScene" uid="uid://crvo6u3r2wtnv" path="res://scenes/player.tscn" id="2_643we"]
 [ext_resource type="Texture2D" uid="uid://bk2hlopoxrcng" path="res://assets/terrain/32bit_terrain.png" id="2_fnwhm"]
-[ext_resource type="PackedScene" uid="uid://c3hudrn0egb03" path="res://scenes/characters/shopkeeper.tscn" id="5_1ppmd"]
 [ext_resource type="PackedScene" uid="uid://4x35w3alrv7k" path="res://scenes/buildings/home.tscn" id="5_ll456"]
 [ext_resource type="PackedScene" uid="uid://qkqmcn3rv4jh" path="res://scenes/buildings/shop.tscn" id="6_v4cwa"]
 [ext_resource type="PackedScene" uid="uid://br174ejjc2ao2" path="res://scenes/buildings/tent.tscn" id="7_gkfyd"]
@@ -11,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://b11c7dfrxe8su" path="res://scenes/plants/tree.tscn" id="10_i26if"]
 [ext_resource type="PackedScene" uid="uid://iwwwihovcrpm" path="res://scenes/plants/potted_bush.tscn" id="10_px0pr"]
 [ext_resource type="PackedScene" uid="uid://dshbtqonrm6lq" path="res://scenes/plants/bush.tscn" id="11_i1cab"]
+[ext_resource type="PackedScene" uid="uid://bv6xpju5vv6ms" path="res://scenes/characters/npc_shopkeeper.tscn" id="12_aw4as"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_02e38"]
 texture = ExtResource("2_fnwhm")
@@ -173,8 +173,8 @@ drag_vertical_enabled = true
 drag_horizontal_offset = 0.2
 drag_vertical_offset = 0.2
 
-[node name="Shopkeeper" parent="." instance=ExtResource("5_1ppmd")]
-position = Vector2(759, 755)
+[node name="Shopkeepter" parent="." instance=ExtResource("12_aw4as")]
+position = Vector2(274, 720)
 
 [node name="Buildings" type="Node2D" parent="."]
 y_sort_enabled = true
