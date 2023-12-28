@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 PlayerStats="*res://globals/player_stats.gd"
 Diceroll="*res://globals/diceroll.gd"
+Types="*res://globals/types.gd"
 
 [display]
 

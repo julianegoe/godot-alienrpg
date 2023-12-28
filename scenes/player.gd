@@ -3,7 +3,7 @@ class_name Player extends CharacterBody2D
 var currentVelocity : Vector2 = Vector2.ZERO
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	var inputDir : Vector2 = Vector2.ZERO
 	#INPUTS
 	inputDir.x = Input.get_action_strength("right") - Input.get_action_strength("left")

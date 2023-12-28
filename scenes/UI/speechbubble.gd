@@ -12,6 +12,7 @@ var DEFAULT_SIZE: Vector2 = Vector2(63, 41)
 @onready var nextButtonContainer: Control = $NextButtonContainer
 @onready var nextButton: TextureButton = %NextButton
 @onready var marginContainer: MarginContainer = $MarginContainer
+
 var dialogueManager: DialogueManager
 
 enum UiState {

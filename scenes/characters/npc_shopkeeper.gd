@@ -1,6 +1,6 @@
 class_name npc_shopkeeper extends Npc
 
-@onready var speechbubble: Speechbubble = $CanvasGroup/Speechbubble
+@onready var speechbubble: Speechbubble = $UI/PosHelper/Speechbubble
 
 func _ready():
 	super()
@@ -12,8 +12,7 @@ func _unhandled_key_input(event):
 		speechbubble.activate()
 		interaction_icon.hide()
 				
-		
-func _on_player_entered(body):
+func _on_player_entered(_body):
 	pass
 
 func _on_player_exited(_body):

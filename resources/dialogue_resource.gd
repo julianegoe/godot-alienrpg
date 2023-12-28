@@ -9,7 +9,6 @@ class_name DialogueResource
 func readJSON():
 	var file = FileAccess.open(dialogue_path, FileAccess.READ)
 	var content = file.get_as_text()
-	var json = JSON.new()
-	var data = json.parse_string(content)
+	var data = JSON.parse_string(content)
 	dialogue_tree = data
 	display_name = data.name

@@ -3,7 +3,7 @@ class_name Npc extends CharacterBody2D
 signal player_entered(body: Player)
 signal player_exited(body: Player)
 
-@onready var interaction_icon: Node2D = $TalkToMe
+@onready var interaction_icon: Node2D = $UI/TalkToMe
 
 enum DistanceState {
 	IN_VICINITY,
