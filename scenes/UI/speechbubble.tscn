@@ -15,6 +15,8 @@ texture_margin_right = 5.0
 texture_margin_bottom = 5.0
 
 [node name="Speechbubble" type="Panel"]
+light_mask = 2
+visibility_layer = 2
 z_index = 101
 y_sort_enabled = true
 clip_contents = true

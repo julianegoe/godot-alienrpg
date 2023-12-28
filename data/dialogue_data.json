@@ -35,6 +35,12 @@
 		"index": 2,
 		"text": "Komisch. Ich habe Sie hier noch nie gesehen.",
 		"choices": [],
+		"nextNode": 3,
+	  },
+	{
+		"index": 3,
+		"text": "Naja, ich kann ja auch nicht jeden kennen.",
+		"choices": [],
 		"nextNode": null,
 	  }
 	]

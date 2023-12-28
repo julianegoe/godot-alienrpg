@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bv6xpju5vv6ms"]
+[gd_scene load_steps=9 format=3 uid="uid://bv6xpju5vv6ms"]
 
 [ext_resource type="PackedScene" uid="uid://dem3vvgytjo6e" path="res://scenes/characters/npc.tscn" id="1_skejw"]
 [ext_resource type="Texture2D" uid="uid://8v88328oev5g" path="res://assets/characters/shopkeeper.png" id="2_ajb2p"]
 [ext_resource type="Script" path="res://scenes/characters/npc_shopkeeper.gd" id="2_nn7mj"]
+[ext_resource type="Texture2D" uid="uid://bmbfe6gq4bt8o" path="res://assets/shadows/character_shadow.png" id="4_eo6j4"]
 [ext_resource type="PackedScene" uid="uid://dvqjtowi8nfu5" path="res://scenes/UI/speechbubble.tscn" id="4_r2vly"]
 [ext_resource type="Resource" uid="uid://dppsjg1cqqoo2" path="res://resources/npc_dialogues/shopkeeper_dialogue.tres" id="5_gm4cs"]
 
@@ -36,8 +37,18 @@ script = ExtResource("2_nn7mj")
 texture = ExtResource("2_ajb2p")
 hframes = 3
 
+[node name="Shadow" type="Sprite2D" parent="Texture" index="0"]
+self_modulate = Color(1, 1, 1, 0.517647)
+show_behind_parent = true
+position = Vector2(0, 15)
+texture = ExtResource("4_eo6j4")
+
 [node name="CollisionShape2D" parent="." index="1"]
+visible = false
 position = Vector2(0, 10)
+
+[node name="Vicinity" parent="." index="3"]
+visible = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="4"]
 libraries = {

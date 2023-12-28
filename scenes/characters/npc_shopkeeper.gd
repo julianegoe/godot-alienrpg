@@ -1,6 +1,6 @@
 class_name npc_shopkeeper extends Npc
 
-@onready var speechbubble: Speechbubble = $Speechbubble
+@onready var speechbubble: Speechbubble = $CanvasGroup/Speechbubble
 
 func _ready():
 	super()

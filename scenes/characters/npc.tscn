@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dem3vvgytjo6e"]
 
-[ext_resource type="Script" path="res://npc.gd" id="1_om84o"]
+[ext_resource type="Script" path="res://scenes/characters/npc.gd" id="1_m27xr"]
 [ext_resource type="PackedScene" uid="uid://deq64u7fghh4g" path="res://scenes/UI/talk_to_me.tscn" id="2_ip7qa"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nxkm7"]
@@ -11,7 +11,7 @@ height = 16.0
 radius = 31.0
 
 [node name="NPC" type="CharacterBody2D"]
-script = ExtResource("1_om84o")
+script = ExtResource("1_m27xr")
 
 [node name="Texture" type="Sprite2D" parent="."]
 

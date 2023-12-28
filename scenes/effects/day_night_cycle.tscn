@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://052kqwtj3jo8"]
+
+[ext_resource type="Script" path="res://scenes/effects/day_night_cycle.gd" id="1_tr5e4"]
+
+[node name="DayNightCycle" type="CanvasModulate"]
+script = ExtResource("1_tr5e4")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 30.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
