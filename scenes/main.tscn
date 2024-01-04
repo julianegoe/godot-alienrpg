@@ -309,103 +309,103 @@ position = Vector2(725, 372)
 [node name="Tent2" parent="Buildings" instance=ExtResource("7_gkfyd")]
 position = Vector2(770, 345)
 
-[node name="Flora" type="Node2D" parent="."]
+[node name="Plants" type="Node2D" parent="."]
 y_sort_enabled = true
 
-[node name="Tree" parent="Flora" instance=ExtResource("10_i26if")]
+[node name="Tree" parent="Plants" instance=ExtResource("10_i26if")]
 position = Vector2(249, 543)
 
-[node name="Tree2" parent="Flora" instance=ExtResource("10_i26if")]
+[node name="Tree2" parent="Plants" instance=ExtResource("10_i26if")]
 position = Vector2(274, 556)
 
-[node name="Tree3" parent="Flora" instance=ExtResource("10_i26if")]
+[node name="Tree3" parent="Plants" instance=ExtResource("10_i26if")]
 position = Vector2(213, 573)
 
-[node name="Tree4" parent="Flora" instance=ExtResource("10_i26if")]
+[node name="Tree4" parent="Plants" instance=ExtResource("10_i26if")]
 position = Vector2(317, 567)
 
-[node name="Tree5" parent="Flora" instance=ExtResource("10_i26if")]
+[node name="Tree5" parent="Plants" instance=ExtResource("10_i26if")]
 position = Vector2(764, 834)
 
-[node name="Tree6" parent="Flora" instance=ExtResource("10_i26if")]
+[node name="Tree6" parent="Plants" instance=ExtResource("10_i26if")]
 position = Vector2(738, 856)
 
-[node name="Tree7" parent="Flora" instance=ExtResource("10_i26if")]
+[node name="Tree7" parent="Plants" instance=ExtResource("10_i26if")]
 position = Vector2(858, 862)
 
-[node name="Tree16" parent="Flora" instance=ExtResource("10_i26if")]
+[node name="Tree16" parent="Plants" instance=ExtResource("10_i26if")]
 position = Vector2(904, 697)
 
-[node name="Tree17" parent="Flora" instance=ExtResource("10_i26if")]
+[node name="Tree17" parent="Plants" instance=ExtResource("10_i26if")]
 position = Vector2(862, 640)
 
-[node name="Tree18" parent="Flora" instance=ExtResource("10_i26if")]
+[node name="Tree18" parent="Plants" instance=ExtResource("10_i26if")]
 position = Vector2(957, 653)
 
-[node name="Tree8" parent="Flora" instance=ExtResource("10_i26if")]
+[node name="Tree8" parent="Plants" instance=ExtResource("10_i26if")]
 position = Vector2(864, 899)
 
-[node name="Tree9" parent="Flora" instance=ExtResource("10_i26if")]
+[node name="Tree9" parent="Plants" instance=ExtResource("10_i26if")]
 position = Vector2(221, 762)
 
-[node name="Tree10" parent="Flora" instance=ExtResource("10_i26if")]
+[node name="Tree10" parent="Plants" instance=ExtResource("10_i26if")]
 position = Vector2(258, 776)
 
-[node name="Tree11" parent="Flora" instance=ExtResource("10_i26if")]
+[node name="Tree11" parent="Plants" instance=ExtResource("10_i26if")]
 position = Vector2(451, 715)
 
-[node name="Tree12" parent="Flora" instance=ExtResource("10_i26if")]
+[node name="Tree12" parent="Plants" instance=ExtResource("10_i26if")]
 position = Vector2(488, 727)
 
-[node name="Tree13" parent="Flora" instance=ExtResource("10_i26if")]
+[node name="Tree13" parent="Plants" instance=ExtResource("10_i26if")]
 position = Vector2(525, 683)
 
-[node name="Tree14" parent="Flora" instance=ExtResource("10_i26if")]
+[node name="Tree14" parent="Plants" instance=ExtResource("10_i26if")]
 position = Vector2(482, 649)
 
-[node name="Tree15" parent="Flora" instance=ExtResource("10_i26if")]
+[node name="Tree15" parent="Plants" instance=ExtResource("10_i26if")]
 position = Vector2(557, 599)
 
-[node name="PottedBush" parent="Flora" instance=ExtResource("10_px0pr")]
+[node name="PottedBush" parent="Plants" instance=ExtResource("10_px0pr")]
 position = Vector2(113, 677)
 
-[node name="PottedBush3" parent="Flora" instance=ExtResource("10_px0pr")]
+[node name="PottedBush3" parent="Plants" instance=ExtResource("10_px0pr")]
 position = Vector2(675, 694)
 
-[node name="PottedBush4" parent="Flora" instance=ExtResource("10_px0pr")]
+[node name="PottedBush4" parent="Plants" instance=ExtResource("10_px0pr")]
 position = Vector2(682, 706)
 
-[node name="PottedBush5" parent="Flora" instance=ExtResource("10_px0pr")]
+[node name="PottedBush5" parent="Plants" instance=ExtResource("10_px0pr")]
 position = Vector2(763, 686)
 
-[node name="PottedBush2" parent="Flora" instance=ExtResource("10_px0pr")]
+[node name="PottedBush2" parent="Plants" instance=ExtResource("10_px0pr")]
 position = Vector2(181, 618)
 
-[node name="Bush" parent="Flora" instance=ExtResource("11_i1cab")]
+[node name="Bush" parent="Plants" instance=ExtResource("11_i1cab")]
 position = Vector2(263, 628)
 
-[node name="Bush9" parent="Flora" instance=ExtResource("11_i1cab")]
+[node name="Bush9" parent="Plants" instance=ExtResource("11_i1cab")]
 position = Vector2(856, 689)
 
-[node name="Bush5" parent="Flora" instance=ExtResource("11_i1cab")]
+[node name="Bush5" parent="Plants" instance=ExtResource("11_i1cab")]
 position = Vector2(247, 663)
 
-[node name="Bush4" parent="Flora" instance=ExtResource("11_i1cab")]
+[node name="Bush4" parent="Plants" instance=ExtResource("11_i1cab")]
 position = Vector2(399, 630)
 
-[node name="Bush8" parent="Flora" instance=ExtResource("11_i1cab")]
+[node name="Bush8" parent="Plants" instance=ExtResource("11_i1cab")]
 position = Vector2(360, 664)
 
-[node name="Bush3" parent="Flora" instance=ExtResource("11_i1cab")]
+[node name="Bush3" parent="Plants" instance=ExtResource("11_i1cab")]
 position = Vector2(339, 629)
 
-[node name="Bush7" parent="Flora" instance=ExtResource("11_i1cab")]
+[node name="Bush7" parent="Plants" instance=ExtResource("11_i1cab")]
 position = Vector2(322, 663)
 
-[node name="Bush2" parent="Flora" instance=ExtResource("11_i1cab")]
+[node name="Bush2" parent="Plants" instance=ExtResource("11_i1cab")]
 position = Vector2(301, 628)
 
-[node name="Bush6" parent="Flora" instance=ExtResource("11_i1cab")]
+[node name="Bush6" parent="Plants" instance=ExtResource("11_i1cab")]
 position = Vector2(287, 663)
 
 [node name="Lights" type="Node2D" parent="."]

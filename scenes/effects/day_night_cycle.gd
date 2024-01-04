@@ -3,23 +3,25 @@ extends CanvasModulate
 signal time_changed(time)
 signal sun_changed(solar_alt)
 
+@export var currentTimeIndex = Types.GameTime.DAY
+
 @onready var canvas_modulate: CanvasModulate = $"."
 @onready var timer: Timer = $Timer
 
 var time_lookup: Dictionary = {
-	Types.GameTime.NIGHT: { "hour": 22, "minute": 0, "second": 0},
+	Types.GameTime.NIGHT: { "hour": 20, "minute": 0, "second": 0},
 	Types.GameTime.DAWN: { "hour": 5, "minute": 0, "second": 0},
 	Types.GameTime.DAY:  { "hour": 9, "minute": 0, "second": 0},
-	Types.GameTime.DUSK: { "hour": 19, "minute": 0, "second": 0},
+	Types.GameTime.DUSK: { "hour": 17, "minute": 0, "second": 0},
 }
 
 var color_lookup: Dictionary = {
 	Types.GameTime.NIGHT: Color(0.168, 0.176, 0.322, 1),
 	Types.GameTime.DAWN: Color(0.39, 0.51, 0.64, 1),
 	Types.GameTime.DAY: Color.WHITE,
-	Types.GameTime.DUSK: Color(0.541, 0.259, 0.396, 1),
+	Types.GameTime.DUSK: Color(0.922, 0.765, 0.765, 1),
 }
-@export var currentTimeIndex = Types.GameTime.DAY
+
 var currentTimeInSeconds: int = time_lookup[currentTimeIndex].hour * 3600
 var currentTimeDict = Time.get_time_dict_from_unix_time(currentTimeInSeconds)
 
@@ -34,7 +36,7 @@ func tween_color(new_color: Color):
 	tween.tween_property(canvas_modulate,"color",new_color, 2.5)
 
 func _on_timer_timeout():
-	currentTimeInSeconds += (15 * 60)
+	currentTimeInSeconds += 60
 	currentTimeDict = Time.get_time_dict_from_unix_time(currentTimeInSeconds)
 	time_changed.emit(currentTimeDict)
 	if currentTimeDict.hour == time_lookup[Types.GameTime.NIGHT].hour and currentTimeDict.minute == time_lookup[Types.GameTime.NIGHT].minute:
