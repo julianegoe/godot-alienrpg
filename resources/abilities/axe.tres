@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AbilityResource" load_steps=4 format=3 uid="uid://rkw8g32jk4de"]
+
+[ext_resource type="Script" path="res://scripts/Resources/effect_resource.gd" id="1_edls0"]
+[ext_resource type="Script" path="res://scripts/Resources/ability_resource.gd" id="2_w110c"]
+
+[sub_resource type="Resource" id="Resource_qorvu"]
+script = ExtResource("1_edls0")
+type = 0
+value = 5
+
+[resource]
+script = ExtResource("2_w110c")
+name = "Axe"
+modifier = 20
+defense = 10
+effects = Array[ExtResource("1_edls0")]([SubResource("Resource_qorvu")])

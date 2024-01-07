@@ -3,7 +3,11 @@ class_name Npc extends CharacterBody2D
 signal player_entered(body: Player)
 signal player_exited(body: Player)
 
-@onready var interaction_icon: Node2D = $UI/TalkToMe
+@export var health: HealthResource
+@export var skill_resource: SkillResource
+@export var abilities: Array[AbilityResource]
+
+@onready var interaction_icon: Node2D = $Ui/TalkToMe
 
 enum DistanceState {
 	IN_VICINITY,
@@ -11,10 +15,6 @@ enum DistanceState {
 }
 
 var interaction_state: DistanceState = DistanceState.FAR_AWAY
-	
-func _ready():
-	$AnimationPlayer.play("idle")
-	interaction_icon.hide()
 
 func _on_vicinity_body_entered(body):
 	if body is Player:

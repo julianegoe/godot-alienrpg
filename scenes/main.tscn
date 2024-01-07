@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://bq11gurhgvyv1"]
+[gd_scene load_steps=27 format=3 uid="uid://bq11gurhgvyv1"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_lnha0"]
 [ext_resource type="PackedScene" uid="uid://crvo6u3r2wtnv" path="res://scenes/player.tscn" id="2_643we"]
@@ -17,6 +17,8 @@
 [ext_resource type="PackedScene" uid="uid://052kqwtj3jo8" path="res://scenes/effects/day_night_cycle.tscn" id="15_yduho"]
 [ext_resource type="Texture2D" uid="uid://bj8ckiddwuk5p" path="res://assets/lights/shop_window_light.png" id="16_sj4pg"]
 [ext_resource type="Texture2D" uid="uid://cb30gh220104b" path="res://assets/lights/shop_lamp.png" id="17_e1xj7"]
+[ext_resource type="PackedScene" uid="uid://dfinwyyg0k5c3" path="res://scenes/characters/enemy.tscn" id="17_nd2tu"]
+[ext_resource type="Script" path="res://scripts/Managers/skill_checker.gd" id="19_41uhe"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_02e38"]
 texture = ExtResource("2_fnwhm")
@@ -454,6 +456,11 @@ color = Color(0.721569, 0.478431, 0.0705882, 1)
 energy = 2.0
 texture = ExtResource("17_e1xj7")
 
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("17_nd2tu")]
+position = Vector2(437, 538)
+
 [node name="DayNightCycle" parent="." instance=ExtResource("15_yduho")]
 position = Vector2(-1, 0)
 
@@ -477,5 +484,12 @@ offset_right = 41.0
 offset_bottom = 23.0
 text = "13:00"
 
+[node name="Scripts" type="Node" parent="."]
+
+[node name="SkillChecker" type="Node" parent="Scripts"]
+script = ExtResource("19_41uhe")
+
+[connection signal="initiate_fight" from="Enemies/Enemy" to="." method="_on_enemy_initiate_fight"]
 [connection signal="sun_changed" from="DayNightCycle" to="." method="_on_day_night_cycle_sun_changed"]
 [connection signal="time_changed" from="DayNightCycle" to="." method="_on_day_night_cycle_time_changed"]
+[connection signal="skill_check_effect" from="Scripts/SkillChecker" to="." method="_on_skill_checker_skill_check_effect"]

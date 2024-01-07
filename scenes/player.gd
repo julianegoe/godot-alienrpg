@@ -1,5 +1,9 @@
 class_name Player extends CharacterBody2D
 
+@export var health: HealthResource
+@export var skill_resource: SkillResource
+@export var abilities: Array[AbilityResource]
+
 var currentVelocity : Vector2 = Vector2.ZERO
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 

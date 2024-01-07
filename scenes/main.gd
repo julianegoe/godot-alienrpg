@@ -1,7 +1,9 @@
 extends Node2D
 
+@onready var player: Player = $Player
 @onready var streetlights = $Lights.get_children()
 @onready var dayNightCycle = $DayNightCycle
+@onready var skill_checker = $Scripts/SkillChecker
 
 func _ready():
 	var currTimeIndex = dayNightCycle.currentTimeIndex
@@ -24,3 +26,13 @@ func _on_day_night_cycle_sun_changed(solar_alt):
 	elif solar_alt == Types.GameTime.NIGHT:
 		for streetlight in streetlights:
 			streetlight.show()	
+
+
+func _on_enemy_initiate_fight(enemy: Enemy):
+	# eventually start fight scene
+	skill_checker.perform_skill_check("fight", player.skill_resource.strength, player.abilities[0], enemy.skill_resource.strength, enemy.abilities[0])
+	
+	
+func _on_skill_checker_skill_check_effect(effects):
+	print(effects[0].type)
+	print(effects[0].value)

@@ -1,0 +1,29 @@
+[gd_scene load_steps=9 format=3 uid="uid://dfinwyyg0k5c3"]
+
+[ext_resource type="PackedScene" uid="uid://dem3vvgytjo6e" path="res://scenes/characters/npc.tscn" id="1_aj8xc"]
+[ext_resource type="Script" path="res://scripts/Characters/enemy.gd" id="2_7jkw2"]
+[ext_resource type="Script" path="res://scripts/Resources/skill_resource.gd" id="3_4jaa6"]
+[ext_resource type="Texture2D" uid="uid://b1e0i88l5cx2v" path="res://icon.svg" id="3_6e122"]
+[ext_resource type="Script" path="res://scripts/Resources/health.gd" id="3_8ub7g"]
+[ext_resource type="Resource" uid="uid://ybim81f78nca" path="res://resources/abilities/spores.tres" id="4_tor2c"]
+
+[sub_resource type="Resource" id="Resource_jp2fy"]
+script = ExtResource("3_8ub7g")
+health = 100
+
+[sub_resource type="Resource" id="Resource_72qt1"]
+script = ExtResource("3_4jaa6")
+strength = 80
+intelligence = 0
+survival = 50
+charisma = 10
+
+[node name="Enemy" instance=ExtResource("1_aj8xc")]
+script = ExtResource("2_7jkw2")
+health = SubResource("Resource_jp2fy")
+skill_resource = SubResource("Resource_72qt1")
+abilities = Array[Resource("res://scripts/Resources/ability_resource.gd")]([ExtResource("4_tor2c")])
+
+[node name="Texture" parent="." index="0"]
+scale = Vector2(0.335938, 0.335938)
+texture = ExtResource("3_6e122")

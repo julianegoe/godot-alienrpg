@@ -3,7 +3,8 @@ class_name npc_shopkeeper extends Npc
 @onready var speechbubble: Speechbubble = $UI/PosHelper/Speechbubble
 
 func _ready():
-	super()
+	$AnimationPlayer.play("idle")
+	interaction_icon.hide()
 
 func _unhandled_key_input(event):
 	if event.is_action_pressed("skip") and speechbubble.ui_state == speechbubble.UiState.OPEN:
