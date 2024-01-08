@@ -25,5 +25,37 @@ skill_resource = SubResource("Resource_72qt1")
 abilities = Array[Resource("res://scripts/Resources/ability_resource.gd")]([ExtResource("4_tor2c")])
 
 [node name="Texture" parent="." index="0"]
-scale = Vector2(0.335938, 0.335938)
+scale = Vector2(0.152344, 0.152344)
 texture = ExtResource("3_6e122")
+
+[node name="CollisionShape2D" parent="." index="1"]
+visible = false
+
+[node name="Vicinity" parent="." index="2"]
+visible = false
+
+[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="." index="4"]
+position = Vector2(2.08165e-12, -20)
+remote_path = NodePath("../Ui/HealtBar")
+update_rotation = false
+update_scale = false
+
+[node name="TalkToMe" parent="Ui" index="0"]
+visible = false
+
+[node name="HealtBar" type="Node2D" parent="Ui" index="1"]
+visible = false
+position = Vector2(2.08165e-12, -20)
+
+[node name="ProgressBar" type="ProgressBar" parent="Ui/HealtBar" index="0"]
+modulate = Color(0.552941, 0.882353, 0, 1)
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -23.0
+offset_right = 23.0
+offset_bottom = 4.0
+grow_horizontal = 2
+step = 1.0
+value = 90.0
+show_percentage = false

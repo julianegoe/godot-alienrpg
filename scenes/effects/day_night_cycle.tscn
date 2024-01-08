@@ -3,12 +3,10 @@
 [ext_resource type="Script" path="res://scenes/effects/day_night_cycle.gd" id="1_tr5e4"]
 
 [node name="DayNightCycle" type="CanvasModulate"]
-color = Color(0.921569, 0.764706, 0.764706, 1)
 script = ExtResource("1_tr5e4")
-currentTimeIndex = 3
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 5.0
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

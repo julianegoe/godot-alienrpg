@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cu3i556pmly0g"]
+
+[ext_resource type="Texture2D" uid="uid://b1e0i88l5cx2v" path="res://icon.svg" id="1_3713t"]
+[ext_resource type="Script" path="res://scenes/battle/abikity_card.gd" id="1_xv8db"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cfjp7"]
+size = Vector2(61, 84)
+
+[node name="AbikityCard" type="Node2D"]
+script = ExtResource("1_xv8db")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(-0.5, -1)
+shape = SubResource("RectangleShape2D_cfjp7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.511719, 0.704301)
+texture = ExtResource("1_3713t")
+
+[connection signal="mouse_entered" from="Area2D" to="." method="_on_area_2d_mouse_entered"]
+[connection signal="mouse_exited" from="Area2D" to="." method="_on_area_2d_mouse_exited"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://bq11gurhgvyv1"]
+[gd_scene load_steps=28 format=3 uid="uid://bq11gurhgvyv1"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_lnha0"]
 [ext_resource type="PackedScene" uid="uid://crvo6u3r2wtnv" path="res://scenes/player.tscn" id="2_643we"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://cb30gh220104b" path="res://assets/lights/shop_lamp.png" id="17_e1xj7"]
 [ext_resource type="PackedScene" uid="uid://dfinwyyg0k5c3" path="res://scenes/characters/enemy.tscn" id="17_nd2tu"]
 [ext_resource type="Script" path="res://scripts/Managers/skill_checker.gd" id="19_41uhe"]
+[ext_resource type="PackedScene" uid="uid://o2n28ovutyta" path="res://scenes/UI/battle_cockpit.tscn" id="19_ol6fv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_02e38"]
 texture = ExtResource("2_fnwhm")
@@ -286,10 +287,6 @@ limit_top = 0
 limit_right = 1920
 limit_bottom = 1080
 position_smoothing_enabled = true
-drag_horizontal_enabled = true
-drag_vertical_enabled = true
-drag_horizontal_offset = 0.2
-drag_vertical_offset = 0.2
 
 [node name="Shopkeepter" parent="." instance=ExtResource("12_aw4as")]
 position = Vector2(789, 709)
@@ -464,25 +461,30 @@ position = Vector2(437, 538)
 [node name="DayNightCycle" parent="." instance=ExtResource("15_yduho")]
 position = Vector2(-1, 0)
 
-[node name="UI" type="CanvasLayer" parent="."]
+[node name="TimeUI" type="CanvasLayer" parent="."]
 
-[node name="Control" type="Control" parent="UI"]
+[node name="Control" type="Control" parent="TimeUI"]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="ColorRect" type="ColorRect" parent="UI/Control"]
+[node name="ColorRect" type="ColorRect" parent="TimeUI/Control"]
 layout_mode = 0
 offset_right = 45.0
 offset_bottom = 23.0
 color = Color(0.0509804, 0.0509804, 0.0509804, 1)
 
-[node name="Label" type="Label" parent="UI/Control/ColorRect"]
+[node name="Label" type="Label" parent="TimeUI/Control/ColorRect"]
 layout_mode = 0
 offset_right = 41.0
 offset_bottom = 23.0
 text = "13:00"
+
+[node name="BattleUI" type="CanvasLayer" parent="."]
+
+[node name="BattleCockpit" parent="BattleUI" instance=ExtResource("19_ol6fv")]
+visible = false
 
 [node name="Scripts" type="Node" parent="."]
 
@@ -490,6 +492,8 @@ text = "13:00"
 script = ExtResource("19_41uhe")
 
 [connection signal="initiate_fight" from="Enemies/Enemy" to="." method="_on_enemy_initiate_fight"]
+[connection signal="player_entered" from="Enemies/Enemy" to="." method="_on_enemy_player_entered"]
+[connection signal="player_exited" from="Enemies/Enemy" to="." method="_on_enemy_player_exited"]
 [connection signal="sun_changed" from="DayNightCycle" to="." method="_on_day_night_cycle_sun_changed"]
 [connection signal="time_changed" from="DayNightCycle" to="." method="_on_day_night_cycle_time_changed"]
 [connection signal="skill_check_effect" from="Scripts/SkillChecker" to="." method="_on_skill_checker_skill_check_effect"]
