@@ -7,7 +7,7 @@ func enter() -> void:
 	if ui_layer:
 		ability_card.reparent(ui_layer)
 	ability_card.color.color = Color.CADET_BLUE
-	ability_card.label.text = "DRAGGING " + ability_card.card_name
+	ability_card.label.text = ability_card.resource.name
 	
 	minimum_drag_time_elapsed = false
 	var threshold_timer = get_tree().create_timer(DRAG_MINIMUM_THRESHOLD, false)

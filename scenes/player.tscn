@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/Resources/health.gd" id="2_gy2f7"]
 [ext_resource type="Script" path="res://scripts/Resources/skill_resource.gd" id="2_lyfln"]
 [ext_resource type="Texture2D" uid="uid://bmbfe6gq4bt8o" path="res://assets/shadows/character_shadow.png" id="3_4lhx7"]
-[ext_resource type="Resource" uid="uid://rkw8g32jk4de" path="res://resources/abilities/axe.tres" id="3_455br"]
+[ext_resource type="Resource" uid="uid://y2jm5itqd0xk" path="res://resources/abilities/axe.tres" id="3_455br"]
 
 [sub_resource type="Resource" id="Resource_h7b5q"]
 script = ExtResource("2_gy2f7")
@@ -193,6 +193,7 @@ _data = {
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 y_sort_enabled = true
+collision_mask = 5
 script = ExtResource("1_os17o")
 health = SubResource("Resource_h7b5q")
 skill_resource = SubResource("Resource_y6xrp")

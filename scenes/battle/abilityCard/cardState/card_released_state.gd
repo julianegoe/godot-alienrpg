@@ -4,7 +4,7 @@ var played: bool
 
 func enter() -> void:
 	ability_card.color.color = Color.LIGHT_PINK
-	ability_card.label.text = "RELEASED " + ability_card.card_name
+	ability_card.label.text = ability_card.resource.name
 	played = false
 	if not ability_card.targets.is_empty():
 		played = true

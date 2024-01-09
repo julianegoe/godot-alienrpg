@@ -4,7 +4,7 @@ class_name CardBaseState extends CardState
 func enter() -> void:
 	ability_card.reparent_requested.emit(ability_card)
 	ability_card.color.color = Color.SEA_GREEN
-	ability_card.label.text = "BASE " + ability_card.card_name
+	ability_card.label.text = ability_card.resource.name
 	ability_card.pivot_offset = Vector2.ZERO
 	
 func exit() -> void:

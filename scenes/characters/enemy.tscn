@@ -19,6 +19,8 @@ survival = 50
 charisma = 10
 
 [node name="Enemy" instance=ExtResource("1_aj8xc")]
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("2_7jkw2")
 health = SubResource("Resource_jp2fy")
 skill_resource = SubResource("Resource_72qt1")
@@ -27,12 +29,6 @@ abilities = Array[Resource("res://scripts/Resources/ability_resource.gd")]([ExtR
 [node name="Texture" parent="." index="0"]
 scale = Vector2(0.152344, 0.152344)
 texture = ExtResource("3_6e122")
-
-[node name="CollisionShape2D" parent="." index="1"]
-visible = false
-
-[node name="Vicinity" parent="." index="2"]
-visible = false
 
 [node name="RemoteTransform2D2" type="RemoteTransform2D" parent="." index="4"]
 position = Vector2(2.08165e-12, -20)

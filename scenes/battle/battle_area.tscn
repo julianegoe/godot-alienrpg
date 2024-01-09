@@ -1,8 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://o2n28ovutyta"]
+[gd_scene load_steps=7 format=3 uid="uid://o2n28ovutyta"]
 
 [ext_resource type="Script" path="res://scenes/battle/battle_area.gd" id="1_r7ga3"]
 [ext_resource type="PackedScene" uid="uid://cu3i556pmly0g" path="res://scenes/battle/abilityCard/ability_card.tscn" id="2_oy6r5"]
 [ext_resource type="Script" path="res://scenes/battle/hand.gd" id="2_uh7sy"]
+[ext_resource type="Resource" uid="uid://y2jm5itqd0xk" path="res://resources/abilities/axe.tres" id="4_waapl"]
+[ext_resource type="Resource" uid="uid://ybim81f78nca" path="res://resources/abilities/spores.tres" id="5_44a4j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6lrm"]
 size = Vector2(480, 189)
@@ -17,6 +19,7 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DropArea"]
 position = Vector2(240, 94.5)
 shape = SubResource("RectangleShape2D_q6lrm")
+debug_color = Color(0, 0.6, 0.701961, 0.0588235)
 
 [node name="Hand" type="MarginContainer" parent="."]
 anchors_preset = 7
@@ -37,12 +40,8 @@ layout_mode = 2
 
 [node name="AbilityCard" parent="Hand/CardContainer" instance=ExtResource("2_oy6r5")]
 layout_mode = 2
-card_name = "A"
+resource = ExtResource("4_waapl")
 
 [node name="AbilityCard2" parent="Hand/CardContainer" instance=ExtResource("2_oy6r5")]
 layout_mode = 2
-card_name = "B"
-
-[node name="AbilityCard3" parent="Hand/CardContainer" instance=ExtResource("2_oy6r5")]
-layout_mode = 2
-card_name = "C"
+resource = ExtResource("5_44a4j")

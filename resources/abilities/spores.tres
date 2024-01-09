@@ -6,16 +6,19 @@
 [sub_resource type="Resource" id="Resource_3a2dy"]
 script = ExtResource("1_rm6bm")
 type = 1
-value = 5
+value = 1
 
 [sub_resource type="Resource" id="Resource_cb0s6"]
 script = ExtResource("1_rm6bm")
 type = 2
-value = 1
+value = 2
 
 [resource]
 script = ExtResource("2_brov2")
-name = "Spores"
-modifier = 5
-defense = 0
+id = "spores"
+name = "Sporen"
+description = "Grünliche Sporen, die plötzlich so schläfrig machen."
+attack_modifier = 30
+defense_modifier = 0
+target = 2
 effects = Array[ExtResource("1_rm6bm")]([SubResource("Resource_3a2dy"), SubResource("Resource_cb0s6")])
