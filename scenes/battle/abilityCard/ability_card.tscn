@@ -16,8 +16,8 @@ size = Vector2(40, 50)
 custom_minimum_size = Vector2(40, 50)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 30.0
-offset_bottom = 40.0
+offset_right = 40.0
+offset_bottom = 50.0
 theme = ExtResource("1_jprq3")
 script = ExtResource("2_120ae")
 
@@ -26,7 +26,7 @@ custom_minimum_size = Vector2(40, 50)
 layout_mode = 0
 offset_right = 30.0
 offset_bottom = 40.0
-mouse_filter = 2
+mouse_filter = 1
 mouse_default_cursor_shape = 2
 color = Color(0.294118, 0.462745, 0.560784, 1)
 
