@@ -5,8 +5,11 @@ extends Node2D
 @onready var streetlights = $Lights.get_children()
 @onready var dayNightCycle = $DayNightCycle
 @onready var skill_checker = $Scripts/SkillChecker
+@onready var battleArea = $BattleScenes/BattleArea
 
 func _ready():
+	$BattleScenes.hide()
+	battleArea.hide()
 	var currTimeIndex = dayNightCycle.currentTimeIndex
 	if currTimeIndex == Types.GameTime.DAY or  currTimeIndex == Types.GameTime.DUSK:
 		for streetlight in streetlights:
@@ -39,20 +42,23 @@ func _on_skill_checker_skill_check_effect(effects):
 	print(effects[0].value)
 
 func _on_enemy_player_entered(body):
-	$BattleUI/BattleCockpit.show()
+	$BattleScenes.show()
+	battleArea.show()
 	var tween = create_tween()
 	tween.set_parallel(true)
 	tween.tween_property(camera, "zoom", Vector2(1.5, 1.5), 0.5)
-	tween.tween_property($BattleUI/BattleCockpit, "rect_pos:y", 200, 0.3)
+	tween.tween_property($BattleScenes/BattleArea, "rect_pos:y", 220, 0.3)
+
 	
 
 func _on_enemy_player_exited(body):
+	battleArea.hide()
 	var tween = create_tween()
 	tween.set_parallel(true)
 	tween.tween_property(camera, "zoom", Vector2(1, 1), 0.5)
-	tween.tween_property($BattleUI/BattleCockpit, "rect_pos:y", 300, 0.3)
+	tween.tween_property($BattleScenes/BattleArea, "rect_pos:y", 270, 0.3)
 	tween.finished.connect(_on_battle_ui_finished)
 
 func _on_battle_ui_finished():
-	$BattleUI/BattleCockpit.hide()
+	$BattleScenes.hide()
 	

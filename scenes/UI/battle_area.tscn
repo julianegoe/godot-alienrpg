@@ -1,0 +1,43 @@
+[gd_scene load_steps=4 format=3 uid="uid://o2n28ovutyta"]
+
+[ext_resource type="Script" path="res://scenes/UI/battle_area.gd" id="1_r7ga3"]
+[ext_resource type="PackedScene" uid="uid://cu3i556pmly0g" path="res://scenes/battle/abilityCard/ability_card.tscn" id="2_oy6r5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q6lrm"]
+size = Vector2(480, 220)
+
+[node name="BattleArea" type="CanvasLayer" groups=["Battle_UI"]]
+script = ExtResource("1_r7ga3")
+
+[node name="DropArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DropArea"]
+position = Vector2(240, 110)
+shape = SubResource("RectangleShape2D_q6lrm")
+
+[node name="CardContainer" type="MarginContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -49.0
+offset_right = 49.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="CardContainer"]
+layout_mode = 2
+
+[node name="AbilityCard" parent="CardContainer/HBoxContainer" instance=ExtResource("2_oy6r5")]
+layout_mode = 2
+
+[node name="AbilityCard2" parent="CardContainer/HBoxContainer" instance=ExtResource("2_oy6r5")]
+layout_mode = 2
+
+[node name="AbilityCard3" parent="CardContainer/HBoxContainer" instance=ExtResource("2_oy6r5")]
+layout_mode = 2
