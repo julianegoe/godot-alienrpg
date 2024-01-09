@@ -1,0 +1,47 @@
+{
+	"index": 0,
+	"name": "Ladenbesitzer",
+	"dialogue": [
+	  {
+		"index": 0,
+		"text": "Hallo...{p=0.5} Sind Sie...{p=0.5} neu in der Stadt?",
+		"choices": [
+		  {
+			"index": 0,
+			"text": "Ja.",
+			"nextNode": 1,
+			"dice_roll": null
+		  },
+		  {
+			"index": 1,
+			"text": "Nein. (Lüge)",
+			"nextNode": 2,
+			"dice_roll": {
+				"skill": "charisma",
+				"difficulty": 15,
+			}
+		  }
+		],
+		"nextNode": null,
+	  },
+	  {
+		"index": 1,
+		"text": "Diese Stadt hat lange keine neuen Leute gesehen. Viel Glück.",
+		"choices": [
+		],
+		"nextNode": null,
+	  },
+	{
+		"index": 2,
+		"text": "Komisch. Ich habe Sie hier noch nie gesehen.",
+		"choices": [],
+		"nextNode": 3,
+	  },
+	{
+		"index": 3,
+		"text": "Naja, ich kann ja auch nicht jeden kennen.",
+		"choices": [],
+		"nextNode": null,
+	  }
+	]
+  }

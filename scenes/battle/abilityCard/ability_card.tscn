@@ -7,23 +7,22 @@
 [ext_resource type="Script" path="res://scenes/battle/abilityCard/cardState/card_clicked_state.gd" id="5_s50b6"]
 [ext_resource type="Script" path="res://scenes/battle/abilityCard/cardState/card_dragging_state.gd" id="6_6hi0l"]
 [ext_resource type="Script" path="res://scenes/battle/abilityCard/cardState/card_aiming_state.gd" id="7_uu85g"]
-[ext_resource type="Script" path="res://scenes/battle/abilityCard/cardState/card_release_state.gd" id="8_c3s30"]
+[ext_resource type="Script" path="res://scenes/battle/abilityCard/cardState/card_released_state.gd" id="8_3bext"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g6es7"]
-size = Vector2(30, 40)
+size = Vector2(40, 50)
 
 [node name="AbilityCard" type="Control"]
-custom_minimum_size = Vector2(30, 40)
+custom_minimum_size = Vector2(40, 50)
 layout_mode = 3
 anchors_preset = 0
 offset_right = 30.0
 offset_bottom = 40.0
-mouse_filter = 2
 theme = ExtResource("1_jprq3")
 script = ExtResource("2_120ae")
 
 [node name="ColorRect" type="ColorRect" parent="."]
-custom_minimum_size = Vector2(30, 40)
+custom_minimum_size = Vector2(40, 50)
 layout_mode = 0
 offset_right = 30.0
 offset_bottom = 40.0
@@ -48,7 +47,7 @@ collision_layer = 2
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DropPointSelector"]
-position = Vector2(15, 20)
+position = Vector2(20, 25)
 shape = SubResource("RectangleShape2D_g6es7")
 
 [node name="CardStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
@@ -71,5 +70,11 @@ script = ExtResource("7_uu85g")
 state = 3
 
 [node name="CardReleasedState" type="Node" parent="CardStateMachine"]
-script = ExtResource("8_c3s30")
+script = ExtResource("8_3bext")
 state = 4
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="area_entered" from="DropPointSelector" to="." method="_on_drop_point_selector_area_entered"]
+[connection signal="area_exited" from="DropPointSelector" to="." method="_on_drop_point_selector_area_exited"]

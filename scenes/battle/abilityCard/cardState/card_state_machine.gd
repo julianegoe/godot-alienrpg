@@ -1,19 +1,16 @@
 class_name CardStateMachine extends Node
 
 @export var initial_state: CardState 
-@onready var card = get_parent()
 
 var current_state: CardState
-var states := {
-	 
-}
+var states := {}
 
 func init(ability_card: AbilityCard) -> void:
 	for child in get_children():
 		if child is CardState:
 			states[child.state] = child
 			child.transition_requested.connect(_on_transition_requested)
-			child.ability_card = card
+			child.ability_card = ability_card
 	if initial_state:
 		initial_state.enter()
 		current_state = initial_state
@@ -36,9 +33,11 @@ func on_mouse_exited() -> void:
 			
 func _on_transition_requested(from: CardState, to: CardState.State) -> void:
 	if from != current_state:
+		printerr("attempt changing to the same state")
 		return
 	var new_state: CardState = states[to]
 	if not new_state:
+		printerr("attempt changing to nonexistent state")
 		return
 	if current_state:
 		current_state.exit()

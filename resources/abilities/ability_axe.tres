@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="Ability" load_steps=2 format=3 uid="uid://dqb8sklxwkxe3"]
+
+[ext_resource type="Script" path="res://scripts/Resources/ability.gd" id="1_bvjgj"]
+
+[resource]
+script = ExtResource("1_bvjgj")
+display_name = "Axt"
+description = "Du schlägst mit deiner Axt um dich und hoffst auf das Beste."
+attack = 20
+defense = 5
+skip_turns = 0
+attack_damage = 5
+permanent_damage = 0
+drop_secrets = 0
+evadable = false

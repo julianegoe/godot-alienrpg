@@ -8,7 +8,6 @@ extends Node2D
 @onready var battleArea = $BattleScenes/BattleArea
 
 func _ready():
-	$BattleScenes.hide()
 	battleArea.hide()
 	var currTimeIndex = dayNightCycle.currentTimeIndex
 	if currTimeIndex == Types.GameTime.DAY or  currTimeIndex == Types.GameTime.DUSK:
@@ -48,8 +47,6 @@ func _on_enemy_player_entered(body):
 	tween.set_parallel(true)
 	tween.tween_property(camera, "zoom", Vector2(1.5, 1.5), 0.5)
 	tween.tween_property($BattleScenes/BattleArea, "rect_pos:y", 220, 0.3)
-
-	
 
 func _on_enemy_player_exited(body):
 	battleArea.hide()
