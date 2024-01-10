@@ -7,6 +7,7 @@ signal reparent_requested(ability_card: AbilityCard)
 @onready var drop_point_detector: Area2D = $DropPointSelector
 @onready var card_state_machine: CardStateMachine = $CardStateMachine as CardStateMachine
 @onready var targets: Array[Node] = []
+@onready var parent: Control
 
 func _ready():
 	card_state_machine.init(self)
@@ -29,3 +30,7 @@ func _on_drop_point_selector_area_entered(area):
 
 func _on_drop_point_selector_area_exited(area):
 	targets.erase(area)
+
+func animate_to_position(new_position: Vector2, duration: float):
+	var tween = create_tween().set_trans(Tween.TRANS_CIRC).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(self, "global_position", new_position, duration)

@@ -1,27 +1,32 @@
-[gd_scene load_steps=7 format=3 uid="uid://o2n28ovutyta"]
+[gd_scene load_steps=8 format=3 uid="uid://o2n28ovutyta"]
 
 [ext_resource type="Script" path="res://scenes/battle/battle_area.gd" id="1_r7ga3"]
 [ext_resource type="PackedScene" uid="uid://cu3i556pmly0g" path="res://scenes/battle/abilityCard/ability_card.tscn" id="2_oy6r5"]
 [ext_resource type="Script" path="res://scenes/battle/hand.gd" id="2_uh7sy"]
 [ext_resource type="Resource" uid="uid://y2jm5itqd0xk" path="res://resources/abilities/axe.tres" id="4_waapl"]
 [ext_resource type="Resource" uid="uid://ybim81f78nca" path="res://resources/abilities/spores.tres" id="5_44a4j"]
+[ext_resource type="PackedScene" uid="uid://b1pvroxpexy6f" path="res://scenes/UI/target_detector.tscn" id="6_hu0dt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_q6lrm"]
 size = Vector2(480, 189)
 
-[node name="BattleArea" type="CanvasLayer" groups=["Battle_UI"]]
+[node name="BattleArea" type="Node2D"]
 script = ExtResource("1_r7ga3")
 
-[node name="DropArea" type="Area2D" parent="."]
+[node name="UI" type="CanvasLayer" parent="." groups=["Battle_UI"]]
+
+[node name="TargetDetector" parent="UI" instance=ExtResource("6_hu0dt")]
+
+[node name="DropArea" type="Area2D" parent="UI"]
 collision_layer = 4
 collision_mask = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DropArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UI/DropArea"]
 position = Vector2(240, 94.5)
 shape = SubResource("RectangleShape2D_q6lrm")
 debug_color = Color(0, 0.6, 0.701961, 0.0588235)
 
-[node name="Hand" type="MarginContainer" parent="."]
+[node name="Hand" type="MarginContainer" parent="UI"]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
@@ -29,19 +34,20 @@ anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -49.0
 offset_right = 49.0
-offset_bottom = 50.0
+offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_constants/margin_bottom = 10
 script = ExtResource("2_uh7sy")
 
-[node name="CardContainer" type="HBoxContainer" parent="Hand"]
+[node name="CardContainer" type="HBoxContainer" parent="UI/Hand"]
 layout_mode = 2
+alignment = 1
 
-[node name="AbilityCard" parent="Hand/CardContainer" instance=ExtResource("2_oy6r5")]
+[node name="AbilityCard" parent="UI/Hand/CardContainer" instance=ExtResource("2_oy6r5")]
 layout_mode = 2
 resource = ExtResource("4_waapl")
 
-[node name="AbilityCard2" parent="Hand/CardContainer" instance=ExtResource("2_oy6r5")]
+[node name="AbilityCard2" parent="UI/Hand/CardContainer" instance=ExtResource("2_oy6r5")]
 layout_mode = 2
 resource = ExtResource("5_44a4j")

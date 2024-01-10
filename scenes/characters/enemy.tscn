@@ -1,57 +1,16 @@
-[gd_scene load_steps=9 format=3 uid="uid://dfinwyyg0k5c3"]
+[gd_scene load_steps=3 format=3 uid="uid://blt23jx1cjgjk"]
 
-[ext_resource type="PackedScene" uid="uid://dem3vvgytjo6e" path="res://scenes/characters/npc.tscn" id="1_aj8xc"]
-[ext_resource type="Script" path="res://scripts/Characters/enemy.gd" id="2_7jkw2"]
-[ext_resource type="Script" path="res://scripts/Resources/skill_resource.gd" id="3_4jaa6"]
 [ext_resource type="Texture2D" uid="uid://b1e0i88l5cx2v" path="res://icon.svg" id="3_6e122"]
-[ext_resource type="Script" path="res://scripts/Resources/health.gd" id="3_8ub7g"]
-[ext_resource type="Resource" uid="uid://ybim81f78nca" path="res://resources/abilities/spores.tres" id="4_tor2c"]
 
-[sub_resource type="Resource" id="Resource_jp2fy"]
-script = ExtResource("3_8ub7g")
-health = 100
+[sub_resource type="CircleShape2D" id="CircleShape2D_qkr3r"]
+radius = 54.0
 
-[sub_resource type="Resource" id="Resource_72qt1"]
-script = ExtResource("3_4jaa6")
-strength = 80
-intelligence = 0
-survival = 50
-charisma = 10
-
-[node name="Enemy" instance=ExtResource("1_aj8xc")]
-collision_layer = 4
+[node name="Enemy" type="Area2D"]
 collision_mask = 3
-script = ExtResource("2_7jkw2")
-health = SubResource("Resource_jp2fy")
-skill_resource = SubResource("Resource_72qt1")
-abilities = Array[Resource("res://scripts/Resources/ability_resource.gd")]([ExtResource("4_tor2c")])
 
-[node name="Texture" parent="." index="0"]
-scale = Vector2(0.152344, 0.152344)
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_6e122")
 
-[node name="RemoteTransform2D2" type="RemoteTransform2D" parent="." index="4"]
-position = Vector2(2.08165e-12, -20)
-remote_path = NodePath("../Ui/HealtBar")
-update_rotation = false
-update_scale = false
-
-[node name="TalkToMe" parent="Ui" index="0"]
-visible = false
-
-[node name="HealtBar" type="Node2D" parent="Ui" index="1"]
-visible = false
-position = Vector2(2.08165e-12, -20)
-
-[node name="ProgressBar" type="ProgressBar" parent="Ui/HealtBar" index="0"]
-modulate = Color(0.552941, 0.882353, 0, 1)
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -23.0
-offset_right = 23.0
-offset_bottom = 4.0
-grow_horizontal = 2
-step = 1.0
-value = 90.0
-show_percentage = false
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_qkr3r")

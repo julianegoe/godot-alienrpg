@@ -17,7 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://052kqwtj3jo8" path="res://scenes/effects/day_night_cycle.tscn" id="15_yduho"]
 [ext_resource type="Texture2D" uid="uid://bj8ckiddwuk5p" path="res://assets/lights/shop_window_light.png" id="16_sj4pg"]
 [ext_resource type="Texture2D" uid="uid://cb30gh220104b" path="res://assets/lights/shop_lamp.png" id="17_e1xj7"]
-[ext_resource type="PackedScene" uid="uid://dfinwyyg0k5c3" path="res://scenes/characters/enemy.tscn" id="17_nd2tu"]
+[ext_resource type="PackedScene" uid="uid://blt23jx1cjgjk" path="res://scenes/characters/enemy.tscn" id="17_nd2tu"]
 [ext_resource type="PackedScene" uid="uid://o2n28ovutyta" path="res://scenes/battle/battle_area.tscn" id="18_v13i8"]
 [ext_resource type="Script" path="res://scripts/Managers/skill_checker.gd" id="19_41uhe"]
 
@@ -278,6 +278,9 @@ layer_2/name = "Shadows"
 layer_2/modulate = Color(1, 1, 1, 0.564706)
 layer_2/tile_data = PackedInt32Array(1376281, 65538, 0, 1507352, 131074, 0, 1441801, 131074, 0, 1441802, 196610, 0, 983043, 131074, 0, 983049, 131074, 0, 1048577, 131074, 0, 983042, 196610, 0, 983050, 196610, 0, 2031624, 131074, 0, 1966089, 196610, 0, 1769494, 131074, 268435456)
 
+[node name="BattleArea" parent="." instance=ExtResource("18_v13i8")]
+visible = false
+
 [node name="Player" parent="." instance=ExtResource("2_643we")]
 position = Vector2(232, 650)
 
@@ -456,18 +459,11 @@ texture = ExtResource("17_e1xj7")
 [node name="Enemies" type="Node2D" parent="."]
 
 [node name="Enemy" parent="Enemies" instance=ExtResource("17_nd2tu")]
-position = Vector2(437, 538)
-
-[node name="Enemy2" parent="Enemies" instance=ExtResource("17_nd2tu")]
-position = Vector2(808, 445)
-
-[node name="BattleScenes" type="Node2D" parent="."]
-
-[node name="BattleArea" parent="BattleScenes" instance=ExtResource("18_v13i8")]
-visible = false
+position = Vector2(430, 544)
 
 [node name="DayNightCycle" parent="." instance=ExtResource("15_yduho")]
 position = Vector2(-1, 0)
+metadata/_edit_lock_ = true
 
 [node name="TimeUI" type="CanvasLayer" parent="."]
 
@@ -494,12 +490,8 @@ text = "13:00"
 [node name="SkillChecker" type="Node" parent="Scripts"]
 script = ExtResource("19_41uhe")
 
-[connection signal="initiate_fight" from="Enemies/Enemy" to="." method="_on_enemy_initiate_fight"]
-[connection signal="player_entered" from="Enemies/Enemy" to="." method="_on_enemy_player_entered"]
-[connection signal="player_exited" from="Enemies/Enemy" to="." method="_on_enemy_player_exited"]
-[connection signal="initiate_fight" from="Enemies/Enemy2" to="." method="_on_enemy_initiate_fight"]
-[connection signal="player_entered" from="Enemies/Enemy2" to="." method="_on_enemy_player_entered"]
-[connection signal="player_exited" from="Enemies/Enemy2" to="." method="_on_enemy_player_exited"]
+[connection signal="body_entered" from="Enemies/Enemy" to="." method="_on_enemy_body_entered"]
+[connection signal="body_exited" from="Enemies/Enemy" to="." method="_on_enemy_body_exited"]
 [connection signal="sun_changed" from="DayNightCycle" to="." method="_on_day_night_cycle_sun_changed"]
 [connection signal="time_changed" from="DayNightCycle" to="." method="_on_day_night_cycle_time_changed"]
 [connection signal="skill_check_effect" from="Scripts/SkillChecker" to="." method="_on_skill_checker_skill_check_effect"]

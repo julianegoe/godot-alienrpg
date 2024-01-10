@@ -17,9 +17,8 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-PlayerStats="*res://globals/player_stats.gd"
-Diceroll="*res://globals/diceroll.gd"
 Types="*res://globals/types.gd"
+Events="*res://globals/events.gd"
 
 [display]
 
@@ -108,7 +107,7 @@ right_mouse={
 2d_render/layer_2="UI"
 2d_physics/layer_1="Entities"
 2d_navigation/layer_1="Stairs"
-2d_physics/layer_2="CardTargetSelector"
+2d_physics/layer_2="TargetSelectors"
 2d_physics/layer_3="CardDropAreas"
 
 [rendering]

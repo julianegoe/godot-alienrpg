@@ -5,10 +5,11 @@ extends Node2D
 @onready var streetlights = $Lights.get_children()
 @onready var dayNightCycle = $DayNightCycle
 @onready var skill_checker = $Scripts/SkillChecker
-@onready var battleArea = $BattleScenes/BattleArea
+@onready var battle_area = $BattleArea
+
 
 func _ready():
-	battleArea.hide()
+	battle_area.hide()
 	var currTimeIndex = dayNightCycle.currentTimeIndex
 	if currTimeIndex == Types.GameTime.DAY or  currTimeIndex == Types.GameTime.DUSK:
 		for streetlight in streetlights:
@@ -30,32 +31,30 @@ func _on_day_night_cycle_sun_changed(solar_alt):
 		for streetlight in streetlights:
 			streetlight.show()	
 
-
-func _on_enemy_initiate_fight(enemy: Enemy):
-	# eventually start fight scene
-	skill_checker.perform_skill_check("fight", player.skill_resource.strength, player.abilities[0], enemy.skill_resource.strength, enemy.abilities[0])
-	
 	
 func _on_skill_checker_skill_check_effect(effects):
 	print(effects[0].type)
 	print(effects[0].value)
 
-func _on_enemy_player_entered(body):
-	$BattleScenes.show()
-	battleArea.show()
-	var tween = create_tween()
-	tween.set_parallel(true)
-	tween.tween_property(camera, "zoom", Vector2(1.5, 1.5), 0.5)
-	tween.tween_property($BattleScenes/BattleArea, "rect_pos:y", 220, 0.3)
-
-func _on_enemy_player_exited(body):
-	battleArea.hide()
-	var tween = create_tween()
-	tween.set_parallel(true)
-	tween.tween_property(camera, "zoom", Vector2(1, 1), 0.5)
-	tween.tween_property($BattleScenes/BattleArea, "rect_pos:y", 270, 0.3)
-	tween.finished.connect(_on_battle_ui_finished)
-
 func _on_battle_ui_finished():
 	$BattleScenes.hide()
 	
+
+
+func _on_enemy_body_entered(body):
+	if body is Player:
+		battle_area.show()
+		var tween = create_tween()
+		tween.set_parallel(true)
+		tween.tween_property(camera, "zoom", Vector2(1.5, 1.5), 0.5)
+		tween.tween_property($BattleArea, "rect_pos:y", 210, 0.3)
+
+
+func _on_enemy_body_exited(body):
+	if body is Player:
+		battle_area.hide()
+		var tween = create_tween()
+		tween.set_parallel(true)
+		tween.tween_property(camera, "zoom", Vector2(1, 1), 0.5)
+		tween.tween_property($BattleArea, "rect_pos:y", 270, 0.3)
+		tween.finished.connect(_on_battle_ui_finished)
