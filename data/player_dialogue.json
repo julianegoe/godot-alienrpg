@@ -1,0 +1,18 @@
+{
+  "index": 0,
+  "name": "Renate",
+  "dialogue": [
+	{
+	  "index": 0,
+	  "text": "Zzzzz...{p=0.5} Zzzzz..{p=0.5}",
+	  "choices": [],
+	  "nextNode": 1
+	},
+	{
+	  "index": 1,
+	  "text": "Zzzzz...{p=0.5} Zzzzz..{p=0.5}",
+	  "choices": [],
+	  "nextNode": null
+	}
+  ]
+}

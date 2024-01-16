@@ -11,14 +11,17 @@ config_version=5
 [application]
 
 config/name="Cozy Alien Game"
-run/main_scene="res://scenes/main.tscn"
+run/main_scene="res://scenes/levels/level_a_1.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
+DayNightCycle="*res://globals/day_night_cycle.tscn"
+TimeUi="*res://globals/time_ui.tscn"
 Types="*res://globals/types.gd"
 Events="*res://globals/events.gd"
+NavigationManager="*res://globals/scene_transition.tscn"
 
 [display]
 
@@ -109,6 +112,8 @@ right_mouse={
 2d_navigation/layer_1="Stairs"
 2d_physics/layer_2="TargetSelectors"
 2d_physics/layer_3="CardDropAreas"
+2d_physics/layer_4="Ground"
+2d_physics/layer_5="DoorWays"
 
 [rendering]
 

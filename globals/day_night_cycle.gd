@@ -23,13 +23,12 @@ var color_lookup: Dictionary = {
 }
 
 var currentTimeInSeconds: int = time_lookup[currentTimeIndex].hour * 3600
-var currentTimeDict = Time.get_time_dict_from_unix_time(currentTimeInSeconds)
+var currentTimeDict = time_lookup[currentTimeIndex]
 
 func _ready():
 	currentTimeInSeconds = time_lookup[currentTimeIndex].hour * 3600
 	currentTimeDict = Time.get_time_dict_from_unix_time(currentTimeInSeconds)
 	color = color_lookup[currentTimeIndex]
-	time_changed.emit(currentTimeDict)
 
 func tween_color(new_color: Color):
 	var tween = get_tree().create_tween()
@@ -38,7 +37,7 @@ func tween_color(new_color: Color):
 func _on_timer_timeout():
 	currentTimeInSeconds += 60
 	currentTimeDict = Time.get_time_dict_from_unix_time(currentTimeInSeconds)
-	time_changed.emit(currentTimeDict)
+	TimeUi.label.text = _time_object_to_display_time(currentTimeDict)
 	if currentTimeDict.hour == time_lookup[Types.GameTime.NIGHT].hour and currentTimeDict.minute == time_lookup[Types.GameTime.NIGHT].minute:
 		sun_changed.emit(Types.GameTime.NIGHT)
 		currentTimeIndex = Types.GameTime.NIGHT
@@ -55,3 +54,7 @@ func _on_timer_timeout():
 		sun_changed.emit(Types.GameTime.DUSK)
 		currentTimeIndex = Types.GameTime.DUSK
 		tween_color(color_lookup[currentTimeIndex])
+
+func _time_object_to_display_time(time: Dictionary):
+	return "%02d:%02d" % [time.hour, time.minute]
+	

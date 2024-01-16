@@ -8,3 +8,6 @@ enum GameTime {
 	DAY,
 	DUSK,
 }
+
+enum Levels { A1, A2 }
+enum Directions { NORTH, EAST, SOUTH, WEST }

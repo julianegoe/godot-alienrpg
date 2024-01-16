@@ -13,9 +13,9 @@ size = Vector2(480, 189)
 [node name="BattleArea" type="Node2D"]
 script = ExtResource("1_r7ga3")
 
-[node name="UI" type="CanvasLayer" parent="." groups=["Battle_UI"]]
+[node name="TargetDetector" parent="." instance=ExtResource("6_hu0dt")]
 
-[node name="TargetDetector" parent="UI" instance=ExtResource("6_hu0dt")]
+[node name="UI" type="CanvasLayer" parent="." groups=["Battle_UI"]]
 
 [node name="DropArea" type="Area2D" parent="UI"]
 collision_layer = 4
@@ -51,3 +51,6 @@ resource = ExtResource("4_waapl")
 [node name="AbilityCard2" parent="UI/Hand/CardContainer" instance=ExtResource("2_oy6r5")]
 layout_mode = 2
 resource = ExtResource("5_44a4j")
+
+[connection signal="body_entered" from="UI/DropArea" to="." method="_on_drop_area_body_entered"]
+[connection signal="body_exited" from="UI/DropArea" to="." method="_on_drop_area_body_exited"]

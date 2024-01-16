@@ -4,7 +4,6 @@ extends Node2D
 @onready var camera: Camera2D = $Player/Camera2D
 @onready var streetlights = $Lights.get_children()
 @onready var dayNightCycle = $DayNightCycle
-@onready var skill_checker = $Scripts/SkillChecker
 @onready var battle_area = $BattleArea
 
 
@@ -32,29 +31,20 @@ func _on_day_night_cycle_sun_changed(solar_alt):
 			streetlight.show()	
 
 	
-func _on_skill_checker_skill_check_effect(effects):
-	print(effects[0].type)
-	print(effects[0].value)
-
 func _on_battle_ui_finished():
-	$BattleScenes.hide()
+	battle_area.hide()
 	
+func _on_battle_area_combat_started():
+	battle_area.show()
+	var tween = create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(camera, "zoom", Vector2(1.5, 1.5), 0.5)
+	tween.tween_property($BattleArea, "rect_pos:y", 210, 0.3)
 
-
-func _on_enemy_body_entered(body):
-	if body is Player:
-		battle_area.show()
-		var tween = create_tween()
-		tween.set_parallel(true)
-		tween.tween_property(camera, "zoom", Vector2(1.5, 1.5), 0.5)
-		tween.tween_property($BattleArea, "rect_pos:y", 210, 0.3)
-
-
-func _on_enemy_body_exited(body):
-	if body is Player:
-		battle_area.hide()
-		var tween = create_tween()
-		tween.set_parallel(true)
-		tween.tween_property(camera, "zoom", Vector2(1, 1), 0.5)
-		tween.tween_property($BattleArea, "rect_pos:y", 270, 0.3)
-		tween.finished.connect(_on_battle_ui_finished)
+func _on_battle_area_combat_ended():
+	battle_area.hide()
+	var tween = create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(camera, "zoom", Vector2(1, 1), 0.5)
+	tween.tween_property($BattleArea, "rect_pos:y", 270, 0.3)
+	tween.finished.connect(_on_battle_ui_finished)

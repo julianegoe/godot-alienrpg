@@ -1,11 +1,16 @@
-[gd_scene load_steps=21 format=3 uid="uid://crvo6u3r2wtnv"]
+[gd_scene load_steps=27 format=3 uid="uid://crvo6u3r2wtnv"]
 
-[ext_resource type="Script" path="res://scenes/player.gd" id="1_os17o"]
+[ext_resource type="Script" path="res://scenes/characters/player/player.gd" id="1_os17o"]
 [ext_resource type="Texture2D" uid="uid://bw71se83tg63y" path="res://assets/characters/player_v2.png" id="2_go1nr"]
 [ext_resource type="Script" path="res://scripts/Resources/health.gd" id="2_gy2f7"]
 [ext_resource type="Script" path="res://scripts/Resources/skill_resource.gd" id="2_lyfln"]
 [ext_resource type="Texture2D" uid="uid://bmbfe6gq4bt8o" path="res://assets/shadows/character_shadow.png" id="3_4lhx7"]
 [ext_resource type="Resource" uid="uid://y2jm5itqd0xk" path="res://resources/abilities/axe.tres" id="3_455br"]
+[ext_resource type="Script" path="res://scenes/characters/player/player_state_machine.gd" id="7_x3k3h"]
+[ext_resource type="Script" path="res://scenes/characters/player/states/player_walk_state.gd" id="8_vq6l1"]
+[ext_resource type="PackedScene" uid="uid://dvqjtowi8nfu5" path="res://scenes/UI/speechbubble.tscn" id="10_mq86a"]
+[ext_resource type="Script" path="res://scenes/characters/player/states/player_fight_state.gd" id="10_u4ahx"]
+[ext_resource type="Script" path="res://scripts/Resources/dialogue_resource.gd" id="11_11ss1"]
 
 [sub_resource type="Resource" id="Resource_h7b5q"]
 script = ExtResource("2_gy2f7")
@@ -191,22 +196,27 @@ _data = {
 "walk_right": SubResource("Animation_n2hvf")
 }
 
+[sub_resource type="Resource" id="Resource_agu4p"]
+script = ExtResource("11_11ss1")
+name = "player"
+dialogue_tree = {}
+display_name = "Renate"
+dialogue_path = "res://data/player_dialogue.json"
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 y_sort_enabled = true
-collision_mask = 5
+collision_mask = 29
 script = ExtResource("1_os17o")
 health = SubResource("Resource_h7b5q")
 skill_resource = SubResource("Resource_y6xrp")
 abilities = Array[Resource("res://scripts/Resources/ability_resource.gd")]([ExtResource("3_455br")])
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
+position = Vector2(0, 13)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_0bvgs")
-metadata/_edit_lock_ = true
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -12)
 texture = SubResource("CanvasTexture_8ghyp")
 hframes = 33
 
@@ -220,3 +230,32 @@ texture = ExtResource("3_4lhx7")
 libraries = {
 "": SubResource("AnimationLibrary_t50y1")
 }
+
+[node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("7_x3k3h")
+initial_state = NodePath("WalkState")
+
+[node name="WalkState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("8_vq6l1")
+
+[node name="FightState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("10_u4ahx")
+state = 2
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
+position = Vector2(-59, -63)
+remote_path = NodePath("../Ui/Node2D")
+update_rotation = false
+update_scale = false
+
+[node name="Ui" type="CanvasLayer" parent="."]
+
+[node name="Node2D" type="Node2D" parent="Ui"]
+position = Vector2(-59, -63)
+
+[node name="Speechbubble" parent="Ui/Node2D" instance=ExtResource("10_mq86a")]
+dialogue_resource = SubResource("Resource_agu4p")
+
+[connection signal="input_event" from="." to="." method="_on_input_event"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

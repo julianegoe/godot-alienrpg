@@ -3,9 +3,9 @@ const DRAG_MINIMUM_THRESHOLD: int = 0.05
 var minimum_drag_time_elapsed: bool = false
 
 func enter() -> void:
-	var ui_layer = get_tree().get_first_node_in_group("Battle_UI")
-	if ui_layer:
-		ability_card.reparent(ui_layer)
+	#var ui_layer = get_tree().get_first_node_in_group("Battle_UI")
+	#if ui_layer:
+		#ability_card.reparent(ui_layer)
 	ability_card.color.color = Color.CADET_BLUE
 	ability_card.label.text = ability_card.resource.name
 	

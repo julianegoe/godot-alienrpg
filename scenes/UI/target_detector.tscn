@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://b1pvroxpexy6f"]
+[gd_scene load_steps=3 format=3 uid="uid://b1pvroxpexy6f"]
 
 [ext_resource type="Script" path="res://scenes/UI/target_detector.gd" id="1_8nq1l"]
-[ext_resource type="PackedScene" uid="uid://4j1uojs8or50" path="res://scenes/UI/card_arc.tscn" id="1_t068q"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u84gx"]
 radius = 4.0
@@ -16,11 +15,6 @@ monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_u84gx")
-
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = 2
-
-[node name="CardArc" parent="CanvasLayer" instance=ExtResource("1_t068q")]
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]

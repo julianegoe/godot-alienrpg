@@ -27,6 +27,7 @@ var _should_skip: bool = false:
 		textSkipped.emit()
 
 func init_text():
+	writeCharacterName()
 	var result = pause_calc.get_pauses_from_string(dialogue_tree.dialogue[currentTextNode].text)
 	_all_pauses = result[0]
 	textLabel.text = result[1]

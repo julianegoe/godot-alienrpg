@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=3 uid="uid://bq8rcc5d8ojhe"]
+
+[ext_resource type="TileSet" uid="uid://ca5m17ajimq8v" path="res://resources/tilesets/terrain_tileset.tres" id="1_xiw1o"]
+[ext_resource type="Script" path="res://scripts/Levels/base_level.gd" id="2_0mery"]
+[ext_resource type="PackedScene" uid="uid://crvo6u3r2wtnv" path="res://scenes/characters/player/player.tscn" id="3_cm83x"]
+[ext_resource type="Script" path="res://scripts/Effects/lights.gd" id="4_d7f2s"]
+
+[node name="BaseLevel" type="Node2D"]
+y_sort_enabled = true
+script = ExtResource("2_0mery")
+
+[node name="Tilemap" type="TileMap" parent="."]
+y_sort_enabled = true
+tile_set = ExtResource("1_xiw1o")
+rendering_quadrant_size = 32
+format = 2
+layer_0/name = "Ground"
+layer_1/name = "Objects"
+layer_1/y_sort_enabled = true
+layer_1/tile_data = PackedInt32Array()
+
+[node name="Buildings" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Decoration" type="Node2D" parent="."]
+
+[node name="Characters" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Player" parent="Characters" instance=ExtResource("3_cm83x")]
+
+[node name="Camera2D" type="Camera2D" parent="Characters/Player"]
+
+[node name="Enemies" type="Node2D" parent="."]
+
+[node name="Lights" type="Node2D" parent="."]
+script = ExtResource("4_d7f2s")
+
+[node name="DoorWays" type="Node2D" parent="."]
