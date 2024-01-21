@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://dem3vvgytjo6e"]
+[gd_scene load_steps=6 format=3 uid="uid://dem3vvgytjo6e"]
 
 [ext_resource type="Script" path="res://scenes/characters/npc.gd" id="1_m27xr"]
-[ext_resource type="PackedScene" uid="uid://deq64u7fghh4g" path="res://scenes/UI/talk_to_me.tscn" id="2_6vfe6"]
+[ext_resource type="PackedScene" uid="uid://deq64u7fghh4g" path="res://scenes/UI/Icon.tscn" id="2_ib5w7"]
+[ext_resource type="Texture2D" uid="uid://c40ik1bbr6xtw" path="res://assets/ui/can_talk_icon.png" id="3_s8vcb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_nxkm7"]
 height = 20.0
@@ -24,16 +25,17 @@ shape = SubResource("CapsuleShape2D_nxkm7")
 shape = SubResource("CircleShape2D_rqjcr")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
-position = Vector2(2.08165e-12, -30)
-remote_path = NodePath("../Ui/TalkToMe")
+position = Vector2(0, -49)
+remote_path = NodePath("../Ui/Icon")
 update_rotation = false
 update_scale = false
 
 [node name="Ui" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
-[node name="TalkToMe" parent="Ui" instance=ExtResource("2_6vfe6")]
-position = Vector2(2.08165e-12, -30)
+[node name="Icon" parent="Ui" instance=ExtResource("2_ib5w7")]
+position = Vector2(0, -49)
+sprite_texture = ExtResource("3_s8vcb")
 
 [connection signal="body_entered" from="Vicinity" to="." method="_on_vicinity_body_entered"]
 [connection signal="body_exited" from="Vicinity" to="." method="_on_vicinity_body_exited"]

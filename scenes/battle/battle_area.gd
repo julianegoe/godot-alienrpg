@@ -1,20 +1,17 @@
 class_name BattleArea extends Node2D
 
-signal combat_started()
-signal combat_ended()
-
 @onready var cards_container: HBoxContainer = $UI/Hand/CardContainer
 @onready var hand: MarginContainer = $UI/Hand
 
-@onready var rect_pos: Vector2 = hand.global_position:
-	set(value):
-		hand.global_position = value
-		rect_pos = value
-	get:
-		return rect_pos
+var ability_card_scene: PackedScene = preload("res://scenes/battle/abilityCard/ability_card.tscn")
 
-func _on_drop_area_body_entered(body):
-	combat_started.emit()
-
-func _on_drop_area_body_exited(body):
-	combat_ended.emit()
+func show_hand():
+	var tween = create_tween()
+	tween.tween_property(hand, "position:y", 200, 1)
+	
+func add_cards(equipped_cards: Array):
+	for equipped in equipped_cards:
+		var ability_card = ability_card_scene.instantiate()
+		ability_card.card_resource = equipped
+		cards_container.add_child(ability_card)
+	

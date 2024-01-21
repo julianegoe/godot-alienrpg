@@ -4,7 +4,6 @@
 
 [node name="DayNightCycle" type="CanvasModulate"]
 script = ExtResource("1_3hlg2")
-currentTimeIndex = 0
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.1

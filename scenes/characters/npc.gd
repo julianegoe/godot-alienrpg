@@ -7,7 +7,7 @@ signal player_exited(body: Player)
 @export var skill_resource: SkillResource
 @export var abilities: Array[AbilityResource]
 
-@onready var interaction_icon: Node2D = $Ui/TalkToMe
+@onready var interaction_icon: Node2D = $Ui/Icon
 
 enum DistanceState {
 	IN_VICINITY,

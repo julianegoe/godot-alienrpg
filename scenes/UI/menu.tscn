@@ -1,0 +1,172 @@
+[gd_scene load_steps=17 format=3 uid="uid://bsbrulfi8t1ak"]
+
+[ext_resource type="Texture2D" uid="uid://dcgvbqaapweoq" path="res://assets/ui/menu.png" id="1_1lw3u"]
+[ext_resource type="Script" path="res://scripts/Ui/menu.gd" id="1_7cf0c"]
+[ext_resource type="PackedScene" uid="uid://h0b8txfxqgwe" path="res://scenes/UI/card_button.tscn" id="2_2kpnh"]
+[ext_resource type="Resource" uid="uid://bwgqb1hqqpgo0" path="res://resources/menus/menu.tres" id="2_5iq3o"]
+[ext_resource type="PackedScene" uid="uid://bcke044xry4dg" path="res://scenes/UI/card_slot.tscn" id="3_eu544"]
+[ext_resource type="Script" path="res://scripts/Resources/MenuResources/slot_resource.gd" id="5_p02he"]
+[ext_resource type="Resource" uid="uid://5j07x3ucvfax" path="res://resources/abilities/fist.tres" id="7_ieyls"]
+[ext_resource type="Script" path="res://scripts/Resources/MenuResources/card_resource.gd" id="7_lhtt1"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_klb2f"]
+texture = ExtResource("1_1lw3u")
+
+[sub_resource type="Resource" id="Resource_s68h2"]
+script = ExtResource("5_p02he")
+is_equipped = true
+ability = ExtResource("7_ieyls")
+
+[sub_resource type="Resource" id="Resource_gugke"]
+script = ExtResource("5_p02he")
+is_equipped = false
+
+[sub_resource type="Resource" id="Resource_kjvos"]
+script = ExtResource("5_p02he")
+is_equipped = false
+
+[sub_resource type="Resource" id="Resource_p8xws"]
+script = ExtResource("5_p02he")
+is_equipped = false
+
+[sub_resource type="Resource" id="Resource_war0w"]
+script = ExtResource("7_lhtt1")
+is_disabled = false
+
+[sub_resource type="Resource" id="Resource_71pvl"]
+script = ExtResource("7_lhtt1")
+is_disabled = false
+
+[sub_resource type="Resource" id="Resource_qpy23"]
+script = ExtResource("7_lhtt1")
+is_disabled = false
+
+[node name="Menu" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_7cf0c")
+menu_resource = ExtResource("2_5iq3o")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.189
+anchor_top = 0.235
+anchor_right = 0.808
+anchor_bottom = 0.772
+offset_left = 149.28
+offset_top = 71.55
+offset_right = -147.84
+offset_bottom = -73.44
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Panel" type="Panel" parent="Control"]
+custom_minimum_size = Vector2(300, 150)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -150.0
+offset_top = -75.0
+offset_right = 150.0
+offset_bottom = 75.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_klb2f")
+
+[node name="Left" type="CenterContainer" parent="Control/Panel"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.573
+anchor_bottom = 1.0
+offset_right = 0.0999959
+
+[node name="SlotContainer" type="GridContainer" parent="Control/Panel/Left"]
+layout_mode = 2
+columns = 4
+
+[node name="Slot_1" parent="Control/Panel/Left/SlotContainer" instance=ExtResource("3_eu544")]
+layout_mode = 2
+slot_resource = SubResource("Resource_s68h2")
+
+[node name="Slot_2" parent="Control/Panel/Left/SlotContainer" instance=ExtResource("3_eu544")]
+layout_mode = 2
+slot_resource = SubResource("Resource_gugke")
+
+[node name="Slot_3" parent="Control/Panel/Left/SlotContainer" instance=ExtResource("3_eu544")]
+layout_mode = 2
+slot_resource = SubResource("Resource_kjvos")
+
+[node name="Slot_4" parent="Control/Panel/Left/SlotContainer" instance=ExtResource("3_eu544")]
+layout_mode = 2
+slot_resource = SubResource("Resource_p8xws")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Control/Panel"]
+layout_mode = 0
+offset_left = 188.0
+offset_top = 6.0
+offset_right = 297.0
+offset_bottom = 146.0
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 3
+
+[node name="CardContainer" type="GridContainer" parent="Control/Panel/ScrollContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="CardButton1" parent="Control/Panel/ScrollContainer/CardContainer" instance=ExtResource("2_2kpnh")]
+layout_mode = 2
+card_resource = SubResource("Resource_war0w")
+
+[node name="CardButton" parent="Control/Panel/ScrollContainer/CardContainer" instance=ExtResource("2_2kpnh")]
+layout_mode = 2
+card_resource = SubResource("Resource_71pvl")
+
+[node name="CardButton2" parent="Control/Panel/ScrollContainer/CardContainer" instance=ExtResource("2_2kpnh")]
+layout_mode = 2
+card_resource = SubResource("Resource_qpy23")
+
+[node name="CardButton3" parent="Control/Panel/ScrollContainer/CardContainer" instance=ExtResource("2_2kpnh")]
+layout_mode = 2
+card_resource = SubResource("Resource_qpy23")
+
+[node name="CardButton4" parent="Control/Panel/ScrollContainer/CardContainer" instance=ExtResource("2_2kpnh")]
+layout_mode = 2
+card_resource = SubResource("Resource_qpy23")
+
+[node name="CardButton5" parent="Control/Panel/ScrollContainer/CardContainer" instance=ExtResource("2_2kpnh")]
+layout_mode = 2
+card_resource = SubResource("Resource_qpy23")
+
+[node name="CardButton6" parent="Control/Panel/ScrollContainer/CardContainer" instance=ExtResource("2_2kpnh")]
+layout_mode = 2
+card_resource = SubResource("Resource_qpy23")
+
+[node name="CardButton7" parent="Control/Panel/ScrollContainer/CardContainer" instance=ExtResource("2_2kpnh")]
+layout_mode = 2
+card_resource = SubResource("Resource_qpy23")
+
+[node name="CardButton8" parent="Control/Panel/ScrollContainer/CardContainer" instance=ExtResource("2_2kpnh")]
+layout_mode = 2
+card_resource = SubResource("Resource_qpy23")
+
+[node name="CardButton9" parent="Control/Panel/ScrollContainer/CardContainer" instance=ExtResource("2_2kpnh")]
+layout_mode = 2
+card_resource = SubResource("Resource_qpy23")
+
+[node name="CardButton10" parent="Control/Panel/ScrollContainer/CardContainer" instance=ExtResource("2_2kpnh")]
+layout_mode = 2
+card_resource = SubResource("Resource_qpy23")
+
+[node name="CardButton11" parent="Control/Panel/ScrollContainer/CardContainer" instance=ExtResource("2_2kpnh")]
+layout_mode = 2
+card_resource = SubResource("Resource_qpy23")
+
+[node name="CardButton12" parent="Control/Panel/ScrollContainer/CardContainer" instance=ExtResource("2_2kpnh")]
+layout_mode = 2
+card_resource = SubResource("Resource_qpy23")
+
+[node name="CardButton13" parent="Control/Panel/ScrollContainer/CardContainer" instance=ExtResource("2_2kpnh")]
+layout_mode = 2
+card_resource = SubResource("Resource_qpy23")

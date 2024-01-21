@@ -1,10 +1,30 @@
-[gd_scene load_steps=6 format=3 uid="uid://becnvgmth8hry"]
+[gd_scene load_steps=17 format=3 uid="uid://becnvgmth8hry"]
 
 [ext_resource type="PackedScene" uid="uid://bq8rcc5d8ojhe" path="res://scenes/levels/base_level.tscn" id="1_035uy"]
 [ext_resource type="PackedScene" uid="uid://br174ejjc2ao2" path="res://scenes/buildings/tent.tscn" id="2_htvi3"]
 [ext_resource type="PackedScene" uid="uid://b11c7dfrxe8su" path="res://scenes/plants/tree.tscn" id="2_pfnsr"]
 [ext_resource type="PackedScene" uid="uid://dshbtqonrm6lq" path="res://scenes/plants/bush.tscn" id="3_ywx0i"]
 [ext_resource type="PackedScene" uid="uid://35mmfwmhfhoy" path="res://scenes/effects/door_way.tscn" id="4_wbbat"]
+[ext_resource type="PackedScene" uid="uid://dyw4626qwpnmj" path="res://scenes/plants/tree_stump.tscn" id="5_l45vr"]
+[ext_resource type="PackedScene" uid="uid://blt23jx1cjgjk" path="res://scenes/characters/enemy.tscn" id="6_53ywd"]
+[ext_resource type="PackedScene" uid="uid://bwh1q5jneoqrp" path="res://scenes/objects/item.tscn" id="6_r34mo"]
+[ext_resource type="Texture2D" uid="uid://gb88fajoyk1v" path="res://assets/ui/weapon_icon.png" id="7_0xnai"]
+[ext_resource type="Resource" uid="uid://ybim81f78nca" path="res://resources/abilities/spores.tres" id="7_802kr"]
+[ext_resource type="Script" path="res://scripts/Resources/health.gd" id="7_s4uyj"]
+[ext_resource type="Texture2D" uid="uid://cg6mhbnvbsiai" path="res://assets/objects/axe.png" id="8_5256s"]
+[ext_resource type="Script" path="res://scripts/Resources/skill_resource.gd" id="8_wbla6"]
+[ext_resource type="Resource" uid="uid://y2jm5itqd0xk" path="res://resources/abilities/axe.tres" id="9_xu2sc"]
+
+[sub_resource type="Resource" id="Resource_wukni"]
+script = ExtResource("7_s4uyj")
+health = 40
+
+[sub_resource type="Resource" id="Resource_7qjgl"]
+script = ExtResource("8_wbla6")
+strength = 30
+intelligence = 80
+survival = 30
+charisma = 5
 
 [node name="LevelA1" instance=ExtResource("1_035uy")]
 
@@ -58,6 +78,11 @@ position = Vector2(151, 116)
 [node name="Bush4" parent="Decoration/Bushes" index="3" instance=ExtResource("3_ywx0i")]
 position = Vector2(209, 402)
 
+[node name="Stumps" type="Node2D" parent="Decoration" index="2"]
+
+[node name="TreeStump" parent="Decoration/Stumps" index="0" instance=ExtResource("5_l45vr")]
+position = Vector2(350, 100)
+
 [node name="Player" parent="Characters" index="0"]
 position = Vector2(105, 102)
 
@@ -67,6 +92,22 @@ limit_top = 0
 limit_right = 580
 limit_bottom = 460
 
+[node name="Enemy" parent="Enemies" index="0" instance=ExtResource("6_53ywd")]
+position = Vector2(354, 269)
+display_name = "Alien 1"
+health = SubResource("Resource_wukni")
+skill_resource = SubResource("Resource_7qjgl")
+abilities = Array[Resource("res://scripts/Resources/ability_resource.gd")]([ExtResource("7_802kr")])
+
+[node name="Items" parent="." index="5"]
+y_sort_enabled = true
+
+[node name="Item" parent="Items" index="0" instance=ExtResource("6_r34mo")]
+position = Vector2(351, 86)
+icon_texture = ExtResource("7_0xnai")
+item_texture = ExtResource("8_5256s")
+ability = ExtResource("9_xu2sc")
+
 [node name="Door_S" parent="DoorWays" index="0" instance=ExtResource("4_wbbat")]
 position = Vector2(142, 416)
 destination_scene = 1
@@ -74,5 +115,8 @@ destination_door = "N"
 
 [node name="SpawnMarker" parent="DoorWays/Door_S" index="1"]
 position = Vector2(0, -30)
+
+[node name="Combat" parent="." index="9" node_paths=PackedStringArray("player")]
+player = NodePath("../Characters/Player")
 
 [editable path="DoorWays/Door_S"]

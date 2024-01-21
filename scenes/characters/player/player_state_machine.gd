@@ -30,7 +30,7 @@ func on_mouse_entered() -> void:
 func on_mouse_exited() -> void:
 	if current_state:
 		current_state.on_mouse_exited()
-		
+
 func _on_transition_requested(from: PlayerState, to: PlayerState.State):
 	if from != current_state:
 		printerr("current scene not correctly exited")

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://deq64u7fghh4g"]
 
-[ext_resource type="Texture2D" uid="uid://c40ik1bbr6xtw" path="res://assets/ui/can_talk_icon.png" id="1_a6bul"]
-[ext_resource type="Script" path="res://scenes/UI/talk_to_me.gd" id="1_ychfo"]
+[ext_resource type="Script" path="res://scenes/UI/icon.gd" id="1_i6p43"]
+[ext_resource type="Texture2D" uid="uid://c40ik1bbr6xtw" path="res://assets/ui/can_talk_icon.png" id="2_kj8py"]
 
 [sub_resource type="Animation" id="Animation_3njx0"]
 length = 0.001
@@ -40,11 +40,11 @@ _data = {
 "jump": SubResource("Animation_70um7")
 }
 
-[node name="TalkToMe" type="Node2D"]
-script = ExtResource("1_ychfo")
+[node name="Icon" type="Node2D"]
+script = ExtResource("1_i6p43")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_a6bul")
+texture = ExtResource("2_kj8py")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

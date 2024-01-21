@@ -7,6 +7,7 @@ enum Target { PLAYER, SINGLE_ENEMY, ALL_ENEMIES, EVERYONE }
 @export var name: String = ""
 @export var description: String = ""
 @export var texture: Texture
+@export var texture_hovered: Texture
 
 @export_group("Ability Stats")
 @export var attack_modifier: int = 0

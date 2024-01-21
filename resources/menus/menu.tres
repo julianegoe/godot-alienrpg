@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="MenuResource" load_steps=2 format=3 uid="uid://bwgqb1hqqpgo0"]
+
+[ext_resource type="Script" path="res://scripts/Resources/MenuResources/menu_resource.gd" id="1_vvw5l"]
+
+[resource]
+script = ExtResource("1_vvw5l")
+available_slots = Array[Resource("res://scripts/Resources/MenuResources/slot_resource.gd")]([])
+available_cards = Array[Resource("res://scripts/Resources/MenuResources/card_resource.gd")]([])

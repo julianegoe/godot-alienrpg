@@ -1,16 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://blt23jx1cjgjk"]
+[gd_scene load_steps=5 format=3 uid="uid://blt23jx1cjgjk"]
 
+[ext_resource type="Script" path="res://scripts/Characters/enemy.gd" id="1_3r0m5"]
 [ext_resource type="Texture2D" uid="uid://b1e0i88l5cx2v" path="res://icon.svg" id="3_6e122"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_qkr3r"]
-radius = 54.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tcu3n"]
+size = Vector2(16, 14)
 
-[node name="Enemy" type="Area2D"]
-collision_mask = 3
+[sub_resource type="CircleShape2D" id="CircleShape2D_eouem"]
+radius = 48.1664
+
+[node name="Enemy" type="StaticBody2D"]
+collision_layer = 2
+script = ExtResource("1_3r0m5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.1, 0.1)
 texture = ExtResource("3_6e122")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("CircleShape2D_qkr3r")
+shape = SubResource("RectangleShape2D_tcu3n")
+
+[node name="Vicinity" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vicinity"]
+shape = SubResource("CircleShape2D_eouem")
+
+[connection signal="body_entered" from="Vicinity" to="." method="_on_vicinity_body_entered"]

@@ -2,17 +2,19 @@ extends CanvasLayer
 
 @onready var animation_player = $AnimationPlayer
 
+const level_a_1 = preload("res://scenes/levels/level_a_1.tscn")
+const level_a_2 = preload("res://scenes/levels/level_a_2.tscn")
+var scene_to_load: PackedScene
+var spawn_door_tag: String
+
 func _ready():
 	hide()
 	
-const level_a_1 = preload("res://scenes/levels/level_a_1.tscn")
-const level_a_2 = preload("res://scenes/levels/level_a_2.tscn")
-
-var spawn_door_tag: String
+func change_scene(resource: PackedScene):
+	get_tree().change_scene_to_packed(resource)
 
 func go_to_level(level_tag: Types.Levels, destination_tag: String):
 	show()
-	var scene_to_load
 	match level_tag:
 		Types.Levels.A1:
 			scene_to_load = level_a_1
@@ -22,6 +24,5 @@ func go_to_level(level_tag: Types.Levels, destination_tag: String):
 		spawn_door_tag = destination_tag
 		animation_player.play("fade_out")
 		await animation_player.animation_finished
-		get_tree().change_scene_to_packed(scene_to_load)
-		animation_player.play("fade_in")
+		change_scene(scene_to_load)
 		hide()

@@ -1,10 +1,9 @@
-class_name Enemy extends Npc
+class_name Enemy extends StaticBody2D
 
-signal initiate_fight(enemy)
+@export var display_name: String
+@export var health: HealthResource
+@export var skill_resource: SkillResource
+@export var abilities: Array[AbilityResource]
 
-@onready var healthBar = $Ui/HealtBar
-
-func _unhandled_key_input(event):
-	if event.is_action_pressed("interact") and interaction_state == DistanceState.IN_VICINITY:
-		interaction_icon.hide()
-		initiate_fight.emit(self)
+func _on_vicinity_body_entered(_body):
+	Events.battle_started.emit(self)

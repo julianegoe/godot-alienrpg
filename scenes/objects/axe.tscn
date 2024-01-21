@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://cvs6om768t5yw"]
+
+[ext_resource type="Texture2D" uid="uid://cg6mhbnvbsiai" path="res://assets/objects/axe.png" id="1_inw2l"]
+
+[node name="Axe" type="Node2D"]
+y_sort_enabled = true
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_right = 19.0
+offset_bottom = 24.0
+texture_normal = ExtResource("1_inw2l")

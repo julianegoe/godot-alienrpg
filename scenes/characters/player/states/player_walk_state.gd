@@ -4,20 +4,15 @@ var currentVelocity : Vector2 = Vector2.ZERO
 var inputDir: Vector2
 
 func enter():
-	pass
+	Events.battle_started.connect(_on_battle_started)
 
 func exit():
 	pass
 
-func on_area_entered(area: Area2D):
-	print("fight")
-	transition_requested.emit(self, PlayerState.State.FIGHT) 
-		
-#func on_input(event: InputEvent):
-	#if event.is_released():
-		#transition_requested.emit(self, PlayerState.State.IDLE) 
-
-func physics_update(delta)-> void:
+func _on_battle_started(_enemy):
+	transition_requested.emit(self, PlayerState.State.FIGHT)
+	
+func physics_update(_delta)-> void:
 	inputDir = Vector2.ZERO
 	#INPUTS
 	inputDir.x = Input.get_action_strength("right") - Input.get_action_strength("left")

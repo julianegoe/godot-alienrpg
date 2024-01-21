@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://h0b8txfxqgwe"]
+
+[ext_resource type="Texture2D" uid="uid://30me373eq8e7" path="res://assets/ui/card_empty.png" id="1_80cey"]
+[ext_resource type="Script" path="res://scenes/UI/card_button.gd" id="4_6pda2"]
+
+[node name="CardButton" type="TextureButton"]
+custom_minimum_size = Vector2(32, 48)
+anchors_preset = -1
+anchor_right = 0.067
+anchor_bottom = 0.176
+offset_right = -32.16
+offset_bottom = -47.52
+mouse_default_cursor_shape = 2
+disabled = true
+texture_disabled = ExtResource("1_80cey")
+script = ExtResource("4_6pda2")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

@@ -5,7 +5,7 @@
 [ext_resource type="Script" path="res://scripts/Resources/health.gd" id="2_gy2f7"]
 [ext_resource type="Script" path="res://scripts/Resources/skill_resource.gd" id="2_lyfln"]
 [ext_resource type="Texture2D" uid="uid://bmbfe6gq4bt8o" path="res://assets/shadows/character_shadow.png" id="3_4lhx7"]
-[ext_resource type="Resource" uid="uid://y2jm5itqd0xk" path="res://resources/abilities/axe.tres" id="3_455br"]
+[ext_resource type="Resource" uid="uid://bwgqb1hqqpgo0" path="res://resources/menus/menu.tres" id="4_yxrry"]
 [ext_resource type="Script" path="res://scenes/characters/player/player_state_machine.gd" id="7_x3k3h"]
 [ext_resource type="Script" path="res://scenes/characters/player/states/player_walk_state.gd" id="8_vq6l1"]
 [ext_resource type="PackedScene" uid="uid://dvqjtowi8nfu5" path="res://scenes/UI/speechbubble.tscn" id="10_mq86a"]
@@ -23,12 +23,12 @@ intelligence = 20
 survival = 20
 charisma = 20
 
+[sub_resource type="CanvasTexture" id="CanvasTexture_8ghyp"]
+diffuse_texture = ExtResource("2_go1nr")
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0bvgs"]
 radius = 3.0
 height = 12.0
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_8ghyp"]
-diffuse_texture = ExtResource("2_go1nr")
 
 [sub_resource type="Animation" id="Animation_wiyjn"]
 length = 0.001
@@ -205,16 +205,11 @@ dialogue_path = "res://data/player_dialogue.json"
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 y_sort_enabled = true
-collision_mask = 29
+collision_mask = 27
 script = ExtResource("1_os17o")
 health = SubResource("Resource_h7b5q")
 skill_resource = SubResource("Resource_y6xrp")
-abilities = Array[Resource("res://scripts/Resources/ability_resource.gd")]([ExtResource("3_455br")])
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 13)
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_0bvgs")
+ability_cards = ExtResource("4_yxrry")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = SubResource("CanvasTexture_8ghyp")
@@ -225,6 +220,11 @@ modulate = Color(1, 1, 1, 0.517647)
 show_behind_parent = true
 position = Vector2(0, 14)
 texture = ExtResource("3_4lhx7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 13)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_0bvgs")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

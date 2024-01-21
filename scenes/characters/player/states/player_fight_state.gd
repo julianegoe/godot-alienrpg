@@ -1,7 +1,7 @@
 class_name PlayerFightState extends PlayerState
 
-func enter():
-	pass
+var is_fighting: bool
 
-func on_area_entered(area):
-	pass
+func enter():
+	is_fighting = true
+	player.animation_player.stop()
