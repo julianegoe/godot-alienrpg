@@ -43,7 +43,7 @@ state = 1
 
 [node name="CardPlayedState" type="Node" parent="CardStateMachine"]
 script = ExtResource("8_3bext")
-state = 4
+state = 2
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

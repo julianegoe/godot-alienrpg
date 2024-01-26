@@ -33,7 +33,7 @@ texture_normal = SubResource("PlaceholderTexture2D_cbxti")
 shape = SubResource("CircleShape2D_yoywj")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
-position = Vector2(0, -41)
+position = Vector2(0, -28)
 remote_path = NodePath("../Ui/Icon")
 update_rotation = false
 update_scale = false
@@ -43,7 +43,7 @@ follow_viewport_enabled = true
 
 [node name="Icon" parent="Ui" instance=ExtResource("1_b0lys")]
 visible = false
-position = Vector2(0, -41)
+position = Vector2(0, -28)
 
 [connection signal="pressed" from="TextureButton" to="." method="_on_texture_button_pressed"]
 [connection signal="body_entered" from="Vicinity" to="." method="_on_vicinity_body_entered"]

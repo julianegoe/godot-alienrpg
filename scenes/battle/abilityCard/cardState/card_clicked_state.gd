@@ -1,8 +1,7 @@
 class_name CardClickedState extends CardState
 
 func enter() -> void:
-	print("clicked")
-	ability_card.card_activated.emit(ability_card.card_resource)
+	ability_card.activated.emit(ability_card)
 	
 func exit() -> void:
 	pass

@@ -1,14 +1,15 @@
 class_name AbilityCard extends Control
 
-signal card_activated(card: AbilityResource)
+signal activated(card: AbilityCard)
+signal played(card: AbilityCard)
 
-@export var card_resource: AbilityResource
+@export var ability: AbilityResource
 @onready var card = $TextureButton
 @onready var card_state_machine: CardStateMachine = $CardStateMachine as CardStateMachine
 
 func _ready():
 	card_state_machine.init(self)
-	card.texture_normal = card_resource.texture
+	card.texture_normal = ability.texture
 
 func _on_mouse_entered() -> void:
 	card_state_machine.on_mouse_entered()

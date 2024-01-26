@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="AbilityResource" load_steps=6 format=3 uid="uid://cpkvmc2kg8ujp"]
+
+[ext_resource type="Script" path="res://scripts/Resources/effect_resource.gd" id="1_nijai"]
+[ext_resource type="Script" path="res://scripts/Resources/ability_resource.gd" id="2_l5hvw"]
+[ext_resource type="Texture2D" uid="uid://3rywhb2vki62" path="res://assets/ui/card_snow.png" id="3_rs3se"]
+[ext_resource type="Texture2D" uid="uid://bpmg447uyp27j" path="res://assets/ui/card_snow_hover.png" id="4_nw4bm"]
+
+[sub_resource type="Resource" id="Resource_kxvvq"]
+script = ExtResource("1_nijai")
+type = 4
+value = 0
+
+[resource]
+script = ExtResource("2_l5hvw")
+id = "snow"
+name = "Frischer Schnee"
+description = "Einfach drauf und dann nichts wie weg!"
+texture = ExtResource("3_rs3se")
+texture_hovered = ExtResource("4_nw4bm")
+uses = 1
+attack_modifier = 40
+defense_modifier = 0
+target = 2
+effects = Array[ExtResource("1_nijai")]([SubResource("Resource_kxvvq")])

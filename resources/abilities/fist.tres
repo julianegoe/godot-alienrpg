@@ -17,6 +17,7 @@ name = "Faust"
 description = "Hau drauf."
 texture = ExtResource("3_ltjx2")
 texture_hovered = ExtResource("4_0b84n")
+uses = -1
 attack_modifier = 1
 defense_modifier = 0
 target = 1

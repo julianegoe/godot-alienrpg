@@ -2,16 +2,21 @@ class_name PlayerWalkState extends PlayerState
 
 var currentVelocity : Vector2 = Vector2.ZERO
 var inputDir: Vector2
+var SPEECHBUBBLE_OFFSET = Vector2(-58, -66)
 
 func enter():
-	Events.battle_started.connect(_on_battle_started)
+	pass
 
 func exit():
 	pass
-
-func _on_battle_started(_enemy):
-	transition_requested.emit(self, PlayerState.State.FIGHT)
 	
+func on_input(event):
+	if event.is_action_pressed("skip") and player.speechbubble.is_activated:
+		player.speechbubble.skip_text()
+		
+func on_battle_started(_enemy):
+	transition_requested.emit(self, PlayerState.State.FIGHT)
+
 func physics_update(_delta)-> void:
 	inputDir = Vector2.ZERO
 	#INPUTS
@@ -36,4 +41,5 @@ func physics_update(_delta)-> void:
 		player.animation_player.play("idle_right")
 	if Input.is_action_just_released("left"):
 		player.animation_player.play("idle_left")
+	player.remote_transform_2d.global_position = player.global_position + SPEECHBUBBLE_OFFSET
 	

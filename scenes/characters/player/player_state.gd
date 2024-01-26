@@ -1,6 +1,6 @@
 class_name PlayerState extends Node
 
-enum State { IDLE, WALK, FIGHT, TALK  }
+enum State { WALK, FIGHT }
 
 signal transition_requested(from: PlayerState, to: State)
 
@@ -26,5 +26,11 @@ func on_mouse_entered() -> void:
 func on_mouse_exited() -> void:
 	pass
 
+func on_battle_started(_enemy):
+	pass
+
+func on_request_walk_to(_position, _ability):
+	pass
+	
 func physics_update(_delta):
 	pass

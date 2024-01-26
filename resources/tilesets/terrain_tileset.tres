@@ -1,8 +1,9 @@
-[gd_resource type="TileSet" load_steps=10 format=3 uid="uid://ca5m17ajimq8v"]
+[gd_resource type="TileSet" load_steps=12 format=3 uid="uid://ca5m17ajimq8v"]
 
 [ext_resource type="Texture2D" uid="uid://bk2hlopoxrcng" path="res://assets/terrain/32bit_terrain.png" id="1_mhef4"]
 [ext_resource type="Texture2D" uid="uid://b1uvi8hv0nrkf" path="res://assets/objects/32bit_objects.png" id="2_koryh"]
 [ext_resource type="Texture2D" uid="uid://ucy3wsjm8l4c" path="res://assets/objects/32bit_shadows.png" id="3_d8nj3"]
+[ext_resource type="Texture2D" uid="uid://cf3bo6s7dku5y" path="res://assets/tilesets/snow.png" id="4_ejdcn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_02e38"]
 texture = ExtResource("1_mhef4")
@@ -243,11 +244,44 @@ texture_region_size = Vector2i(32, 32)
 3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 3:0/0/physics_layer_0/angular_velocity = 0.0
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m2g0a"]
+texture = ExtResource("4_ejdcn")
+texture_region_size = Vector2i(32, 32)
+1:0/0 = 0
+1:0/0/y_sort_origin = -4
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-13.1875, -5.375, 13.6875, -4.5, 12.9375, 8.25, 2.8125, 14, -9.9375, 12.25, -13.3125, 5.125)
+1:0/0/custom_data_0 = 1
+2:0/0 = 0
+2:0/0/y_sort_origin = -4
+2:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+2:0/0/physics_layer_0/angular_velocity = 0.0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-13.1875, -4.125, 13.6875, -4.5, 13.9375, 12.125, 8.0625, 16, -3.8125, 16, -11.0625, 11.875, -14.3125, 5.75)
+2:0/0/custom_data_0 = 1
+3:0/0 = 0
+3:0/0/y_sort_origin = -4
+3:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+3:0/0/physics_layer_0/angular_velocity = 0.0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-11.8125, 1.25, 14.4375, 1.5, 14.1875, 10.375, 10.5625, 16, -5.9375, 16, -13.8125, 11.375)
+3:0/0/custom_data_0 = 1
+5:0/size_in_atlas = Vector2i(2, 1)
+5:0/0 = 0
+5:0/0/y_sort_origin = -4
+5:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+5:0/0/physics_layer_0/angular_velocity = 0.0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-25.4375, -4.625, 9.6875, -3.125, 25.5442, -2.2981, 29.0798, 4.41941, 30.8475, 10.9602, 17.9375, 13.75, 3.6875, 11.125, -12.4628, 16, -19.5338, 12.0208, -30.8475, 10.6066, -29.7869, 3.0052)
+5:0/0/custom_data_0 = 1
+
 [resource]
 tile_size = Vector2i(32, 32)
 uv_clipping = true
 occlusion_layer_0/light_mask = 1
 physics_layer_0/collision_layer = 8
+physics_layer_0/collision_mask = 3
+custom_data_layer_0/name = "material"
+custom_data_layer_0/type = 2
 sources/0 = SubResource("TileSetAtlasSource_02e38")
 sources/1 = SubResource("TileSetAtlasSource_gv7qw")
 sources/2 = SubResource("TileSetAtlasSource_jdumc")
+sources/3 = SubResource("TileSetAtlasSource_m2g0a")

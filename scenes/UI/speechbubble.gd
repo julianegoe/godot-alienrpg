@@ -5,6 +5,7 @@ signal nextButtonHide
 
 @export var dialogue_resource: DialogueResource
 var DEFAULT_SIZE: Vector2 = Vector2(63, 41)
+var is_activated: bool
 
 @onready var characterTextLabel: RichTextLabel = %CharacterText
 @onready var characterName: Label = %CharacterName
@@ -26,13 +27,14 @@ func _ready():
 	dialogueManager = $DialogueManager
 	deactivate()
 
-func activate():
+func activate(startNode: int = 0):
+	is_activated = true
 	size = DEFAULT_SIZE
 	show()
 	ui_state = UiState.OPEN
 	nextButton.hide()
 	dialogueManager.dialogue_tree = dialogue_resource.dialogue_tree
-	dialogueManager.currentTextNode = 0
+	dialogueManager.currentTextNode = startNode
 	dialogueManager.init_text()
 	dialogueManager.writeText()
 
@@ -47,6 +49,7 @@ func next_text(node):
 	dialogueManager.nextText(node)
 
 func deactivate():
+	is_activated = false
 	hide()
 	dialogueManager.hide_choices()
 	ui_state = UiState.CLOSED

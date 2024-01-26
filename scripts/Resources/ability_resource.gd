@@ -10,6 +10,7 @@ enum Target { PLAYER, SINGLE_ENEMY, ALL_ENEMIES, EVERYONE }
 @export var texture_hovered: Texture
 
 @export_group("Ability Stats")
+@export var uses: int = -1 # -1 is used as infinite uses
 @export var attack_modifier: int = 0
 @export var defense_modifier: int = 0
 @export var target: Target = Target.SINGLE_ENEMY

@@ -11,3 +11,5 @@ script = ExtResource("1_xnfky")
 
 [node name="TurnQueue" type="Node" parent="."]
 script = ExtResource("3_nf55l")
+
+[editable path="BattleArea"]

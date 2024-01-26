@@ -17,6 +17,7 @@ name = "Axt"
 description = "Du schwingst die Axt und drückst die Daumen."
 texture = ExtResource("3_mxhih")
 texture_hovered = ExtResource("4_uxn2o")
+uses = -1
 attack_modifier = 10
 defense_modifier = 5
 target = 1

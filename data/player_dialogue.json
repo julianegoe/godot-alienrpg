@@ -13,6 +13,12 @@
 	  "text": "Zzzzz...{p=0.5} Zzzzz..{p=0.5}",
 	  "choices": [],
 	  "nextNode": null
+	},
+	{
+	  "index": 2,
+	  "text": "Hmm, da komm ich ohne Leiter nicht hoch.",
+	  "choices": [],
+	  "nextNode": null
 	}
   ]
 }

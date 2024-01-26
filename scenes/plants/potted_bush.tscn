@@ -9,8 +9,9 @@ size = Vector2(10, 9)
 y_sort_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 7.5)
+position = Vector2(0, 4)
 shape = SubResource("RectangleShape2D_6vslf")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_0o6kw")
+offset = Vector2(2.08165e-12, -5)

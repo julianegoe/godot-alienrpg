@@ -12,6 +12,7 @@ func _unhandled_key_input(event):
 	if event.is_action_pressed("interact") and speechbubble.ui_state == speechbubble.UiState.CLOSED and interaction_state == DistanceState.IN_VICINITY:
 		speechbubble.activate()
 		interaction_icon.hide()
+	get_viewport().set_input_as_handled()
 				
 func _on_player_entered(_body):
 	pass

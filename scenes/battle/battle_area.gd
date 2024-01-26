@@ -12,6 +12,6 @@ func show_hand():
 func add_cards(equipped_cards: Array):
 	for equipped in equipped_cards:
 		var ability_card = ability_card_scene.instantiate()
-		ability_card.card_resource = equipped
+		ability_card.ability = equipped
 		cards_container.add_child(ability_card)
 	

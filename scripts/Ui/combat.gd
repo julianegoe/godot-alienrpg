@@ -2,11 +2,8 @@ class_name Combat extends Node2D
 
 signal skill_check_effect(effects)
 
-@export var player: Player:
-	set(value):
-		player = value
-	get:
-		return player
+@export var player: Player
+@export var menu: Menu
 		
 @onready var battle_area = $BattleArea
 @onready var turn_queue = $TurnQueue
@@ -26,16 +23,24 @@ func perform_skill_check(attacker_skill, attacker_ability, opponent_defense):
 	elif oponent_roll >= attacker_roll:
 		return
 	
-		
 func _roll(modifier: int):
 	var rolled_number = randi_range(1, 20)
 	return clamp(rolled_number + modifier, 0, 20)
 
 func _on_battle_started(enemy):
-	turn_queue.turn_array.append(player)
-	turn_queue.turn_array.append(enemy)
 	print(player.speechbubble.dialogue_resource.display_name, " vs. ", enemy.display_name)
 	var tween = create_tween()
 	tween.tween_property(player.camera, "zoom", Vector2(2, 2), 1)
 	battle_area.add_cards(player.ability_cards.get_equipped_abilities())
 	battle_area.show_hand()
+	for card in battle_area.cards_container.get_children(false):
+		card.activated.connect(_on_card_activated)
+		card.played.connect(_on_card_played)
+
+func _on_card_activated(card: AbilityCard):
+	print(card, " activated")
+
+func _on_card_played(card: AbilityCard):
+	print(card, " played")
+	menu._on_card_unequipped(card.ability)
+	

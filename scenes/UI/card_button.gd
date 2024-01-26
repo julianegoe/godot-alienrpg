@@ -1,6 +1,6 @@
 class_name CardButton extends TextureButton
 
-signal card_equipped(card: CardButton)
+signal card_equipped(ability: AbilityResource, card: CardButton)
 
 @export var card_resource: CardResource
 
@@ -27,4 +27,4 @@ func _ready():
 		self.disabled = card_resource.is_disabled
 
 func _on_pressed():
-	card_equipped.emit(self)
+	card_equipped.emit(card_resource.ability, self)

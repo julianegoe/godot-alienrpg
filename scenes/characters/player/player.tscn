@@ -240,18 +240,17 @@ script = ExtResource("8_vq6l1")
 
 [node name="FightState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("10_u4ahx")
-state = 2
+state = 1
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
-position = Vector2(-59, -63)
 remote_path = NodePath("../Ui/Node2D")
 update_rotation = false
 update_scale = false
 
 [node name="Ui" type="CanvasLayer" parent="."]
+follow_viewport_enabled = true
 
 [node name="Node2D" type="Node2D" parent="Ui"]
-position = Vector2(-59, -63)
 
 [node name="Speechbubble" parent="Ui/Node2D" instance=ExtResource("10_mq86a")]
 dialogue_resource = SubResource("Resource_agu4p")

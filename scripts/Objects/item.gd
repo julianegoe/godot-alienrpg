@@ -1,6 +1,6 @@
 class_name Item extends Node2D
 
-signal take_item(item: Item)
+signal take_item(ability: AbilityResource)
 
 @export var icon_texture: Texture
 @export var item_texture: Texture
@@ -16,7 +16,8 @@ func _ready():
 
 
 func _on_texture_button_pressed():
-	take_item.emit(self)
+	take_item.emit(ability)
+	self.queue_free()
 
 func _on_vicinity_body_entered(body):
 	if body is Player:
