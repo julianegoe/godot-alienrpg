@@ -10,6 +10,7 @@ signal played(card: AbilityCard)
 func _ready():
 	card_state_machine.init(self)
 	card.texture_normal = ability.texture
+	card.texture_disabled = ability.texture_disabled
 
 func _on_mouse_entered() -> void:
 	card_state_machine.on_mouse_entered()

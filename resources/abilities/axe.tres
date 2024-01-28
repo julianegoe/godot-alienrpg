@@ -1,8 +1,9 @@
-[gd_resource type="Resource" script_class="AbilityResource" load_steps=6 format=3 uid="uid://y2jm5itqd0xk"]
+[gd_resource type="Resource" script_class="AbilityResource" load_steps=7 format=3 uid="uid://y2jm5itqd0xk"]
 
 [ext_resource type="Script" path="res://scripts/Resources/effect_resource.gd" id="1_edls0"]
 [ext_resource type="Script" path="res://scripts/Resources/ability_resource.gd" id="2_w110c"]
 [ext_resource type="Texture2D" uid="uid://tkhnxknl8hy2" path="res://assets/ui/card_axe.png" id="3_mxhih"]
+[ext_resource type="Texture2D" uid="uid://h6a450rpn1ak" path="res://assets/ui/card_axe_disabled.png" id="4_0a48t"]
 [ext_resource type="Texture2D" uid="uid://dw4145n2ytptc" path="res://assets/ui/card_axe_hover.png" id="4_uxn2o"]
 
 [sub_resource type="Resource" id="Resource_0wx3v"]
@@ -17,6 +18,7 @@ name = "Axt"
 description = "Du schwingst die Axt und drückst die Daumen."
 texture = ExtResource("3_mxhih")
 texture_hovered = ExtResource("4_uxn2o")
+texture_disabled = ExtResource("4_0a48t")
 uses = -1
 attack_modifier = 10
 defense_modifier = 5

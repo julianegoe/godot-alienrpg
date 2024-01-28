@@ -6,11 +6,14 @@
 [ext_resource type="Script" path="res://scripts/Helpers/tilemap.gd" id="3_ufh7s"]
 [ext_resource type="Script" path="res://scripts/Effects/lights.gd" id="4_d7f2s"]
 [ext_resource type="PackedScene" uid="uid://bsbrulfi8t1ak" path="res://scenes/UI/menu.tscn" id="5_fd3ro"]
-[ext_resource type="PackedScene" uid="uid://dy0i6udfhecqg" path="res://scenes/UI/combat.tscn" id="6_fxhrc"]
+[ext_resource type="PackedScene" uid="uid://o2n28ovutyta" path="res://scenes/battle/battle_area.tscn" id="6_gtyyk"]
 
 [node name="BaseLevel" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("2_0mery")
+
+[node name="Menu" parent="." instance=ExtResource("5_fd3ro")]
+visible = false
 
 [node name="Tilemap" type="TileMap" parent="." node_paths=PackedStringArray("player")]
 y_sort_enabled = true
@@ -48,9 +51,5 @@ script = ExtResource("4_d7f2s")
 
 [node name="DoorWays" type="Node2D" parent="."]
 
-[node name="Combat" parent="." node_paths=PackedStringArray("player", "menu") instance=ExtResource("6_fxhrc")]
+[node name="BattleArea" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_gtyyk")]
 player = NodePath("../Characters/Player")
-menu = NodePath("../Menu")
-
-[node name="Menu" parent="." instance=ExtResource("5_fd3ro")]
-visible = false

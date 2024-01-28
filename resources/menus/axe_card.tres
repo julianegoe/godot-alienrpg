@@ -1,13 +1,9 @@
-[gd_resource type="Resource" script_class="CardResource" load_steps=5 format=3 uid="uid://70m2ri6o71aj"]
+[gd_resource type="Resource" script_class="CardResource" load_steps=3 format=3 uid="uid://70m2ri6o71aj"]
 
 [ext_resource type="Resource" uid="uid://y2jm5itqd0xk" path="res://resources/abilities/axe.tres" id="1_jb81v"]
-[ext_resource type="Texture2D" uid="uid://tkhnxknl8hy2" path="res://assets/ui/card_axe.png" id="2_uunwy"]
-[ext_resource type="Texture2D" uid="uid://dw4145n2ytptc" path="res://assets/ui/card_axe_hover.png" id="3_udoox"]
 [ext_resource type="Script" path="res://scripts/Resources/MenuResources/card_resource.gd" id="4_5npqy"]
 
 [resource]
 script = ExtResource("4_5npqy")
 ability = ExtResource("1_jb81v")
-card_texture = ExtResource("2_uunwy")
-card_texture_hovered = ExtResource("3_udoox")
 is_disabled = false

@@ -31,13 +31,13 @@ func on_mouse_exited() -> void:
 	if current_state:
 		current_state.on_mouse_exited()
 
-func on_request_walk_to(position: Vector2, ability: AbilityResource):
-	if current_state:
-		current_state.on_request_walk_to(position, ability)
-
 func on_battle_started(_enemy):
 	if current_state:
 		current_state.on_battle_started(_enemy)
+
+func on_battle_finished():
+	if current_state:
+		current_state.on_battle_finished()
 	
 func _on_transition_requested(from: PlayerState, to: PlayerState.State):
 	if from != current_state:

@@ -29,7 +29,7 @@ func on_mouse_exited() -> void:
 func on_battle_started(_enemy):
 	pass
 
-func on_request_walk_to(_position, _ability):
+func on_battle_finished():
 	pass
 	
 func physics_update(_delta):

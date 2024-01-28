@@ -1,8 +1,11 @@
-[gd_resource type="Resource" script_class="MenuResource" load_steps=2 format=3 uid="uid://bwgqb1hqqpgo0"]
+[gd_resource type="Resource" script_class="MenuResource" load_steps=5 format=3 uid="uid://bwgqb1hqqpgo0"]
 
+[ext_resource type="Resource" uid="uid://5j07x3ucvfax" path="res://resources/abilities/fist.tres" id="1_p8kbg"]
 [ext_resource type="Script" path="res://scripts/Resources/MenuResources/menu_resource.gd" id="1_vvw5l"]
+[ext_resource type="Resource" uid="uid://y2jm5itqd0xk" path="res://resources/abilities/axe.tres" id="2_dtkt0"]
+[ext_resource type="Resource" uid="uid://cpkvmc2kg8ujp" path="res://resources/abilities/snow.tres" id="3_phklu"]
 
 [resource]
 script = ExtResource("1_vvw5l")
-available_slots = Array[Resource("res://scripts/Resources/MenuResources/slot_resource.gd")]([])
-available_cards = Array[Resource("res://scripts/Resources/MenuResources/card_resource.gd")]([])
+equiped_abilities_array = Array[Resource("res://scripts/Resources/ability_resource.gd")]([ExtResource("1_p8kbg"), ExtResource("2_dtkt0"), ExtResource("3_phklu")])
+unequiped_abilities_array = Array[Resource("res://scripts/Resources/ability_resource.gd")]([])

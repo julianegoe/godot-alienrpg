@@ -16,14 +16,24 @@ func _ready():
 		item.take_item.connect(_on_item_taken)
 	var cards = card_container.get_children(false)
 	var slots = slot_container.get_children(false)
-	for card in cards:
-		card.card_equipped.connect(_on_card_equipped)
-		if card.card_resource:
-			menu_resource.available_cards.append(card.card_resource)
-	for slot in slots:
-		if slot.slot_resource:
-			menu_resource.available_slots.append(slot.slot_resource)
-	
+	for index in cards.size():
+		cards[index].card_equipped.connect(_on_card_equipped)
+		if index < menu_resource.unequipped_abilities.size() - 1:
+			cards[index].card_resource.ability = menu_resource.unequipped_abilities[index]
+			cards[index].card_resource.is_disabled = false
+		else:
+			cards[index].card_resource.is_disabled = true
+		cards[index].init()
+		
+	for index in slots.size():
+		slots[index].card_unequipped.connect(_on_card_unequipped)
+		if index < menu_resource.equipped_abilities.size():
+			slots[index].slot_resource.ability = menu_resource.equipped_abilities[index]
+			slots[index].slot_resource.is_disabled = false
+		else:
+			slots[index].slot_resource.is_disabled = true
+		slots[index].init()
+			
 func _on_item_taken(ability: AbilityResource):
 	var empty_card = find_first_empty_card(card_container.get_children(false))
 	empty_card.disabled = false
@@ -34,21 +44,28 @@ func _on_item_taken(ability: AbilityResource):
 func _on_card_equipped(ability: AbilityResource, card: CardButton):
 	var empty_slot = find_first_empty_slot(slot_container.get_children(false))
 	if empty_slot:
-		empty_slot.slot_resource.ability = ability
-		empty_slot.card_texture = ability.texture
-		empty_slot.is_equipped = true
-		empty_slot.slot_resource.is_equipped = true
+		var duplicate_ability = ability.duplicate(true)
+		empty_slot.slot_resource.ability = duplicate_ability
+		empty_slot.card_texture = duplicate_ability.texture
+		empty_slot.disabled = false
+		empty_slot.slot_resource.is_disabled = false
 		card.disabled = true
 		card.card_resource.is_disabled = true
+		menu_resource.equipped_abilities = duplicate_ability
 
-func _on_card_unequipped(ability: AbilityResource):
-	var slots = slot_container.get_children(false)
-	var ability_slots = slots.filter(func(slot): return slot.slot_resource.ability == ability)
-	print(slots.find(ability_slots[0]))
-	slots.remove_at(slots.find(ability_slots[0]))
+func _on_card_unequipped(ability: AbilityResource, slot: CardSlot):
+	var empty_card = find_first_empty_card(card_container.get_children(false))
+	if empty_card:
+		empty_card.disabled = false
+		empty_card.card_resource.is_disabled = false
+		empty_card.card_resource.ability = ability
+		empty_card.card_texture = ability.texture
+		empty_card.card_texture_hovered = ability.texture_hovered
+		slot.disabled = true
+		menu_resource.equipped_abilities = ability
 	
 func find_first_empty_slot(slots):
-	var empty_slots = slots.filter(func(slot): return !slot.is_equipped)
+	var empty_slots = slots.filter(func(slot): return slot.disabled)
 	if (not empty_slots.is_empty()):
 		return empty_slots[0]
 	else:

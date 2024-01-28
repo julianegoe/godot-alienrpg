@@ -5,7 +5,7 @@ var inputDir: Vector2
 var SPEECHBUBBLE_OFFSET = Vector2(-58, -66)
 
 func enter():
-	pass
+	player.health_ui.hide()
 
 func exit():
 	pass
@@ -41,5 +41,5 @@ func physics_update(_delta)-> void:
 		player.animation_player.play("idle_right")
 	if Input.is_action_just_released("left"):
 		player.animation_player.play("idle_left")
-	player.remote_transform_2d.global_position = player.global_position + SPEECHBUBBLE_OFFSET
+	player.remote_transform_speechbuble.global_position = player.global_position + SPEECHBUBBLE_OFFSET
 	

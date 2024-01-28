@@ -6,7 +6,7 @@ func _ready():
 	$AnimationPlayer.play("idle")
 	interaction_icon.hide()
 
-func _unhandled_key_input(event):
+func _unhandled_input(event):
 	if event.is_action_pressed("skip") and speechbubble.ui_state == speechbubble.UiState.OPEN:
 			speechbubble.skip_text()
 	if event.is_action_pressed("interact") and speechbubble.ui_state == speechbubble.UiState.CLOSED and interaction_state == DistanceState.IN_VICINITY:

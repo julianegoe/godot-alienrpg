@@ -1,23 +1,76 @@
-[gd_scene load_steps=3 format=3 uid="uid://o2n28ovutyta"]
+[gd_scene load_steps=9 format=3 uid="uid://o2n28ovutyta"]
 
 [ext_resource type="Script" path="res://scenes/battle/battle_area.gd" id="1_r7ga3"]
+[ext_resource type="Script" path="res://scripts/Ui/battle_dashboard.gd" id="2_gsiae"]
 [ext_resource type="Script" path="res://scenes/battle/hand.gd" id="2_uh7sy"]
+[ext_resource type="Resource" uid="uid://bwgqb1hqqpgo0" path="res://resources/menus/menu.tres" id="3_tme1y"]
+[ext_resource type="Texture2D" uid="uid://bltqo1fe1cgvt" path="res://assets/ui/end_turn_button.png" id="4_unjhb"]
+[ext_resource type="Texture2D" uid="uid://cb74vx3118iht" path="res://assets/ui/end_turn_button_hover.png" id="5_tnaal"]
+[ext_resource type="Texture2D" uid="uid://duyefdqfrno8l" path="res://assets/ui/end_turn_button_disabled.png" id="6_g2yxn"]
+[ext_resource type="Theme" uid="uid://cvnv7ywm5uieg" path="res://resources/themes/main_theme.tres" id="8_csfqn"]
 
 [node name="BattleArea" type="Node2D"]
 script = ExtResource("1_r7ga3")
 
 [node name="UI" type="CanvasLayer" parent="." groups=["Battle_UI"]]
 
-[node name="Hand" type="MarginContainer" parent="UI"]
-anchors_preset = 2
+[node name="Dashboard" type="MarginContainer" parent="UI"]
+custom_minimum_size = Vector2(0, 50)
+anchors_preset = -1
 anchor_top = 1.0
-anchor_bottom = 1.0
-offset_right = 98.0
-offset_bottom = 60.0
+anchor_right = 1.0
+anchor_bottom = 1.185
+offset_bottom = 0.0499878
+grow_horizontal = 2
 grow_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("2_gsiae")
+
+[node name="Hand" type="MarginContainer" parent="UI/Dashboard"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
 theme_override_constants/margin_bottom = 10
 script = ExtResource("2_uh7sy")
+inventory = ExtResource("3_tme1y")
 
-[node name="CardContainer" type="HBoxContainer" parent="UI/Hand"]
+[node name="CardContainer" type="HBoxContainer" parent="UI/Dashboard/Hand"]
 layout_mode = 2
 alignment = 1
+
+[node name="EndTurnButton" type="TextureButton" parent="UI/Dashboard"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+mouse_default_cursor_shape = 2
+texture_normal = ExtResource("4_unjhb")
+texture_pressed = ExtResource("5_tnaal")
+texture_hover = ExtResource("5_tnaal")
+texture_disabled = ExtResource("6_g2yxn")
+
+[node name="Actions" type="Label" parent="UI"]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+theme = ExtResource("8_csfqn")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+
+[node name="Turn" type="Label" parent="UI"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme = ExtResource("8_csfqn")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+horizontal_alignment = 1
+
+[connection signal="pressed" from="UI/Dashboard/EndTurnButton" to="." method="_on_end_turn_button_pressed"]

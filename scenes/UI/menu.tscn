@@ -1,12 +1,11 @@
-[gd_scene load_steps=17 format=3 uid="uid://bsbrulfi8t1ak"]
+[gd_scene load_steps=16 format=3 uid="uid://bsbrulfi8t1ak"]
 
 [ext_resource type="Texture2D" uid="uid://dcgvbqaapweoq" path="res://assets/ui/menu.png" id="1_1lw3u"]
 [ext_resource type="Script" path="res://scripts/Ui/menu.gd" id="1_7cf0c"]
 [ext_resource type="PackedScene" uid="uid://h0b8txfxqgwe" path="res://scenes/UI/card_button.tscn" id="2_2kpnh"]
-[ext_resource type="Resource" uid="uid://bwgqb1hqqpgo0" path="res://resources/menus/menu.tres" id="2_5iq3o"]
+[ext_resource type="Resource" uid="uid://bwgqb1hqqpgo0" path="res://resources/menus/menu.tres" id="2_dmw6y"]
 [ext_resource type="PackedScene" uid="uid://bcke044xry4dg" path="res://scenes/UI/card_slot.tscn" id="3_eu544"]
 [ext_resource type="Script" path="res://scripts/Resources/MenuResources/slot_resource.gd" id="5_p02he"]
-[ext_resource type="Resource" uid="uid://5j07x3ucvfax" path="res://resources/abilities/fist.tres" id="7_ieyls"]
 [ext_resource type="Script" path="res://scripts/Resources/MenuResources/card_resource.gd" id="7_lhtt1"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_klb2f"]
@@ -14,20 +13,19 @@ texture = ExtResource("1_1lw3u")
 
 [sub_resource type="Resource" id="Resource_s68h2"]
 script = ExtResource("5_p02he")
-is_equipped = true
-ability = ExtResource("7_ieyls")
+is_disabled = false
 
-[sub_resource type="Resource" id="Resource_gugke"]
+[sub_resource type="Resource" id="Resource_jewam"]
 script = ExtResource("5_p02he")
-is_equipped = false
+is_disabled = true
 
-[sub_resource type="Resource" id="Resource_kjvos"]
+[sub_resource type="Resource" id="Resource_qxats"]
 script = ExtResource("5_p02he")
-is_equipped = false
+is_disabled = true
 
-[sub_resource type="Resource" id="Resource_p8xws"]
+[sub_resource type="Resource" id="Resource_h5jal"]
 script = ExtResource("5_p02he")
-is_equipped = false
+is_disabled = true
 
 [sub_resource type="Resource" id="Resource_war0w"]
 script = ExtResource("7_lhtt1")
@@ -44,7 +42,7 @@ is_disabled = false
 [node name="Menu" type="CanvasLayer"]
 process_mode = 3
 script = ExtResource("1_7cf0c")
-menu_resource = ExtResource("2_5iq3o")
+menu_resource = ExtResource("2_dmw6y")
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -92,15 +90,15 @@ slot_resource = SubResource("Resource_s68h2")
 
 [node name="Slot_2" parent="Control/Panel/Left/SlotContainer" instance=ExtResource("3_eu544")]
 layout_mode = 2
-slot_resource = SubResource("Resource_gugke")
+slot_resource = SubResource("Resource_jewam")
 
 [node name="Slot_3" parent="Control/Panel/Left/SlotContainer" instance=ExtResource("3_eu544")]
 layout_mode = 2
-slot_resource = SubResource("Resource_kjvos")
+slot_resource = SubResource("Resource_qxats")
 
 [node name="Slot_4" parent="Control/Panel/Left/SlotContainer" instance=ExtResource("3_eu544")]
 layout_mode = 2
-slot_resource = SubResource("Resource_p8xws")
+slot_resource = SubResource("Resource_h5jal")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="Control/Panel"]
 layout_mode = 0

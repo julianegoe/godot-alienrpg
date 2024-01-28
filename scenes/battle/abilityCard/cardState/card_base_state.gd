@@ -10,7 +10,7 @@ func exit() -> void:
 func on_texture_button_pressed():
 	print("clicked ", ability_card.ability.name)
 	if ability_card.ability.uses == -1:
-		transition_requested.emit(self, CardState.State.CLICKED)
+		ability_card.activated.emit(ability_card)
 	else:
 		transition_requested.emit(self, CardState.State.PLAYED)
 	

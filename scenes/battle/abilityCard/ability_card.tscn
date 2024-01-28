@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cu3i556pmly0g"]
+[gd_scene load_steps=7 format=3 uid="uid://cu3i556pmly0g"]
 
 [ext_resource type="Theme" uid="uid://cvnv7ywm5uieg" path="res://resources/themes/main_theme.tres" id="1_jprq3"]
 [ext_resource type="Script" path="res://scenes/battle/abilityCard/ability_card.gd" id="2_120ae"]
 [ext_resource type="Script" path="res://scenes/battle/abilityCard/cardState/card_state_machine.gd" id="3_p4naj"]
 [ext_resource type="Script" path="res://scenes/battle/abilityCard/cardState/card_base_state.gd" id="4_m72bs"]
-[ext_resource type="Script" path="res://scenes/battle/abilityCard/cardState/card_clicked_state.gd" id="5_s50b6"]
 [ext_resource type="Script" path="res://scenes/battle/abilityCard/cardState/card_released_state.gd" id="8_3bext"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_a4qp2"]
@@ -36,10 +35,6 @@ initial_state = NodePath("CardBaseState")
 
 [node name="CardBaseState" type="Node" parent="CardStateMachine"]
 script = ExtResource("4_m72bs")
-
-[node name="CardClickedState" type="Node" parent="CardStateMachine"]
-script = ExtResource("5_s50b6")
-state = 1
 
 [node name="CardPlayedState" type="Node" parent="CardStateMachine"]
 script = ExtResource("8_3bext")
