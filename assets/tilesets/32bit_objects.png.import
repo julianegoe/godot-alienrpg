@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ucy3wsjm8l4c"
-path="res://.godot/imported/32bit_shadows.png-b9ffbd73d14538b0ddff4205ab1ca101.ctex"
+uid="uid://b1uvi8hv0nrkf"
+path="res://.godot/imported/32bit_objects.png-201770695c710fe40eac22f718053679.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/objects/32bit_shadows.png"
-dest_files=["res://.godot/imported/32bit_shadows.png-b9ffbd73d14538b0ddff4205ab1ca101.ctex"]
+source_file="res://assets/tilesets/32bit_objects.png"
+dest_files=["res://.godot/imported/32bit_objects.png-201770695c710fe40eac22f718053679.ctex"]
 
 [params]
 

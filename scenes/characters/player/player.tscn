@@ -276,7 +276,10 @@ offset_bottom = 5.0
 [node name="HealthBar" parent="Ui/Node2D2/HealthUi" instance=ExtResource("12_7v3v3")]
 layout_mode = 0
 anchors_preset = 0
+anchor_right = 0.0
+offset_right = 1.0
 offset_bottom = 5.0
+grow_horizontal = 1
 
 [node name="HealthLabel" type="Label" parent="Ui/Node2D2/HealthUi"]
 layout_mode = 1

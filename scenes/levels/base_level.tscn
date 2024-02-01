@@ -24,6 +24,9 @@ layer_0/name = "Ground"
 layer_1/name = "Objects"
 layer_1/y_sort_enabled = true
 layer_1/tile_data = PackedInt32Array()
+layer_2/name = "Items"
+layer_2/y_sort_enabled = true
+layer_2/tile_data = PackedInt32Array()
 script = ExtResource("3_ufh7s")
 player = NodePath("../Characters/Player")
 
@@ -41,9 +44,6 @@ y_sort_enabled = true
 [node name="Camera2D" type="Camera2D" parent="Characters/Player"]
 
 [node name="Enemies" type="Node2D" parent="."]
-y_sort_enabled = true
-
-[node name="Items" type="Node2D" parent="."]
 y_sort_enabled = true
 
 [node name="Lights" type="Node2D" parent="."]

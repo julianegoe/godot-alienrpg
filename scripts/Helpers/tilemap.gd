@@ -9,14 +9,14 @@ var is_player_in_vicinity: bool = false
 var icon = preload("res://scenes/UI/Icon.tscn")
 var info_icons: Array[Icon]
 
-enum Materials { DEFAULT, FRESH_SNOW }
+enum Materials { DEFAULT, FRESH_SNOW, AXE }
 
 func _unhandled_input(event):
 	var item: Materials
 	if event is InputEventMouseMotion:
 		var mouse_pos = local_to_map(get_local_mouse_position())
 		var tile_item = get_custom_data_at(mouse_pos, "material")
-		if tile_item == Materials.FRESH_SNOW:
+		if not tile_item == Materials.DEFAULT:
 			Input.set_default_cursor_shape(Input.CURSOR_POINTING_HAND)
 		else:
 			Input.set_default_cursor_shape(Input.CURSOR_ARROW)
@@ -27,11 +27,12 @@ func _unhandled_input(event):
 			item = get_custom_data_at(tile_position, "material")
 			var ability = pick_up(item)
 			if ability:
+				delete_tile(tile_position, item)
 				pick_up_material.emit(ability)
 				
 
 func get_tile_data_at(tile_pos: Vector2) -> TileData:
-	return get_cell_tile_data(1, tile_pos)
+	return get_cell_tile_data(2, tile_pos)
 
 func get_custom_data_at(tile_pos: Vector2, custom_data_name: String) -> Variant:
 	var data = get_tile_data_at(tile_pos)
@@ -42,12 +43,17 @@ func get_custom_data_at(tile_pos: Vector2, custom_data_name: String) -> Variant:
 func pick_up(material_item: int):
 	var lookup = {
 		Materials.DEFAULT: null,
-		Materials.FRESH_SNOW: load("res://resources/abilities/snow.tres")
+		Materials.FRESH_SNOW: load("res://resources/abilities/snow.tres"),
+		Materials.AXE: load("res://resources/abilities/axe.tres")
 	}
 	return lookup.get(material_item)		
 
+func delete_tile(tile_pos: Vector2, item_material: Materials):
+	if item_material == Materials.AXE:
+		erase_cell(2, tile_pos)
+	
 func get_surrounding_tiles(current_tile: Vector2):
-	var surrounding_tiles = []
+	var surrounding_tiles = [current_tile]
 	var target_tile
 	for y in 3:
 		for x in 3:
@@ -61,14 +67,14 @@ func is_player_in_surrounding_tiles(current_tile, player_pos: Vector2):
 	var surrounding_tiles = get_surrounding_tiles(current_tile)
 	return surrounding_tiles.has(player_pos)
 		
-func snowtiles_in_vicinity(current_tile: Vector2):
+func items_in_vicinity(current_tile: Vector2):
 	var surrounding_tiles = get_surrounding_tiles(current_tile)
-	var snow_tiles = surrounding_tiles.filter(func(tile): return get_custom_data_at(tile, "material") == 1)
-	return snow_tiles
+	var item_tiles = surrounding_tiles.filter(func(tile): return get_custom_data_at(tile, "material") > 0)
+	return item_tiles
 
-func create_info_icons(snow_tiles):
-	for snow_tile in snow_tiles:
-		var pos = map_to_local(snow_tile) - Vector2(0, 20)
+func create_info_icons(item_tiles):
+	for item_tile in item_tiles:
+		var pos = map_to_local(item_tile) - Vector2(0, 20)
 		var new_icon = icon.instantiate()
 		new_icon.position = pos
 		new_icon.play_animation()
@@ -83,10 +89,10 @@ func delete_info_icons():
 	
 func _process(_delta):
 	var player_pos = local_to_map(player.position)
-	if not snowtiles_in_vicinity(player_pos).is_empty() and not is_player_in_vicinity:
-		create_info_icons(snowtiles_in_vicinity(player_pos))
+	if not items_in_vicinity(player_pos).is_empty() and not is_player_in_vicinity:
+		create_info_icons(items_in_vicinity(player_pos))
 		is_player_in_vicinity = true
-	elif snowtiles_in_vicinity(player_pos).is_empty() and is_player_in_vicinity:
+	elif items_in_vicinity(player_pos).is_empty() and is_player_in_vicinity:
 		delete_info_icons()
 		is_player_in_vicinity = false
 		
