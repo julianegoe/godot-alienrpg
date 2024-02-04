@@ -4,9 +4,10 @@
 
 [node name="DayNightCycle" type="CanvasModulate"]
 script = ExtResource("1_3hlg2")
+currentTimeIndex = 0
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 0.5
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

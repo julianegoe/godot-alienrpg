@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://crvo6u3r2wtnv"]
+[gd_scene load_steps=31 format=3 uid="uid://crvo6u3r2wtnv"]
 
 [ext_resource type="Script" path="res://scenes/characters/player/player.gd" id="1_os17o"]
 [ext_resource type="Texture2D" uid="uid://bw71se83tg63y" path="res://assets/characters/player_v2.png" id="2_go1nr"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://scripts/Resources/skill_resource.gd" id="2_lyfln"]
 [ext_resource type="Texture2D" uid="uid://bmbfe6gq4bt8o" path="res://assets/shadows/character_shadow.png" id="3_4lhx7"]
 [ext_resource type="Resource" uid="uid://bwgqb1hqqpgo0" path="res://resources/menus/menu.tres" id="4_yxrry"]
+[ext_resource type="Shader" path="res://shaders/chromatic_aberration.gdshader" id="5_eu00f"]
 [ext_resource type="Script" path="res://scenes/characters/player/player_state_machine.gd" id="7_x3k3h"]
 [ext_resource type="Script" path="res://scenes/characters/player/states/player_walk_state.gd" id="8_vq6l1"]
 [ext_resource type="PackedScene" uid="uid://dvqjtowi8nfu5" path="res://scenes/UI/speechbubble.tscn" id="10_mq86a"]
@@ -24,6 +25,11 @@ strength = 40
 intelligence = 20
 survival = 20
 charisma = 20
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8g08b"]
+shader = ExtResource("5_eu00f")
+shader_parameter/apply = true
+shader_parameter/amount = 0.1
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_8ghyp"]
 diffuse_texture = ExtResource("2_go1nr")
@@ -214,6 +220,7 @@ skill_resource = SubResource("Resource_y6xrp")
 ability_cards = ExtResource("4_yxrry")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_8g08b")
 texture = SubResource("CanvasTexture_8ghyp")
 hframes = 33
 
