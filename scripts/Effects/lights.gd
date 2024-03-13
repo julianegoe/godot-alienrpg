@@ -7,11 +7,11 @@ func _ready():
 	lights_array = get_children(false)
 	var currTimeIndex = DayNightCycle.currentTimeIndex
 	if currTimeIndex == Types.GameTime.DAY or  currTimeIndex == Types.GameTime.DUSK:
-		for streetlight in lights_array:
-			streetlight.hide()
+		for light in lights_array:
+			light.hide()
 	elif currTimeIndex == Types.GameTime.NIGHT or currTimeIndex == Types.GameTime.DAWN:
-		for streetlight in lights_array:
-			streetlight.show()	
+		for light in lights_array:
+			light.show()	
 
 func _on_sun_change(solar_alt):
 	if solar_alt == Types.GameTime.DAY:

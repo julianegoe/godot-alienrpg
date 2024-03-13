@@ -10,8 +10,9 @@ var icon = preload("res://scenes/UI/Icon.tscn")
 var info_icons: Array[Icon]
 
 enum Materials { DEFAULT, FRESH_SNOW, AXE }
-
-func _unhandled_input(event):
+enum TILESET_ID { GROUND, OBJECTS, SHADOWS, TREES, ITEMS }
+	
+func _input(event):
 	var item: Materials
 	if event is InputEventMouseMotion:
 		var mouse_pos = local_to_map(get_local_mouse_position())
@@ -76,6 +77,7 @@ func create_info_icons(item_tiles):
 	for item_tile in item_tiles:
 		var pos = map_to_local(item_tile) - Vector2(0, 20)
 		var new_icon = icon.instantiate()
+		new_icon.z_index = 1
 		new_icon.position = pos
 		new_icon.play_animation()
 		info_icons.append(new_icon)

@@ -4,6 +4,8 @@ extends CanvasLayer
 
 const level_a_1 = preload("res://scenes/levels/level_a_1.tscn")
 const level_a_2 = preload("res://scenes/levels/level_a_2.tscn")
+const level_a_3 = preload("res://scenes/levels/level_a_3.tscn")
+
 var scene_to_load: PackedScene
 var spawn_door_tag: String
 
@@ -20,6 +22,8 @@ func go_to_level(level_tag: Types.Levels, destination_tag: String):
 			scene_to_load = level_a_1
 		Types.Levels.A2:
 			scene_to_load = level_a_2
+		Types.Levels.A3:
+			scene_to_load = level_a_3
 	if scene_to_load != null:
 		spawn_door_tag = destination_tag
 		animation_player.play("fade_out")

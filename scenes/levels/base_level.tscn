@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bq8rcc5d8ojhe"]
+[gd_scene load_steps=7 format=3 uid="uid://bq8rcc5d8ojhe"]
 
 [ext_resource type="TileSet" uid="uid://ca5m17ajimq8v" path="res://resources/tilesets/terrain_tileset.tres" id="1_xiw1o"]
 [ext_resource type="Script" path="res://scripts/Levels/base_level.gd" id="2_0mery"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://scripts/Helpers/tilemap.gd" id="3_ufh7s"]
 [ext_resource type="Script" path="res://scripts/Effects/lights.gd" id="4_d7f2s"]
 [ext_resource type="PackedScene" uid="uid://bsbrulfi8t1ak" path="res://scenes/UI/menu.tscn" id="5_fd3ro"]
-[ext_resource type="PackedScene" uid="uid://o2n28ovutyta" path="res://scenes/battle/battle_area.tscn" id="6_gtyyk"]
 
 [node name="BaseLevel" type="Node2D"]
 y_sort_enabled = true
@@ -49,7 +48,10 @@ y_sort_enabled = true
 [node name="Lights" type="Node2D" parent="."]
 script = ExtResource("4_d7f2s")
 
+[node name="Sun" type="Node2D" parent="."]
+
 [node name="DoorWays" type="Node2D" parent="."]
 
-[node name="BattleArea" parent="." node_paths=PackedStringArray("player") instance=ExtResource("6_gtyyk")]
-player = NodePath("../Characters/Player")
+[node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+
+[connection signal="finished" from="BackgroundMusic" to="." method="_on_background_music_finished"]

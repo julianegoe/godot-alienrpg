@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://1fj606mknj3t"]
+
+[ext_resource type="Texture2D" uid="uid://cql1h7tkl8jk4" path="res://resources/lights/streetlamp.tres" id="1_vky20"]
+
+[node name="StreetlampLight" type="PointLight2D"]
+color = Color(0.74902, 0.619608, 0, 1)
+shadow_enabled = true
+shadow_filter = 2
+shadow_filter_smooth = 18.2
+texture = ExtResource("1_vky20")
+offset = Vector2(0, 10)
+texture_scale = 0.3
