@@ -5,7 +5,7 @@ var lights_array: Array[Node]
 func _ready():
 	DayNightCycle.sun_changed.connect(_on_sun_change)
 	lights_array = get_children(false)
-	var currTimeIndex = DayNightCycle.currentTimeIndex
+	var currTimeIndex = DayNightCycle.game_time.current_time_index
 	if currTimeIndex == Types.GameTime.DAY or  currTimeIndex == Types.GameTime.DUSK:
 		for light in lights_array:
 			light.hide()

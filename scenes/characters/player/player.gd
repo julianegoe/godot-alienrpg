@@ -15,6 +15,7 @@ signal defeated
 var has_perm_damage_for: int = 0
 
 func _ready():
+	Events.status_zero.connect(_on_status_zero)
 	player_state_machine.init(self)
 	var door_ways = get_tree().get_nodes_in_group("DoorWays")
 	for door in door_ways:
@@ -35,6 +36,9 @@ func _on_input_event(viewport, event, shape_idx):
 
 func _input(event: InputEvent) -> void:
 	player_state_machine.on_input(event)                                                                                
+
+func _on_status_zero(type: Types.Status):
+	player_state_machine.on_status_zero(type) 
 	
 func _on_door_blocked():
 	speechbubble.activate(2)

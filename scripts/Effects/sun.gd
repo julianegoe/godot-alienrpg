@@ -5,7 +5,7 @@ var rays: ColorRect
 func _ready():
 	rays = $rays
 	DayNightCycle.sun_changed.connect(_on_sun_change)
-	var currTimeIndex = DayNightCycle.currentTimeIndex
+	var currTimeIndex = DayNightCycle.game_time.current_time_index
 	if currTimeIndex == Types.GameTime.DAY or  currTimeIndex == Types.GameTime.DUSK:
 		set_shader_value(0.4)
 	elif currTimeIndex == Types.GameTime.NIGHT or currTimeIndex == Types.GameTime.DAWN:

@@ -23,3 +23,5 @@ shape = SubResource("RectangleShape2D_isnqr")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DangerZone"]
 shape = SubResource("CircleShape2D_tl87q")
+
+[connection signal="body_entered" from="DangerZone" to="." method="_on_danger_zone_body_entered"]

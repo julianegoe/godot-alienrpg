@@ -43,3 +43,6 @@ value = 78.0
 texture_under = ExtResource("3_ui6oq")
 texture_progress = ExtResource("2_ohk2y")
 texture_progress_offset = Vector2(16, 7)
+
+[connection signal="value_changed" from="Control/MarginContainer/VBoxContainer/HealthBar" to="." method="_on_health_bar_value_changed"]
+[connection signal="value_changed" from="Control/MarginContainer/VBoxContainer/EnergyBar" to="." method="_on_energy_bar_value_changed"]

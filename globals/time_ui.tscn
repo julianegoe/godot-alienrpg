@@ -1,6 +1,45 @@
-[gd_scene load_steps=2 format=3 uid="uid://ddxiox66ebnly"]
+[gd_scene load_steps=10 format=3 uid="uid://ddxiox66ebnly"]
 
 [ext_resource type="Script" path="res://globals/time_ui.gd" id="1_rl36p"]
+[ext_resource type="Texture2D" uid="uid://douvsjqp4gqo8" path="res://assets/ui/status_bars/clock.png" id="2_8dex6"]
+[ext_resource type="Script" path="res://scripts/Ui/animated_texture_rect.gd" id="2_kwa07"]
+[ext_resource type="FontFile" uid="uid://cjjhxrf0ersuw" path="res://assets/fonts/VT323-Regular.ttf" id="4_4dipb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_axg8c"]
+atlas = ExtResource("2_8dex6")
+region = Rect2(33, 0, 33, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tnqp0"]
+atlas = ExtResource("2_8dex6")
+region = Rect2(0, 0, 33, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7b6gn"]
+atlas = ExtResource("2_8dex6")
+region = Rect2(66, 0, 33, 41)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3w76w"]
+atlas = ExtResource("2_8dex6")
+region = Rect2(99, 0, 33, 41)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_w6juu"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tnqp0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_axg8c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7b6gn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3w76w")
+}],
+"loop": true,
+"name": &"default",
+"speed": 0.5
+}]
 
 [node name="TimeUI" type="CanvasLayer"]
 script = ExtResource("1_rl36p")
@@ -11,14 +50,25 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="ColorRect" type="ColorRect" parent="Control"]
+[node name="MarginContainer" type="MarginContainer" parent="Control"]
 layout_mode = 0
-offset_right = 45.0
-offset_bottom = 23.0
-color = Color(0.0509804, 0.0509804, 0.0509804, 1)
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
 
-[node name="Label" type="Label" parent="Control/ColorRect"]
-layout_mode = 0
-offset_right = 41.0
-offset_bottom = 23.0
+[node name="Clock" type="TextureRect" parent="Control/MarginContainer"]
+layout_mode = 2
+texture = SubResource("AtlasTexture_axg8c")
+stretch_mode = 4
+script = ExtResource("2_kwa07")
+sprites = SubResource("SpriteFrames_w6juu")
+speed_scale = 1.0
+
+[node name="Label" type="Label" parent="Control/MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("4_4dipb")
+theme_override_font_sizes/font_size = 7
 text = "05:00"
+horizontal_alignment = 1

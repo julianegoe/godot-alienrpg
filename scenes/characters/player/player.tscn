@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://crvo6u3r2wtnv"]
+[gd_scene load_steps=28 format=3 uid="uid://crvo6u3r2wtnv"]
 
 [ext_resource type="Script" path="res://scenes/characters/player/player.gd" id="1_os17o"]
 [ext_resource type="Texture2D" uid="uid://bw71se83tg63y" path="res://assets/characters/player_v2.png" id="2_go1nr"]
@@ -7,6 +7,7 @@
 [ext_resource type="Resource" uid="uid://bwgqb1hqqpgo0" path="res://resources/menus/menu.tres" id="4_yxrry"]
 [ext_resource type="Shader" path="res://shaders/chromatic_aberration.gdshader" id="5_eu00f"]
 [ext_resource type="Script" path="res://scenes/characters/player/player_state_machine.gd" id="7_x3k3h"]
+[ext_resource type="Script" path="res://scenes/characters/player/states/player_exhausted_state.gd" id="8_q5ufw"]
 [ext_resource type="Script" path="res://scenes/characters/player/states/player_walk_state.gd" id="8_vq6l1"]
 [ext_resource type="PackedScene" uid="uid://dvqjtowi8nfu5" path="res://scenes/UI/speechbubble.tscn" id="10_mq86a"]
 [ext_resource type="Script" path="res://scenes/characters/player/states/player_fight_state.gd" id="10_u4ahx"]
@@ -235,6 +236,10 @@ libraries = {
 [node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("7_x3k3h")
 initial_state = NodePath("WalkState")
+
+[node name="ExhaustedState" type="Node" parent="PlayerStateMachine"]
+script = ExtResource("8_q5ufw")
+state = 2
 
 [node name="WalkState" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("8_vq6l1")

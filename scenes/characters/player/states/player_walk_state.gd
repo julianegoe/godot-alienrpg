@@ -17,6 +17,9 @@ func on_input(event):
 func on_battle_started(_enemy):
 	transition_requested.emit(self, PlayerState.State.FIGHT)
 
+func on_status_zero(_type: Types.Status):
+	transition_requested.emit(self, PlayerState.State.EXHAUSTED)
+	
 func physics_update(_delta)-> void:
 	inputDir = Vector2.ZERO
 	#INPUTS

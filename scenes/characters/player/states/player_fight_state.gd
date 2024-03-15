@@ -9,3 +9,7 @@ func enter():
 
 func on_battle_finished():
 	transition_requested.emit(self, PlayerState.State.WALK)
+
+func on_status_zero(_type: Types.Status):
+	transition_requested.emit(self, PlayerState.State.EXHAUSTED)
+	

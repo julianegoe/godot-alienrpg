@@ -23,6 +23,5 @@ func _on_level_spawn(destination: String):
 	var node = get_node(door_path)
 	player.global_position = node.spawn_marker.global_position
 
-
 func _on_background_music_finished():
 	background_music.play(0.0)
