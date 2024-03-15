@@ -3,11 +3,10 @@ class_name Npc extends CharacterBody2D
 signal player_entered(body: Player)
 signal player_exited(body: Player)
 
-@export var health: HealthResource
 @export var skill_resource: SkillResource
 @export var abilities: Array[AbilityResource]
 
-@onready var interaction_icon: Node2D = $Ui/Icon
+@onready var interaction_icon: Node2D = $Ui/icon
 
 enum DistanceState {
 	IN_VICINITY,

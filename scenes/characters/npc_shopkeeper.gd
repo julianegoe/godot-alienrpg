@@ -1,4 +1,4 @@
-class_name npc_shopkeeper extends Npc
+class_name NpcShopkeeper extends Npc
 
 @onready var speechbubble: Speechbubble = $UI/PosHelper/Speechbubble
 

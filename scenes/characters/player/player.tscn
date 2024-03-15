@@ -1,8 +1,7 @@
-[gd_scene load_steps=31 format=3 uid="uid://crvo6u3r2wtnv"]
+[gd_scene load_steps=27 format=3 uid="uid://crvo6u3r2wtnv"]
 
 [ext_resource type="Script" path="res://scenes/characters/player/player.gd" id="1_os17o"]
 [ext_resource type="Texture2D" uid="uid://bw71se83tg63y" path="res://assets/characters/player_v2.png" id="2_go1nr"]
-[ext_resource type="Script" path="res://scripts/Resources/health.gd" id="2_gy2f7"]
 [ext_resource type="Script" path="res://scripts/Resources/skill_resource.gd" id="2_lyfln"]
 [ext_resource type="Texture2D" uid="uid://bmbfe6gq4bt8o" path="res://assets/shadows/character_shadow.png" id="3_4lhx7"]
 [ext_resource type="Resource" uid="uid://bwgqb1hqqpgo0" path="res://resources/menus/menu.tres" id="4_yxrry"]
@@ -12,12 +11,6 @@
 [ext_resource type="PackedScene" uid="uid://dvqjtowi8nfu5" path="res://scenes/UI/speechbubble.tscn" id="10_mq86a"]
 [ext_resource type="Script" path="res://scenes/characters/player/states/player_fight_state.gd" id="10_u4ahx"]
 [ext_resource type="Script" path="res://scripts/Resources/dialogue_resource.gd" id="11_11ss1"]
-[ext_resource type="PackedScene" uid="uid://b7l8gpvj4fsua" path="res://scenes/UI/health_bar.tscn" id="12_7v3v3"]
-[ext_resource type="Theme" uid="uid://cvnv7ywm5uieg" path="res://resources/themes/main_theme.tres" id="12_vwyc5"]
-
-[sub_resource type="Resource" id="Resource_h7b5q"]
-script = ExtResource("2_gy2f7")
-health = 100
 
 [sub_resource type="Resource" id="Resource_y6xrp"]
 script = ExtResource("2_lyfln")
@@ -215,7 +208,6 @@ dialogue_path = "res://data/player_dialogue.json"
 y_sort_enabled = true
 collision_mask = 27
 script = ExtResource("1_os17o")
-health = SubResource("Resource_h7b5q")
 skill_resource = SubResource("Resource_y6xrp")
 ability_cards = ExtResource("4_yxrry")
 
@@ -256,12 +248,6 @@ remote_path = NodePath("../Ui/Node2D")
 update_rotation = false
 update_scale = false
 
-[node name="RemoteTransformHealthUi" type="RemoteTransform2D" parent="."]
-position = Vector2(-13, -31)
-remote_path = NodePath("../Ui/Node2D2")
-update_rotation = false
-update_scale = false
-
 [node name="Ui" type="CanvasLayer" parent="."]
 follow_viewport_enabled = true
 
@@ -269,38 +255,6 @@ follow_viewport_enabled = true
 
 [node name="Speechbubble" parent="Ui/Node2D" instance=ExtResource("10_mq86a")]
 dialogue_resource = SubResource("Resource_agu4p")
-
-[node name="Node2D2" type="Node2D" parent="Ui"]
-position = Vector2(-13, -31)
-
-[node name="HealthUi" type="Control" parent="Ui/Node2D2"]
-custom_minimum_size = Vector2(30, 5)
-layout_mode = 3
-anchors_preset = 0
-offset_right = 30.0
-offset_bottom = 5.0
-
-[node name="HealthBar" parent="Ui/Node2D2/HealthUi" instance=ExtResource("12_7v3v3")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-offset_right = 1.0
-offset_bottom = 5.0
-grow_horizontal = 1
-
-[node name="HealthLabel" type="Label" parent="Ui/Node2D2/HealthUi"]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -11.0
-offset_top = -14.0
-offset_right = 9.0
-offset_bottom = -1.0
-grow_horizontal = 2
-theme = ExtResource("12_vwyc5")
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-horizontal_alignment = 1
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]

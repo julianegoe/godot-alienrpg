@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://bv6xpju5vv6ms"]
 
-[ext_resource type="PackedScene" uid="uid://dem3vvgytjo6e" path="res://scenes/characters/npc.tscn" id="1_skejw"]
+[ext_resource type="PackedScene" uid="uid://dn0xejscrtpfb" path="res://scenes/characters/npc.tscn" id="1_skejw"]
 [ext_resource type="Texture2D" uid="uid://8v88328oev5g" path="res://assets/characters/shopkeeper.png" id="2_ajb2p"]
 [ext_resource type="Script" path="res://scenes/characters/npc_shopkeeper.gd" id="2_nn7mj"]
 [ext_resource type="Texture2D" uid="uid://bmbfe6gq4bt8o" path="res://assets/shadows/character_shadow.png" id="4_eo6j4"]

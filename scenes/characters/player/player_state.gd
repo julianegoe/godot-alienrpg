@@ -1,6 +1,6 @@
 class_name PlayerState extends Node
 
-enum State { WALK, FIGHT }
+enum State { WALK, FIGHT, IDLE }
 
 signal transition_requested(from: PlayerState, to: State)
 

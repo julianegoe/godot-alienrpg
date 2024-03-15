@@ -5,7 +5,7 @@ var inputDir: Vector2
 var SPEECHBUBBLE_OFFSET = Vector2(-58, -66)
 
 func enter():
-	player.health_ui.hide()
+	pass
 
 func exit():
 	pass

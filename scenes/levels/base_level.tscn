@@ -1,17 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://bq8rcc5d8ojhe"]
+[gd_scene load_steps=8 format=3 uid="uid://bq8rcc5d8ojhe"]
 
 [ext_resource type="TileSet" uid="uid://ca5m17ajimq8v" path="res://resources/tilesets/terrain_tileset.tres" id="1_xiw1o"]
 [ext_resource type="Script" path="res://scripts/Levels/base_level.gd" id="2_0mery"]
+[ext_resource type="PackedScene" uid="uid://lj83ihhd76kp" path="res://scenes/UI/status_bars.tscn" id="2_br6a6"]
 [ext_resource type="PackedScene" uid="uid://crvo6u3r2wtnv" path="res://scenes/characters/player/player.tscn" id="3_cm83x"]
+[ext_resource type="PackedScene" uid="uid://bsbrulfi8t1ak" path="res://scenes/UI/menu.tscn" id="3_dpssr"]
 [ext_resource type="Script" path="res://scripts/Helpers/tilemap.gd" id="3_ufh7s"]
 [ext_resource type="Script" path="res://scripts/Effects/lights.gd" id="4_d7f2s"]
-[ext_resource type="PackedScene" uid="uid://bsbrulfi8t1ak" path="res://scenes/UI/menu.tscn" id="5_fd3ro"]
 
 [node name="BaseLevel" type="Node2D"]
 y_sort_enabled = true
 script = ExtResource("2_0mery")
 
-[node name="Menu" parent="." instance=ExtResource("5_fd3ro")]
+[node name="StatusBars" parent="." instance=ExtResource("2_br6a6")]
+
+[node name="Menu" parent="." instance=ExtResource("3_dpssr")]
 visible = false
 
 [node name="Tilemap" type="TileMap" parent="." node_paths=PackedStringArray("player")]
@@ -53,5 +56,6 @@ script = ExtResource("4_d7f2s")
 [node name="DoorWays" type="Node2D" parent="."]
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
+process_mode = 3
 
 [connection signal="finished" from="BackgroundMusic" to="." method="_on_background_music_finished"]

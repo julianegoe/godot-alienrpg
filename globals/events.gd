@@ -1,4 +1,3 @@
 extends Node
 
-signal battle_started(enemy: Enemy)
-signal battle_finished()
+signal status_changed(type: Types.Status, value: int)

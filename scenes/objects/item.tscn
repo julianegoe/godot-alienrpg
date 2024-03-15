@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bwh1q5jneoqrp"]
 
 [ext_resource type="Script" path="res://scripts/Objects/item.gd" id="1_30w5q"]
-[ext_resource type="PackedScene" uid="uid://deq64u7fghh4g" path="res://scenes/UI/Icon.tscn" id="1_b0lys"]
+[ext_resource type="PackedScene" uid="uid://deq64u7fghh4g" path="res://scenes/UI/Icon_old.tscn" id="1_b0lys"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_cbxti"]
 size = Vector2(16, 16)
