@@ -2,9 +2,9 @@
 
 [ext_resource type="Script" path="res://scripts/Resources/effect_resource.gd" id="1_edls0"]
 [ext_resource type="Script" path="res://scripts/Resources/ability_resource.gd" id="2_w110c"]
-[ext_resource type="Texture2D" uid="uid://tkhnxknl8hy2" path="res://assets/ui/card_axe.png" id="3_mxhih"]
-[ext_resource type="Texture2D" uid="uid://h6a450rpn1ak" path="res://assets/ui/card_axe_disabled.png" id="4_0a48t"]
-[ext_resource type="Texture2D" uid="uid://dw4145n2ytptc" path="res://assets/ui/card_axe_hover.png" id="4_uxn2o"]
+[ext_resource type="Texture2D" uid="uid://c048ili06uvlp" path="res://assets/ui/item_bar/axe_button_normal.png" id="3_nqxcy"]
+[ext_resource type="Texture2D" uid="uid://cd5e0vcik4ly2" path="res://assets/ui/status_bars/skill_bars/item_slot_big.png" id="4_etwon"]
+[ext_resource type="Texture2D" uid="uid://c528bhacwckyb" path="res://assets/ui/item_bar/axe_button_selected.png" id="5_rvbs3"]
 
 [sub_resource type="Resource" id="Resource_0wx3v"]
 script = ExtResource("1_edls0")
@@ -16,9 +16,10 @@ script = ExtResource("2_w110c")
 id = "axe"
 name = "Axt"
 description = "Du schwingst die Axt und drückst die Daumen."
-texture = ExtResource("3_mxhih")
-texture_hovered = ExtResource("4_uxn2o")
-texture_disabled = ExtResource("4_0a48t")
+texture = ExtResource("3_nqxcy")
+texture_hovered = ExtResource("5_rvbs3")
+texture_disabled = ExtResource("4_etwon")
+is_selected = false
 uses = -1
 attack_modifier = 10
 defense_modifier = 5

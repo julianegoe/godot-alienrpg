@@ -63,6 +63,7 @@ texture = SubResource("AtlasTexture_axg8c")
 stretch_mode = 4
 script = ExtResource("2_kwa07")
 sprites = SubResource("SpriteFrames_w6juu")
+frame_index = 3
 speed_scale = 1.0
 
 [node name="Label" type="Label" parent="Control/MarginContainer"]

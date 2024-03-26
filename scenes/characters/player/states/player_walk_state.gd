@@ -5,7 +5,7 @@ var inputDir: Vector2
 var SPEECHBUBBLE_OFFSET = Vector2(-58, -66)
 
 func enter():
-	pass
+	print("WALK")
 
 func exit():
 	pass
@@ -13,6 +13,8 @@ func exit():
 func on_input(event):
 	if event.is_action_pressed("skip") and player.speechbubble.is_activated:
 		player.speechbubble.skip_text()
+	if event.is_action_pressed("interact") and !!player.items.get_equipped():
+		transition_requested.emit(self, PlayerState.State.FIGHT)
 		
 func on_battle_started(_enemy):
 	transition_requested.emit(self, PlayerState.State.FIGHT)

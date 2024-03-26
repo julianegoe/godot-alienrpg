@@ -9,6 +9,7 @@ enum Target { PLAYER, SINGLE_ENEMY, ALL_ENEMIES, EVERYONE }
 @export var texture: Texture
 @export var texture_hovered: Texture
 @export var texture_disabled: Texture
+@export var is_selected: bool = false
 
 @export_group("Ability Stats")
 @export var uses: int = -1 # -1 is used as infinite uses

@@ -19,6 +19,7 @@ description = "Einfach drauf und dann nichts wie weg!"
 texture = ExtResource("3_rs3se")
 texture_hovered = ExtResource("4_nw4bm")
 texture_disabled = ExtResource("4_jpyt6")
+is_selected = false
 uses = 1
 attack_modifier = 40
 defense_modifier = 0

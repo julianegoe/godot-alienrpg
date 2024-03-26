@@ -19,6 +19,7 @@ description = "Hau drauf."
 texture = ExtResource("3_ltjx2")
 texture_hovered = ExtResource("4_0b84n")
 texture_disabled = ExtResource("4_k3wd6")
+is_selected = false
 uses = -1
 attack_modifier = 1
 defense_modifier = 0

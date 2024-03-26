@@ -1,27 +1,45 @@
-[gd_scene load_steps=5 format=3 uid="uid://dligkucy2lppl"]
+[gd_scene load_steps=8 format=3 uid="uid://dligkucy2lppl"]
 
 [ext_resource type="Script" path="res://scripts/Enemies/enemy_dummy.gd" id="1_5d1sn"]
-[ext_resource type="Texture2D" uid="uid://b1e0i88l5cx2v" path="res://icon.svg" id="1_sm2jt"]
+[ext_resource type="Texture2D" uid="uid://cqs0osv22tsve" path="res://assets/enemies/alien_flower_01.png" id="2_7tefl"]
+[ext_resource type="Shader" path="res://shaders/wind_sway.gdshader" id="2_f7iyo"]
+[ext_resource type="Script" path="res://scripts/Enemies/enemy_hitbox.gd" id="4_4ojaj"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u381f"]
+shader = ExtResource("2_f7iyo")
+shader_parameter/speed = 1.0
+shader_parameter/minStrength = 0.05
+shader_parameter/maxStrength = 0.01
+shader_parameter/strengthScale = 100.0
+shader_parameter/interval = 3.5
+shader_parameter/detail = 1.0
+shader_parameter/distortion = 0.0
+shader_parameter/heightOffset = null
+shader_parameter/offset = 0.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_isnqr"]
-size = Vector2(24, 24)
+size = Vector2(26.5, 10)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_tl87q"]
-radius = 20.025
+radius = 15.0
 
-[node name="EnemyDummy" type="CharacterBody2D"]
+[node name="AlienFlowers01" type="CharacterBody2D"]
+input_pickable = true
 script = ExtResource("1_5d1sn")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
-texture = ExtResource("1_sm2jt")
+material = SubResource("ShaderMaterial_u381f")
+texture = ExtResource("2_7tefl")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.25, 8)
 shape = SubResource("RectangleShape2D_isnqr")
 
-[node name="DangerZone" type="Area2D" parent="."]
+[node name="HitBox" type="Area2D" parent="."]
+script = ExtResource("4_4ojaj")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DangerZone"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 shape = SubResource("CircleShape2D_tl87q")
 
-[connection signal="body_entered" from="DangerZone" to="." method="_on_danger_zone_body_entered"]
+[connection signal="body_entered" from="HitBox" to="." method="_on_danger_zone_body_entered"]
+[connection signal="input_event" from="HitBox" to="." method="_on_hit_box_input_event"]

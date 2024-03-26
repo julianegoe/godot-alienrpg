@@ -1,10 +1,10 @@
-[gd_scene load_steps=28 format=3 uid="uid://crvo6u3r2wtnv"]
+[gd_scene load_steps=29 format=3 uid="uid://crvo6u3r2wtnv"]
 
 [ext_resource type="Script" path="res://scenes/characters/player/player.gd" id="1_os17o"]
 [ext_resource type="Texture2D" uid="uid://bw71se83tg63y" path="res://assets/characters/player_v2.png" id="2_go1nr"]
 [ext_resource type="Script" path="res://scripts/Resources/skill_resource.gd" id="2_lyfln"]
 [ext_resource type="Texture2D" uid="uid://bmbfe6gq4bt8o" path="res://assets/shadows/character_shadow.png" id="3_4lhx7"]
-[ext_resource type="Resource" uid="uid://bwgqb1hqqpgo0" path="res://resources/menus/menu.tres" id="4_yxrry"]
+[ext_resource type="Resource" uid="uid://bm2lc7u40goty" path="res://resources/menus/item_bar.tres" id="3_ma54b"]
 [ext_resource type="Shader" path="res://shaders/chromatic_aberration.gdshader" id="5_eu00f"]
 [ext_resource type="Script" path="res://scenes/characters/player/player_state_machine.gd" id="7_x3k3h"]
 [ext_resource type="Script" path="res://scenes/characters/player/states/player_exhausted_state.gd" id="8_q5ufw"]
@@ -20,13 +20,13 @@ intelligence = 20
 survival = 20
 charisma = 20
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_sr6dc"]
+radius = 4.0
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_8g08b"]
 shader = ExtResource("5_eu00f")
 shader_parameter/apply = true
 shader_parameter/amount = 0.1
-
-[sub_resource type="CanvasTexture" id="CanvasTexture_8ghyp"]
-diffuse_texture = ExtResource("2_go1nr")
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0bvgs"]
 radius = 3.0
@@ -45,6 +45,58 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_ickpi"]
+resource_name = "attack_front"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [33, 34, 35, 36]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(2.08165e-12, 5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 13), Vector2(2.08165e-12, 18)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("HitBox:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(2.08165e-12, 5)]
 }
 
 [sub_resource type="Animation" id="Animation_fgq8q"]
@@ -188,6 +240,7 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t50y1"]
 _data = {
 "RESET": SubResource("Animation_wiyjn"),
+"attack_front": SubResource("Animation_ickpi"),
 "idle_back": SubResource("Animation_fgq8q"),
 "idle_front": SubResource("Animation_7ojj4"),
 "idle_left": SubResource("Animation_kgo66"),
@@ -207,15 +260,23 @@ dialogue_path = "res://data/player_dialogue.json"
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 y_sort_enabled = true
+position = Vector2(2.08165e-12, 2.08165e-12)
 collision_mask = 27
 script = ExtResource("1_os17o")
 skill_resource = SubResource("Resource_y6xrp")
-ability_cards = ExtResource("4_yxrry")
+items = ExtResource("3_ma54b")
+
+[node name="HitBox" type="Area2D" parent="."]
+position = Vector2(2.08165e-12, 5)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CapsuleShape2D_sr6dc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 material = SubResource("ShaderMaterial_8g08b")
-texture = SubResource("CanvasTexture_8ghyp")
-hframes = 33
+position = Vector2(2.08165e-12, 5)
+texture = ExtResource("2_go1nr")
+hframes = 37
 
 [node name="Shadow" type="Sprite2D" parent="Sprite2D"]
 modulate = Color(1, 1, 1, 0.517647)
@@ -224,7 +285,7 @@ position = Vector2(0, 14)
 texture = ExtResource("3_4lhx7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 13)
+position = Vector2(2.08165e-12, 18)
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_0bvgs")
 
@@ -257,6 +318,7 @@ update_scale = false
 follow_viewport_enabled = true
 
 [node name="Node2D" type="Node2D" parent="Ui"]
+position = Vector2(2.08165e-12, 2.08165e-12)
 
 [node name="Speechbubble" parent="Ui/Node2D" instance=ExtResource("10_mq86a")]
 dialogue_resource = SubResource("Resource_agu4p")
