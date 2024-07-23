@@ -1,0 +1,1 @@
+class_name MeleeWeaponResource extends WeaponResource

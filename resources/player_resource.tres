@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="CharacterResource" load_steps=4 format=3 uid="uid://6khgkcxvuhbl"]
+
+[ext_resource type="Texture2D" uid="uid://b4jap8n5kxc75" path="res://assets/ui/inventory/inventory_character_stats_charisma.png" id="1_3rkxt"]
+[ext_resource type="Texture2D" uid="uid://bvyw72ewpobj8" path="res://assets/ui/character_portraits/character_portrait_player.png" id="1_jtid6"]
+[ext_resource type="Script" path="res://scripts/resources/character_resource.gd" id="1_nptnb"]
+
+[resource]
+script = ExtResource("1_nptnb")
+portrait_texture = ExtResource("1_jtid6")
+charisma_texture = ExtResource("1_3rkxt")
+display_name = "Name"
+strength = 100
+intelligence = 60
+charisma = 70
+survival = 30

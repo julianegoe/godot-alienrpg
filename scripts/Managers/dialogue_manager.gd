@@ -1,90 +1,63 @@
 class_name DialogueManager extends Node
 
-signal uiClose
-signal textComplete(data)
-signal choiceSelected(data)
-signal textSkipped
+signal text_completed(current_node)
+signal text_skipped
+
+@export var current_text_node: int = 0:
+	set(value):
+		current_text_node = value
+		print_rich("[b]DialogueSystem:[/b] Current text node: [color=green][b]" + str(value) + "[/b][/color]") 
+
+var dialogue_resource: DialogueResource
+var should_skip: bool = false:
+	get:
+		return should_skip
+	set(value):
+		should_skip = value
+		text_skipped.emit()
+var _all_pauses: Array
+var current_dialogue_string: String
 
 @onready var pause_calc: PauseCalculator = PauseCalculator.new()
 
-@export var characterNameLabel: Label
-@export var textLabel: RichTextLabel
-@export var choiceButtons: Array[Button]
-@export var currentTextNode: int = 0:
-	get:
-		return currentTextNode
-	set(value):
-		currentTextNode = value
-		print_rich("[b]DialogueSystem:[/b] Current text node: [color=green][b]" + str(value) + "[/b][/color]") 
+func init(resource: DialogueResource):
+	dialogue_resource = resource
+	dialogue_resource.readJSON()
+	
+func get_character_name():
+	return dialogue_resource.display_name
 
-var dialogue_tree: Dictionary
-var _all_pauses: Array
-var _should_skip: bool = false:
-	get:
-		return _should_skip
-	set(value):
-		_should_skip = value
-		textSkipped.emit()
-
-func init_text():
-	writeCharacterName()
-	var result = pause_calc.get_pauses_from_string(dialogue_tree.dialogue[currentTextNode].text)
+func get_dialogue_for(node: int) -> String:
+	current_text_node = node
+	var result = pause_calc.get_pauses_from_string(dialogue_resource.dialogue_tree.dialogue[current_text_node].text)
 	_all_pauses = result[0]
-	textLabel.text = result[1]
-	textLabel.visible_characters = 0
-	_should_skip = false
+	current_dialogue_string = result[1]
+	return current_dialogue_string
 
-func writeCharacterName():
-	characterNameLabel.text = dialogue_tree.name
-
-func writeText():
-	var duration = _get_typing_speed()
+func get_choices():
+	return dialogue_resource.dialogue_tree.dialogue[current_text_node].choices
+	
+func set_next_node(next_node: int):
+	current_text_node = next_node
+	
+func stream_text(label: Node):
+	var duration = _get_typing_speed(label)
 	await get_tree().create_timer(duration).timeout
-	textLabel.visible_characters += 1
-	if textLabel.visible_ratio == 1:
-		textComplete.emit(dialogue_tree.dialogue[currentTextNode])
+	label.visible_characters += 1
+	if label.visible_ratio == 1:
+		text_completed.emit(dialogue_resource.dialogue_tree.dialogue[current_text_node])
 		return
 	else:
-		writeText()
-	
-func skipText():
-	_should_skip = true
-	
-func nextText(node):
-	hide_choices()
-	if not node:
-		uiClose.emit()
-		return
-	if currentTextNode == dialogue_tree.dialogue.size() -1:
-		uiClose.emit()
-		return
-	currentTextNode = clamp(node, 0, dialogue_tree.dialogue.size() -1)
-	init_text()
-	writeText()
+		stream_text(label)
+		
 
-func show_choices() -> void:
-	for n in range(dialogue_tree.dialogue[currentTextNode].choices.size()):
-		choiceButtons[n].pressed.connect(_on_button_pressed.bind(dialogue_tree.dialogue[currentTextNode].choices[n]))
-		choiceButtons[n].text = dialogue_tree.dialogue[currentTextNode].choices[n].text
-		choiceButtons[n].show()
-			
-func hide_choices() -> void:
-	for choice in choiceButtons:
-		choice.hide()
-		choice.text = ""
-		if choice.is_connected("pressed", _on_button_pressed):
-			choice.pressed.disconnect(_on_button_pressed)
-	
-func _on_button_pressed(data):
-	choiceSelected.emit(data)
-
-func _get_typing_speed():
+func _get_typing_speed(label: Node):
 	var duration = 0
-	if _should_skip:
+	if should_skip:
 		duration = 0.01
 	else:
 		duration = 0.1
 		for pause in _all_pauses:
-			if pause.position == textLabel.visible_characters:
+			if pause.position == label.visible_characters:
 				duration = pause.duration
 	return duration

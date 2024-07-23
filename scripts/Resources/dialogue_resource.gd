@@ -1,10 +1,10 @@
-extends Resource
-class_name DialogueResource
+class_name DialogueResource extends Resource
 
-@export var name: String = ""
-@export var dialogue_tree: Dictionary
-@export var display_name: String = ""
-@export var dialogue_path: String = ""
+@export_file var dialogue_path
+
+var name: String = ""
+var dialogue_tree: Dictionary
+var display_name: String = ""
 
 func readJSON():
 	var file = FileAccess.open(dialogue_path, FileAccess.READ)

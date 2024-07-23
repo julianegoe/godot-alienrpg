@@ -1,47 +1,35 @@
 {
 	"index": 0,
-	"name": "Ladenbesitzer",
+	"name": "Shopkeeper",
 	"dialogue": [
 	  {
 		"index": 0,
-		"text": "Hallo...{p=0.5} Sind Sie...{p=0.5} neu in der Stadt?",
+		"text": "Sorry...{p=0.5} shop's closed right now. Gotta finish this cigarette first. It's a very long cigarette.",
 		"choices": [
 		  {
 			"index": 0,
-			"text": "Ja.",
+			"text": "I really need to buy some groceries.",
 			"nextNode": 1,
-			"dice_roll": null
-		  },
-		  {
-			"index": 1,
-			"text": "Nein. (Lüge)",
-			"nextNode": 2,
 			"dice_roll": {
 				"skill": "charisma",
 				"difficulty": 15,
 			}
+		  },
+		  {
+			"index": 1,
+			"text": "Okay.",
+			"nextNode": null,
+			"dice_roll": null
 		  }
 		],
-		"nextNode": null,
+		"nextNode": 1,
 	  },
 	  {
 		"index": 1,
-		"text": "Diese Stadt hat lange keine neuen Leute gesehen. Viel Glück.",
+		"text": "Well too bad.",
 		"choices": [
 		],
 		"nextNode": null,
-	  },
-	{
-		"index": 2,
-		"text": "Komisch. Ich habe Sie hier noch nie gesehen.",
-		"choices": [],
-		"nextNode": 3,
-	  },
-	{
-		"index": 3,
-		"text": "Naja, ich kann ja auch nicht jeden kennen.",
-		"choices": [],
-		"nextNode": null,
 	  }
 	]
-  }
+}

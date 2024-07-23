@@ -1,15 +1,29 @@
-[gd_scene load_steps=3 format=3 uid="uid://br174ejjc2ao2"]
+[gd_scene load_steps=5 format=3 uid="uid://br174ejjc2ao2"]
 
 [ext_resource type="Texture2D" uid="uid://c7qpg66pj3hi6" path="res://assets/buildings/tent.png" id="1_kfnn0"]
+[ext_resource type="Script" path="res://scripts/components/hurtbox.gd" id="2_x7ytu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_iva5u"]
-size = Vector2(26, 15.25)
+size = Vector2(35, 15.25)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j4e2i"]
+size = Vector2(35, 5)
 
 [node name="Tent" type="StaticBody2D"]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 8)
-shape = SubResource("RectangleShape2D_iva5u")
+collision_layer = 32
+collision_mask = 32
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("1_kfnn0")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 13)
+shape = SubResource("RectangleShape2D_iva5u")
+
+[node name="HurtBox" type="Area2D" parent="."]
+script = ExtResource("2_x7ytu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-0.5, 18.5)
+shape = SubResource("RectangleShape2D_j4e2i")
+debug_color = Color(0.737255, 0.392157, 0.666667, 0.419608)

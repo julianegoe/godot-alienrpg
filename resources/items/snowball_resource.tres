@@ -1,0 +1,25 @@
+[gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://cporn16b38m2p"]
+
+[ext_resource type="Script" path="res://scripts/resources/ranged_weapon_resource.gd" id="1_gh372"]
+[ext_resource type="Texture2D" uid="uid://da3uh5hvvo0nt" path="res://assets/ui/item_portraits/item_portrait_snowball.png" id="2_h3fc1"]
+
+[resource]
+script = ExtResource("1_gh372")
+vertical_velocity = -60
+scene_path = "res://scenes/weapons/snowball.tscn"
+weapon_type = 1
+base_damage = 5
+strength_modifier = 0.2
+type = 1
+texture_region_rect = Rect2(63, 2.08165e-12, 20, 20)
+portrait_texture = ExtResource("2_h3fc1")
+id = "weapon_snowball"
+display_name = "Snowball"
+description = "Who can resist a good snowball fight?"
+inventory_quantity = 0
+hotbar_quantity = 99
+is_equipped = true
+is_hotbar = true
+is_inventory = true
+hotbar_position = 0
+inventory_position = 0

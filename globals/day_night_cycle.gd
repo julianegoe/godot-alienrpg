@@ -3,11 +3,10 @@ extends CanvasModulate
 signal time_changed(formatted_time)
 signal sun_changed(solar_alt)
 
-enum LOCATION_TYPE { DEFAULT, FOREST, INDOORS }
-
 @export var game_time: GameTimeResource
 
-var current_scene_location: LOCATION_TYPE = LOCATION_TYPE.DEFAULT
+var current_color: Color = Color.WHITE
+var current_scene_location: Types.LocationType
 
 @onready var canvas_modulate: CanvasModulate = self
 @onready var timer: Timer = $Timer
@@ -41,9 +40,11 @@ func tween_color(new_color: Color):
 
 func modulate_color(base_color: Color):
 	match current_scene_location:
-		LOCATION_TYPE.FOREST:
+		Types.LocationType.INDOORS:
+			return base_color.lightened(0.4)
+		Types.LocationType.FOREST:
 			return base_color.darkened(0.4)
-		LOCATION_TYPE.DEFAULT:
+		Types.LocationType.DEFAULT:
 			return base_color
 			
 func _on_timer_timeout():
@@ -53,25 +54,23 @@ func _on_timer_timeout():
 	if game_time.current_time_dict.hour == time_lookup[Types.GameTime.NIGHT].hour and game_time.current_time_dict.minute == time_lookup[Types.GameTime.NIGHT].minute:
 		sun_changed.emit(Types.GameTime.NIGHT)
 		game_time.current_time_index = Types.GameTime.NIGHT
-		var calc_color = modulate_color(color_lookup[game_time.current_time_index])
-		tween_color(calc_color)
+		current_color = modulate_color(color_lookup[game_time.current_time_index])
+		tween_color(current_color)
 	elif game_time.current_time_dict.hour == time_lookup[Types.GameTime.DAWN].hour and game_time.current_time_dict.minute == time_lookup[Types.GameTime.DAWN].minute:
 		sun_changed.emit(Types.GameTime.DAWN)
 		game_time.current_time_index = Types.GameTime.DAWN
-		var calc_color = modulate_color(color_lookup[game_time.current_time_index])
-		tween_color(calc_color)
+		current_color = modulate_color(color_lookup[game_time.current_time_index])
+		tween_color(current_color)
 	elif game_time.current_time_dict.hour == time_lookup[Types.GameTime.DAY].hour and game_time.current_time_dict.minute == time_lookup[Types.GameTime.DAY].minute:
 		sun_changed.emit(Types.GameTime.DAY)
 		game_time.current_time_index = Types.GameTime.DAY
-		var calc_color = modulate_color(color_lookup[game_time.current_time_index])
-		tween_color(calc_color)
+		current_color = modulate_color(color_lookup[game_time.current_time_index])
+		tween_color(current_color)
 	elif game_time.current_time_dict.hour == time_lookup[Types.GameTime.DUSK].hour and game_time.current_time_dict.minute == time_lookup[Types.GameTime.DUSK].minute:
 		sun_changed.emit(Types.GameTime.DUSK)
 		game_time.current_time_index = Types.GameTime.DUSK
-		var calc_color = modulate_color(color_lookup[game_time.current_time_index])
-		tween_color(calc_color)
-	if game_time.current_time_dict.minute == 59:
-		Events.status_changed.emit(Types.Status.ENERGY, -4)
+		current_color = modulate_color(color_lookup[game_time.current_time_index])
+		tween_color(current_color)
 
 func _time_object_to_display_time(time: Dictionary):
 	return "%02d:%02d" % [time.hour, time.minute]

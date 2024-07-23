@@ -19,6 +19,52 @@
 	  "text": "Hmm, da komm ich ohne Leiter nicht hoch.",
 	  "choices": [],
 	  "nextNode": null
+	},
+	{
+	  "index": 3,
+	  "text": "Mehr kann ich nicht mitnehmen.",
+	  "choices": [],
+	  "nextNode": null
+	},
+	{
+	  "index": 4,
+	  "text": "Those fruit and veggies look so fresh.",
+	  "choices": [],
+	  "nextNode": null
+	},
+	{
+	  "index": 5,
+	  "text": "Some of those magazines are not even new.",
+	  "choices": [],
+	  "nextNode": null
+	},
+	{
+	  "index": 6,
+	  "text": "Curious looking rug.",
+	  "choices": [],
+	  "nextNode": null
+	},
+	{
+	  "index": 7,
+	  "text": "This hole is way too deep.",
+	  "choices": [
+		 {
+			"index": 0,
+			"text": "I must look closer",
+			"nextNode": null,
+			"dice_roll": {
+				"skill": "survival",
+				"difficulty": 10,
+			}
+		  },
+		{
+			"index": 0,
+			"text": "Nope...",
+			"nextNode": null,
+			"dice_roll": null
+		  }
+	],
+	  "nextNode": null
 	}
   ]
 }

@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://35mmfwmhfhoy"]
+
+[ext_resource type="Script" path="res://scenes/misc/level_teleporter.gd" id="1_kon1p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bnaxq"]
+
+[node name="LevelTeleporter" type="Area2D" groups=["LevelTeleporter"]]
+collision_layer = 64
+collision_mask = 128
+script = ExtResource("1_kon1p")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_bnaxq")
+
+[node name="SpawnMarker" type="Marker2D" parent="."]
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,43 +1,101 @@
 class_name Player extends CharacterBody2D
 
 @export var camera: Camera2D
-@export var skill_resource: SkillResource
-@export var items: ItemBarResource
+@export var stats: CharacterResource
+@export var status: StatusResource
 
-@onready var tilemap = $"../../Tilemap"
-@onready var remote_transform_speechbuble = $RemoteTransformSpeechbubble
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var player_state_machine: PlayerStateMachine = $PlayerStateMachine as PlayerStateMachine
+@onready var remote_transform_speechbuble: RemoteTransform2D = $RemoteTransformSpeechbubble
+@onready var charge_indicator: AnimatedSprite2D = $Ui/ChargeIndicator
 @onready var speechbubble = $Ui/Node2D/Speechbubble
+@onready var ranged_weapon_spawner: Marker2D = $Body/RangedWeaponSpawner
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var animation_tree: AnimationTree = $AnimationTree
+@onready var debug_label: Label = $DebugLabel
+@onready var melee_hit_box = $Body/MeleeTool/Container/HitBox
+@onready var choices_box = $ChoicesUi/Choices/ChoicesBox
 
-var has_perm_damage_for: int = 0
+
+@onready var player_state_machine: PlayerStateMachine = $PlayerStateMachine as PlayerStateMachine
+
+var equipped_item_type: ItemResource.ItemType = ItemResource.ItemType.NONE
+var equipped_item: ItemResource:
+	set(value):
+		if value:
+			equipped_item = value
+			equipped_item_type = equipped_item.type
+		else:
+			equipped_item_type = ItemResource.ItemType.NONE
+			equipped_item = null
+var weapon_target_position: Vector2
+var ranged_attack_strength: float
+var melee_attack_strength: float
 
 func _ready():
-	Events.status_zero.connect(_on_status_zero)
-	Events.item_equipped.connect(_on_item_equipped)
 	player_state_machine.init(self)
-	var door_ways = get_tree().get_nodes_in_group("DoorWays")
+	var door_ways = get_tree().get_nodes_in_group("LevelTeleporter")
 	for door in door_ways:
 		door.blocked.connect(_on_door_blocked)
+	InventoryManager.item_equipped.connect(_on_item_equipped)
+	InventoryManager.item_removed.connect(_on_item_removed)
 
-func _on_mouse_entered() -> void:
-	player_state_machine.on_mouse_entered()
+func take_damage(damage: int):
+	status.health -= damage
+	if status.health == 0:
+		_on_health_exhausted()
+	
+func _unhandled_input(event: InputEvent) -> void:
+	player_state_machine.on_input(event)   
+	
+func _on_attack_animation_finished():
+	player_state_machine.on_attack_animation_finished()
 
-func _on_mouse_exited() -> void:
-	player_state_machine.on_mouse_exited()
+func _on_attack_ranged_start():
+	player_state_machine.on_attack_ranged_start()
 
-func _on_input_event(viewport, event, shape_idx):
-	player_state_machine.on_input_event(viewport, event, shape_idx)
+func _on_charge_start():
+	player_state_machine.on_charge_start()
+	
+func _on_item_equipped(item: ItemResource):
+	equipped_item = item
+	player_state_machine.on_item_equipped(item)
 
-func _input(event: InputEvent) -> void:
-	player_state_machine.on_input(event)                                                                                
-
-func _on_status_zero(type: Types.Status):
-	player_state_machine.on_status_zero(type) 
+func _on_item_removed(item: ItemResource):
+	if item.hotbar_quantity == 0:
+		equipped_item = null
 	
 func _on_door_blocked():
 	speechbubble.activate(2)
 
-func _on_item_equipped(ability: AbilityResource):
-	player_state_machine.on_item_equipped(ability) 
+func _on_health_exhausted():
+	player_state_machine.on_health_exhausted()
 	
+func _physics_process(delta):
+	charge_indicator.position = get_global_mouse_position()
+	player_state_machine.physics_update(delta)
+
+func _on_charge_indicator_animation_finished():
+	player_state_machine.on_charge_indicator_animation_finished()
+
+func _create_choices_buttons(choices):
+	for choice in choices:
+		var button_scene = load("res://scenes/ui/dialogue/choice_button.tscn")
+		var button = button_scene.instantiate()
+		button.text = choice.text
+		button.pressed.connect(_on_choice_selected.bind(choice))
+		choices_box.choices_container.add_child(button)
+
+func _on_choice_selected(choice):
+	if choice.nextNode:
+		speechbubble.activate(choice.nextNode)
+	else:
+		choices_box.hide()
+		speechbubble.deactivate()
+	for choice_button in choices_box.choices_container.get_children():
+		choice_button.queue_free()
+
+func _on_speechbubble_choices_prompted(choices):
+	_create_choices_buttons(choices)
+	choices_box.show()
+
+func _on_speechbubble_dialogue_ended():
+	choices_box.hide()

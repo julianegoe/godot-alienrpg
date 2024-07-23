@@ -1,6 +1,0 @@
-[gd_resource type="Resource" script_class="EffectsManager" load_steps=2 format=3 uid="uid://b7m0c0keronxl"]
-
-[ext_resource type="Script" path="res://scripts/Resources/effects_manager.gd" id="1_jchdj"]
-
-[resource]
-script = ExtResource("1_jchdj")

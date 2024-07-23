@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://cj11p3r3hu5r8"]
+
+[ext_resource type="Script" path="res://scripts/classes/enemy.gd" id="1_b1ced"]
+[ext_resource type="Script" path="res://scripts/components/hurtbox.gd" id="1_by28c"]
+[ext_resource type="Script" path="res://scripts/components/hitbox.gd" id="2_mhs5x"]
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_b1ced")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+
+[node name="HurtBox" type="Area2D" parent="."]
+script = ExtResource("1_by28c")
+type = 1
+
+[node name="HitBox" type="Area2D" parent="."]
+script = ExtResource("2_mhs5x")
+type = 1

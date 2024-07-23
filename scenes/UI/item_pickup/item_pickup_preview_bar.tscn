@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://dajio76t23kse"]
+
+[ext_resource type="Script" path="res://scenes/ui/item_pickup/item_pickup_preview_bar.gd" id="1_bfoqn"]
+
+[node name="ItemPickupPreviewBar" type="Control"]
+layout_mode = 3
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+script = ExtResource("1_bfoqn")
+
+[node name="PreviewContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.4
+anchor_bottom = 0.4
+offset_left = 15.0
+grow_vertical = 2
+theme_override_constants/separation = 10

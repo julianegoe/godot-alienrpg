@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://bw47txtdhlv0d"]
+
+[ext_resource type="Script" path="res://scenes/ui/inventory/inventory_tab.gd" id="2_ltu73"]
+
+[node name="InventoryTab" type="TextureButton"]
+mouse_default_cursor_shape = 2
+script = ExtResource("2_ltu73")
+
+[connection signal="pressed" from="." to="." method="_on_pressed"]

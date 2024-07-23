@@ -1,7 +1,0 @@
-[gd_resource type="Resource" script_class="ItemBarResource" load_steps=2 format=3 uid="uid://bm2lc7u40goty"]
-
-[ext_resource type="Script" path="res://scripts/Resources/item_bar.gd" id="5_hc4gr"]
-
-[resource]
-script = ExtResource("5_hc4gr")
-items = Array[Resource("res://scripts/Resources/item.gd")]([])

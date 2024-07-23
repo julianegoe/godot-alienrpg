@@ -1,0 +1,212 @@
+[gd_scene load_steps=14 format=3 uid="uid://d4h6xgyyklhx8"]
+
+[ext_resource type="Texture2D" uid="uid://cya66lgmei0pm" path="res://assets/ui/inventory/inventory_ui_bg.png" id="1_6ak8j"]
+[ext_resource type="Script" path="res://scenes/ui/inventory/inventory.gd" id="1_iaecq"]
+[ext_resource type="Texture2D" uid="uid://mp4kcsxjc50x" path="res://assets/ui/inventory/inventory_ui_tab_flower.png" id="2_c7vkc"]
+[ext_resource type="Texture2D" uid="uid://dnw3f777d7g3e" path="res://assets/ui/inventory/inventory_ui_tab_weapon.png" id="3_1j2rc"]
+[ext_resource type="PackedScene" uid="uid://bw47txtdhlv0d" path="res://scenes/ui/inventory/inventory_tab.tscn" id="3_7yxt5"]
+[ext_resource type="Texture2D" uid="uid://cbm76ud0pqmcr" path="res://assets/ui/inventory/inventory_ui_tab_alchemy.png" id="4_p8a6k"]
+[ext_resource type="Texture2D" uid="uid://d2jj6kaq133pn" path="res://assets/ui/inventory/inventory_ui_tab_items.png" id="6_841l2"]
+[ext_resource type="Texture2D" uid="uid://v6sjgp0mh0oy" path="res://assets/ui/inventory/inventory_ui_infos.png" id="6_h5o44"]
+[ext_resource type="PackedScene" uid="uid://6n7315tuj01t" path="res://scenes/ui/inventory/inventory_slot.tscn" id="7_ssc46"]
+[ext_resource type="PackedScene" uid="uid://c6asyecb5m4sb" path="res://scenes/ui/inventory/inventory_label.tscn" id="8_0cgy3"]
+[ext_resource type="Resource" uid="uid://6khgkcxvuhbl" path="res://resources/player_resource.tres" id="12_6iup0"]
+[ext_resource type="PackedScene" uid="uid://bejivrrxehwm1" path="res://scenes/ui/inventory/inventory_details_tab.tscn" id="12_hd6lk"]
+[ext_resource type="PackedScene" uid="uid://dlonkna2yl1rm" path="res://scenes/ui/inventory/inventory_files.tscn" id="15_fd48u"]
+
+[node name="Inventory" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_top = -30.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_iaecq")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -154.0
+offset_top = -95.5
+offset_right = 154.0
+offset_bottom = 95.5
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_6ak8j")
+stretch_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(280, 180)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -115.0
+offset_top = -90.0
+offset_right = 140.0
+offset_bottom = 90.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Left" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+mouse_filter = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/Left"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 6
+
+[node name="TabsContainer" type="HBoxContainer" parent="HBoxContainer/Left/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="WeaponTab" parent="HBoxContainer/Left/VBoxContainer/TabsContainer" instance=ExtResource("3_7yxt5")]
+self_modulate = Color(0.6, 0.6, 0.6, 1)
+layout_mode = 2
+texture_normal = ExtResource("3_1j2rc")
+type = 1
+tab_texture = ExtResource("3_1j2rc")
+
+[node name="FloraTab" parent="HBoxContainer/Left/VBoxContainer/TabsContainer" instance=ExtResource("3_7yxt5")]
+self_modulate = Color(0.48, 0.48, 0.48, 1)
+layout_mode = 2
+texture_normal = ExtResource("2_c7vkc")
+tab_texture = ExtResource("2_c7vkc")
+
+[node name="AlchemyTab" parent="HBoxContainer/Left/VBoxContainer/TabsContainer" instance=ExtResource("3_7yxt5")]
+self_modulate = Color(0.48, 0.48, 0.48, 1)
+layout_mode = 2
+texture_normal = ExtResource("4_p8a6k")
+type = 2
+tab_texture = ExtResource("4_p8a6k")
+
+[node name="ItemTab" parent="HBoxContainer/Left/VBoxContainer/TabsContainer" instance=ExtResource("3_7yxt5")]
+self_modulate = Color(0.48, 0.48, 0.48, 1)
+layout_mode = 2
+texture_normal = ExtResource("6_841l2")
+type = 3
+tab_texture = ExtResource("6_841l2")
+
+[node name="InventoryLabel" parent="HBoxContainer/Left/VBoxContainer" instance=ExtResource("8_0cgy3")]
+layout_mode = 2
+inventory_type = 1
+
+[node name="Slots" type="GridContainer" parent="HBoxContainer/Left/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 2.0
+theme_override_constants/h_separation = 4
+theme_override_constants/v_separation = 4
+columns = 4
+
+[node name="InventorySlot" parent="HBoxContainer/Left/VBoxContainer/Slots" instance=ExtResource("7_ssc46")]
+layout_mode = 2
+
+[node name="InventorySlot2" parent="HBoxContainer/Left/VBoxContainer/Slots" instance=ExtResource("7_ssc46")]
+layout_mode = 2
+
+[node name="InventorySlot3" parent="HBoxContainer/Left/VBoxContainer/Slots" instance=ExtResource("7_ssc46")]
+layout_mode = 2
+
+[node name="InventorySlot4" parent="HBoxContainer/Left/VBoxContainer/Slots" instance=ExtResource("7_ssc46")]
+layout_mode = 2
+
+[node name="InventorySlot5" parent="HBoxContainer/Left/VBoxContainer/Slots" instance=ExtResource("7_ssc46")]
+layout_mode = 2
+
+[node name="InventorySlot6" parent="HBoxContainer/Left/VBoxContainer/Slots" instance=ExtResource("7_ssc46")]
+layout_mode = 2
+
+[node name="InventorySlot7" parent="HBoxContainer/Left/VBoxContainer/Slots" instance=ExtResource("7_ssc46")]
+layout_mode = 2
+
+[node name="InventorySlot8" parent="HBoxContainer/Left/VBoxContainer/Slots" instance=ExtResource("7_ssc46")]
+layout_mode = 2
+
+[node name="InventorySlot9" parent="HBoxContainer/Left/VBoxContainer/Slots" instance=ExtResource("7_ssc46")]
+layout_mode = 2
+
+[node name="InventorySlot10" parent="HBoxContainer/Left/VBoxContainer/Slots" instance=ExtResource("7_ssc46")]
+layout_mode = 2
+
+[node name="InventorySlot11" parent="HBoxContainer/Left/VBoxContainer/Slots" instance=ExtResource("7_ssc46")]
+layout_mode = 2
+
+[node name="InventorySlot12" parent="HBoxContainer/Left/VBoxContainer/Slots" instance=ExtResource("7_ssc46")]
+layout_mode = 2
+
+[node name="Right" type="Control" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Files" type="TextureRect" parent="HBoxContainer/Right"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -76.0
+offset_right = 118.0
+offset_bottom = 76.0
+grow_vertical = 2
+texture = ExtResource("6_h5o44")
+stretch_mode = 2
+
+[node name="InventoryFiles" parent="HBoxContainer/Right/Files" instance=ExtResource("15_fd48u")]
+layout_mode = 1
+character_resource = ExtResource("12_6iup0")
+
+[node name="FileCategoryContainer" type="Control" parent="HBoxContainer/Right/Files/InventoryFiles"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+grow_horizontal = 0
+
+[node name="DetailsFile" parent="HBoxContainer/Right/Files/InventoryFiles/FileCategoryContainer" instance=ExtResource("12_hd6lk")]
+self_modulate = Color(0.8, 0.184314, 0.482353, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.5
+offset_top = 3.0
+offset_right = 6.5
+offset_bottom = 15.0
+grow_horizontal = 2
+grow_vertical = 2
+tab_color = Color(0.8, 0.184314, 0.482353, 1)
+is_selected = true
+
+[node name="StatsFile" parent="HBoxContainer/Right/Files/InventoryFiles/FileCategoryContainer" instance=ExtResource("12_hd6lk")]
+self_modulate = Color(0.901961, 0.270588, 0.223529, 1)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.200012
+offset_top = 16.0
+offset_right = 6.79999
+offset_bottom = 28.0
+grow_horizontal = 2
+grow_vertical = 2
+type = 1
+tab_color = Color(0.901961, 0.270588, 0.223529, 1)

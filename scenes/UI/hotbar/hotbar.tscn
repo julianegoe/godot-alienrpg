@@ -1,0 +1,46 @@
+[gd_scene load_steps=4 format=3 uid="uid://c44lg1xi25r51"]
+
+[ext_resource type="Script" path="res://scenes/ui/hotbar/hotbar.gd" id="1_g8t81"]
+[ext_resource type="Resource" uid="uid://6ajlrcmxrjts" path="res://resources/inventory_resource.tres" id="2_cxtfg"]
+[ext_resource type="Texture2D" uid="uid://bn6swwro8y0mr" path="res://assets/ui/misc/hotbar_selector.png" id="2_sj65b"]
+
+[node name="HotBar" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 1
+script = ExtResource("1_g8t81")
+inventory = ExtResource("2_cxtfg")
+slot_path = "res://scenes/ui/hotbar_slot.tscn"
+slot_count = 5
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+custom_minimum_size = Vector2(200, 2.08165e-12)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -48.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_constants/margin_bottom = 10
+
+[node name="Container" type="HBoxContainer" parent="MarginContainer"]
+custom_minimum_size = Vector2(2.08165e-12, 2.08165e-12)
+layout_mode = 2
+size_flags_vertical = 8
+alignment = 1
+
+[node name="Selector" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 26.0
+offset_bottom = 26.0
+mouse_filter = 2
+texture = ExtResource("2_sj65b")

@@ -1,21 +1,49 @@
 class_name NpcShopkeeper extends Npc
 
-@onready var speechbubble: Speechbubble = $UI/PosHelper/Speechbubble
+@onready var speechbubble = $UI/PosHelper/Speechbubble
+@onready var collision_shape_2d = $Vicinity/CollisionShape2D
+@onready var choices_box = $ChoicesUi/Control/Choices
 
 func _ready():
 	$AnimationPlayer.play("idle")
 	interaction_icon.hide()
 
 func _unhandled_input(event):
-	if event.is_action_pressed("skip") and speechbubble.ui_state == speechbubble.UiState.OPEN:
-			speechbubble.skip_text()
-	if event.is_action_pressed("interact") and speechbubble.ui_state == speechbubble.UiState.CLOSED and interaction_state == DistanceState.IN_VICINITY:
-		speechbubble.activate()
-		interaction_icon.hide()
-	get_viewport().set_input_as_handled()
-				
+	if event.is_action_pressed("skip") and speechbubble.is_active:
+			speechbubble.speed_up_text()
+						
 func _on_player_entered(_body):
 	pass
 
 func _on_player_exited(_body):
+	choices_box.hide()
 	speechbubble.deactivate()
+
+func _on_vicinity_input_event(_viewport, event, _shape_idx):
+	if event.is_action_pressed("interact") and not speechbubble.is_active and interaction_state == DistanceState.IN_VICINITY:
+		speechbubble.activate()
+		interaction_icon.hide()
+
+func _create_choices_buttons(choices):
+	for choice in choices:
+		var button_scene = load("res://scenes/ui/dialogue/choice_button.tscn")
+		var button = button_scene.instantiate()
+		button.text = choice.text
+		button.pressed.connect(_on_choice_selected.bind(choice))
+		choices_box.choices_container.add_child(button)
+
+func _on_choice_selected(choice):
+	if choice.nextNode:
+		speechbubble.activate(choice.nextNode)
+	else:
+		choices_box.hide()
+		speechbubble.deactivate()
+	for choice_button in choices_box.choices_container.get_children():
+		choice_button.queue_free()
+
+func _on_speechbubble_choices_prompted(choices):
+	_create_choices_buttons(choices)
+	choices_box.show()
+
+func _on_speechbubble_dialogue_ended():
+	choices_box.hide()

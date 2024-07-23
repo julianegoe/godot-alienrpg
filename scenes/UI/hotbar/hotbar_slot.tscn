@@ -1,0 +1,82 @@
+[gd_scene load_steps=8 format=3 uid="uid://dwbrnhn7qlyyo"]
+
+[ext_resource type="Texture2D" uid="uid://botc6easo51we" path="res://assets/ui/hotbar/hotbar_slot.png" id="1_788d7"]
+[ext_resource type="Script" path="res://scenes/ui/hotbar/hotbar_slot.gd" id="2_r0rpf"]
+[ext_resource type="PackedScene" uid="uid://bbqjkd2u7ljlv" path="res://scenes/ui/item_state_machine.tscn" id="4_1hmbe"]
+[ext_resource type="PackedScene" uid="uid://cidpcaht1gmr8" path="res://scenes/ui/components/slot_selector.tscn" id="4_jqnfg"]
+[ext_resource type="Texture2D" uid="uid://b1wys7f7wonc6" path="res://assets/tilesets/21bit_item_icons_tileset.png" id="4_k77lq"]
+[ext_resource type="PackedScene" uid="uid://cmlsuhhjjltx0" path="res://scenes/ui/components/slot_dropable.tscn" id="5_avpdq"]
+[ext_resource type="PackedScene" uid="uid://divsu05q8ao46" path="res://scenes/ui/hotbar/hotbar_tooltip.tscn" id="7_pvkwp"]
+
+[node name="HotbarSlot" type="TextureButton"]
+process_mode = 3
+custom_minimum_size = Vector2(26, 26)
+offset_right = 21.0
+offset_bottom = 21.0
+mouse_default_cursor_shape = 2
+disabled = true
+texture_normal = ExtResource("1_788d7")
+texture_disabled = ExtResource("1_788d7")
+script = ExtResource("2_r0rpf")
+
+[node name="Tooltip" parent="." instance=ExtResource("7_pvkwp")]
+visible = false
+layout_mode = 1
+
+[node name="ItemIcon" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_k77lq")
+centered = false
+offset = Vector2(3, 2)
+region_enabled = true
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 21, 21)
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 1
+anchor_left = 0.9
+anchor_top = 0.9
+anchor_right = 0.9
+anchor_bottom = 0.9
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2.0
+offset_bottom = 3.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 6
+text = "0"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Selector" parent="." instance=ExtResource("4_jqnfg")]
+process_mode = 3
+position = Vector2(-2, -2)
+collision_layer = 16
+collision_mask = 12
+monitorable = true
+
+[node name="Dropable" parent="." instance=ExtResource("5_avpdq")]
+process_mode = 3
+collision_layer = 8
+collision_mask = 28
+
+[node name="StateMachine" parent="." instance=ExtResource("4_1hmbe")]
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="area_entered" from="Selector" to="." method="_on_selector_area_entered"]
+[connection signal="area_exited" from="Selector" to="." method="_on_selector_area_exited"]
+
+[editable path="StateMachine"]

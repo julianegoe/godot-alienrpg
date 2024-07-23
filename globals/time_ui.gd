@@ -1,4 +1,4 @@
-extends CanvasLayer
+class_name TimeUi extends CanvasLayer
 
 @onready var clock = $Control/MarginContainer/Clock
 @onready var label = $Control/MarginContainer/Label

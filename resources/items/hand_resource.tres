@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=2 format=3 uid="uid://dis3wcq3sjasp"]
+
+[ext_resource type="Script" path="res://scripts/resources/item_resource.gd" id="1_hxxwy"]
+
+[resource]
+script = ExtResource("1_hxxwy")
+type = 4
+texture_region_rect = Rect2(21, 2.08165e-12, 20, 20)
+id = "body_hand"
+display_name = "Hand"
+description = "Meine Hand."
+inventory_quantity = -1
+hotbar_quantity = -1
+is_equipped = true
+is_hotbar = true
+is_inventory = false
+hotbar_position = 0
+inventory_position = 0

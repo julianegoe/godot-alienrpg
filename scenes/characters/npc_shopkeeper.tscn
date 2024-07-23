@@ -1,17 +1,18 @@
-[gd_scene load_steps=9 format=3 uid="uid://bv6xpju5vv6ms"]
+[gd_scene load_steps=12 format=3 uid="uid://bv6xpju5vv6ms"]
 
 [ext_resource type="PackedScene" uid="uid://dn0xejscrtpfb" path="res://scenes/characters/npc.tscn" id="1_skejw"]
-[ext_resource type="Texture2D" uid="uid://8v88328oev5g" path="res://assets/characters/shopkeeper.png" id="2_ajb2p"]
 [ext_resource type="Script" path="res://scenes/characters/npc_shopkeeper.gd" id="2_nn7mj"]
+[ext_resource type="Texture2D" uid="uid://dy78t0hu8m4w6" path="res://assets/characters/shopkeeper_v2.png" id="3_cj56t"]
 [ext_resource type="Texture2D" uid="uid://bmbfe6gq4bt8o" path="res://assets/shadows/character_shadow.png" id="4_eo6j4"]
-[ext_resource type="PackedScene" uid="uid://dvqjtowi8nfu5" path="res://scenes/UI/speechbubble.tscn" id="4_r2vly"]
-[ext_resource type="Resource" uid="uid://dppsjg1cqqoo2" path="res://resources/npc_dialogues/shopkeeper_dialogue.tres" id="5_gm4cs"]
+[ext_resource type="PackedScene" uid="uid://x1mxtctwuy0u" path="res://scenes/ui/dialogue/speechbubble.tscn" id="5_uyvhw"]
+[ext_resource type="Resource" uid="uid://dppsjg1cqqoo2" path="res://resources/npc_dialogues/shopkeeper_dialogue.tres" id="6_hw5lk"]
+[ext_resource type="PackedScene" uid="uid://cm0iaowv6241f" path="res://scenes/ui/dialogue/choices_box.tscn" id="7_ivvqb"]
 
-[sub_resource type="Animation" id="Animation_w2sar"]
-resource_name = "idle"
-length = 0.8
-loop_mode = 1
-step = 0.2
+[sub_resource type="CircleShape2D" id="CircleShape2D_n7rik"]
+radius = 30.0
+
+[sub_resource type="Animation" id="Animation_2fijc"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -19,32 +20,53 @@ tracks/0/path = NodePath("Texture:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 1, 2, 0]
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_w2sar"]
+resource_name = "idle"
+length = 0.8
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Texture:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8vkfy"]
 _data = {
+"RESET": SubResource("Animation_2fijc"),
 "idle": SubResource("Animation_w2sar")
 }
 
 [node name="Shopkeeper" instance=ExtResource("1_skejw")]
 script = ExtResource("2_nn7mj")
 
-[node name="Texture" parent="." index="0"]
-texture = ExtResource("2_ajb2p")
-hframes = 3
+[node name="CollisionShape2D" parent="." index="0"]
+position = Vector2(6.82121e-13, 15)
+
+[node name="Texture" parent="." index="1"]
+texture = ExtResource("3_cj56t")
+hframes = 8
 
 [node name="Shadow" type="Sprite2D" parent="Texture" index="0"]
 self_modulate = Color(1, 1, 1, 0.517647)
 show_behind_parent = true
-position = Vector2(0, 15)
+position = Vector2(1, 17)
 texture = ExtResource("4_eo6j4")
 
-[node name="CollisionShape2D" parent="." index="1"]
-position = Vector2(0, 10)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Vicinity" index="0"]
+shape = SubResource("CircleShape2D_n7rik")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
 libraries = {
@@ -61,9 +83,39 @@ follow_viewport_enabled = true
 [node name="PosHelper" type="Node2D" parent="UI" index="0"]
 position = Vector2(-55, -65)
 
-[node name="Speechbubble" parent="UI/PosHelper" index="0" instance=ExtResource("4_r2vly")]
+[node name="Speechbubble" parent="UI/PosHelper" index="0" instance=ExtResource("5_uyvhw")]
+dialogue_resource = ExtResource("6_hw5lk")
+
+[node name="ChoicesUi" type="CanvasLayer" parent="." index="8"]
+
+[node name="Control" type="Control" parent="ChoicesUi" index="0"]
+layout_mode = 3
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Choices" parent="ChoicesUi/Control" index="0" instance=ExtResource("7_ivvqb")]
 visible = false
-dialogue_resource = ExtResource("5_gm4cs")
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -50.0
+offset_right = 120.0
+offset_bottom = -10.0
+grow_horizontal = 2
+grow_vertical = 0
+portrait = 1
 
 [connection signal="player_entered" from="." to="." method="_on_player_entered"]
 [connection signal="player_exited" from="." to="." method="_on_player_exited"]
+[connection signal="input_event" from="Vicinity" to="." method="_on_vicinity_input_event"]
+[connection signal="choices_prompted" from="UI/PosHelper/Speechbubble" to="." method="_on_speechbubble_choices_prompted"]
+[connection signal="dialogue_ended" from="UI/PosHelper/Speechbubble" to="." method="_on_speechbubble_dialogue_ended"]

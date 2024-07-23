@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://cr0mflrmnfrd6"]
+
+[ext_resource type="PackedScene" uid="uid://bq8rcc5d8ojhe" path="res://scenes/levels/base_level.tscn" id="1_qu7n3"]
+[ext_resource type="PackedScene" uid="uid://uxy3fisb2ycr" path="res://scenes/misc/door.tscn" id="2_0oc4y"]
+[ext_resource type="PackedScene" uid="uid://bv6xpju5vv6ms" path="res://scenes/characters/npc_shopkeeper.tscn" id="2_ueab1"]
+[ext_resource type="Texture2D" uid="uid://dawdkypupmowy" path="res://assets/lights/circle.png" id="3_7tjpb"]
+
+[node name="ShopInterior" instance=ExtResource("1_qu7n3")]
+scene_location = 2
+
+[node name="LevelTilemap" parent="." index="0"]
+layer_0/tile_data = PackedInt32Array(524290, 327686, 268435457, 262146, 262150, 0, 327682, 262150, 0, 393218, 262150, 0, 458754, 262150, 0, 262147, 6, 1, 327683, 6, 1, 393219, 6, 1, 458755, 6, 1, 262148, 6, 1, 327684, 6, 1, 393220, 6, 1, 458756, 393222, 0, 262149, 6, 1, 327685, 6, 1, 393221, 6, 1, 458757, 393222, 1, 262150, 6, 1, 327686, 6, 1, 393222, 6, 1, 458758, 327686, 0, 262151, 262150, 1, 327687, 262150, 1, 393223, 262150, 1, 458759, 327686, 1, 131079, 196614, 0, 196615, 196614, 1, 131074, 65542, 0, 196610, 65542, 1, 131075, 131078, 0, 196611, 131078, 1, 131076, 131078, 0, 196612, 131078, 1, 131077, 131078, 0, 196613, 131078, 1, 131078, 131078, 0, 196614, 131078, 1, 524291, 327686, 0, 524292, 327686, 1)
+layer_1/tile_data = PackedInt32Array(262147, 196610, 0, 393219, 65538, 0, 393221, 65538, 0, 458754, 327682, 0, 524290, 393218, 0, 262149, 196610, 0)
+layer_2/tile_data = PackedInt32Array(196611, 262145, 3, 262151, 851969, 3, 196615, 851969, 2, 327687, 131073, 268435461, 393223, 589825, 268435459, 458759, 458753, 268435459, 458754, 655361, 0)
+layer_3/tile_data = PackedInt32Array(327683, 196609, 5, 327685, 196609, 268435461, 196611, 1, 3, 196613, 131073, 3, 458755, 1, 5)
+
+[node name="Player" parent="Characters" index="0"]
+position = Vector2(81, 240)
+
+[node name="Shopkeeper" parent="Characters" index="1" instance=ExtResource("2_ueab1")]
+position = Vector2(246, 170)
+
+[node name="CeilingLight" type="PointLight2D" parent="Lights" index="0"]
+position = Vector2(79, 217)
+color = Color(1, 0.913725, 0.737255, 1)
+energy = 1.4
+texture = ExtResource("3_7tjpb")
+texture_scale = 0.3
+
+[node name="Door_ShopInterior" parent="LevelTeleporters" index="0" instance=ExtResource("2_0oc4y")]
+position = Vector2(176, 260)
+id = "shop"
+destination_level = 1
+destination_door = "ShopExterior"
+
+[node name="SpawnMarker" parent="LevelTeleporters/Door_ShopInterior" index="1"]
+position = Vector2(0, -30)
+
+[node name="Ui" parent="." index="9"]
+visible = false
+
+[editable path="LevelTeleporters/Door_ShopInterior"]

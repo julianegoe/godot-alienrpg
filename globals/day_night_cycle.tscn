@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://052kqwtj3jo8"]
 
 [ext_resource type="Script" path="res://globals/day_night_cycle.gd" id="1_3hlg2"]
-[ext_resource type="Script" path="res://scripts/Resources/game_time.gd" id="2_8fmjr"]
+[ext_resource type="Script" path="res://scripts/resources/game_time.gd" id="2_8fmjr"]
 
 [sub_resource type="Resource" id="Resource_7415g"]
 script = ExtResource("2_8fmjr")
@@ -12,7 +12,7 @@ script = ExtResource("1_3hlg2")
 game_time = SubResource("Resource_7415g")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 0.2
+wait_time = 0.5
 autostart = true
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

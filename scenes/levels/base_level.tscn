@@ -1,44 +1,37 @@
-[gd_scene load_steps=11 format=3 uid="uid://bq8rcc5d8ojhe"]
+[gd_scene load_steps=10 format=3 uid="uid://bq8rcc5d8ojhe"]
 
+[ext_resource type="Script" path="res://scenes/levels/base_level.gd" id="1_41pqk"]
 [ext_resource type="TileSet" uid="uid://ca5m17ajimq8v" path="res://resources/tilesets/terrain_tileset.tres" id="1_xiw1o"]
-[ext_resource type="Script" path="res://scripts/Levels/base_level.gd" id="2_0mery"]
-[ext_resource type="PackedScene" uid="uid://lj83ihhd76kp" path="res://scenes/UI/status_bars.tscn" id="2_br6a6"]
 [ext_resource type="PackedScene" uid="uid://ddxiox66ebnly" path="res://globals/time_ui.tscn" id="2_jed7o"]
 [ext_resource type="PackedScene" uid="uid://crvo6u3r2wtnv" path="res://scenes/characters/player/player.tscn" id="3_cm83x"]
-[ext_resource type="PackedScene" uid="uid://bsbrulfi8t1ak" path="res://scenes/UI/menu.tscn" id="3_dpssr"]
-[ext_resource type="Script" path="res://scripts/Helpers/tilemap.gd" id="3_ufh7s"]
-[ext_resource type="Script" path="res://scripts/Effects/lights.gd" id="4_d7f2s"]
-[ext_resource type="PackedScene" uid="uid://cpj4qdgy4l2eg" path="res://scenes/UI/skill_bars.tscn" id="4_fflj1"]
-[ext_resource type="PackedScene" uid="uid://mwd3gx0s8lmv" path="res://scenes/UI/item_bar.tscn" id="5_lekuf"]
+[ext_resource type="PackedScene" uid="uid://d4h6xgyyklhx8" path="res://scenes/ui/inventory/inventory.tscn" id="3_m5kab"]
+[ext_resource type="Script" path="res://scripts/misc/level_tilemap.gd" id="3_owwb2"]
+[ext_resource type="PackedScene" uid="uid://c44lg1xi25r51" path="res://scenes/ui/hotbar/hotbar.tscn" id="4_x3idk"]
+[ext_resource type="Resource" uid="uid://6ajlrcmxrjts" path="res://resources/inventory_resource.tres" id="4_yryc0"]
+[ext_resource type="Script" path="res://scripts/misc/lights.gd" id="7_um420"]
 
 [node name="BaseLevel" type="Node2D"]
 y_sort_enabled = true
-script = ExtResource("2_0mery")
+script = ExtResource("1_41pqk")
 
-[node name="TimeUI" parent="." instance=ExtResource("2_jed7o")]
-
-[node name="StatusBars" parent="." instance=ExtResource("2_br6a6")]
-
-[node name="SkillBars" parent="." instance=ExtResource("4_fflj1")]
-
-[node name="ItemBar" parent="." instance=ExtResource("5_lekuf")]
-
-[node name="Menu" parent="." instance=ExtResource("3_dpssr")]
-visible = false
-
-[node name="Tilemap" type="TileMap" parent="." node_paths=PackedStringArray("player")]
+[node name="LevelTilemap" type="TileMap" parent="." node_paths=PackedStringArray("player")]
+unique_name_in_owner = true
 y_sort_enabled = true
 tile_set = ExtResource("1_xiw1o")
 rendering_quadrant_size = 32
 format = 2
 layer_0/name = "Ground"
-layer_1/name = "Objects"
-layer_1/y_sort_enabled = true
+layer_1/name = "Shadows"
+layer_1/modulate = Color(1, 1, 1, 0.501961)
+layer_1/y_sort_origin = -50
 layer_1/tile_data = PackedInt32Array()
-layer_2/name = "Items"
+layer_2/name = "Objects"
 layer_2/y_sort_enabled = true
 layer_2/tile_data = PackedInt32Array()
-script = ExtResource("3_ufh7s")
+layer_3/name = "Items"
+layer_3/y_sort_enabled = true
+layer_3/tile_data = PackedInt32Array()
+script = ExtResource("3_owwb2")
 player = NodePath("../Characters/Player")
 
 [node name="Buildings" type="Node2D" parent="."]
@@ -51,20 +44,35 @@ y_sort_enabled = true
 y_sort_enabled = true
 
 [node name="Player" parent="Characters" instance=ExtResource("3_cm83x")]
+unique_name_in_owner = true
 
 [node name="Camera2D" type="Camera2D" parent="Characters/Player"]
+zoom = Vector2(1.4, 1.4)
 
 [node name="Enemies" type="Node2D" parent="."]
 y_sort_enabled = true
 
 [node name="Lights" type="Node2D" parent="."]
-script = ExtResource("4_d7f2s")
+script = ExtResource("7_um420")
 
-[node name="Sun" type="Node2D" parent="."]
+[node name="SunRays" type="Node2D" parent="."]
 
-[node name="DoorWays" type="Node2D" parent="."]
+[node name="LevelTeleporters" type="Node2D" parent="."]
 
 [node name="BackgroundMusic" type="AudioStreamPlayer" parent="."]
 process_mode = 3
 
+[node name="Ui" type="CanvasLayer" parent="."]
+process_mode = 3
+
+[node name="HotBar" parent="Ui" instance=ExtResource("4_x3idk")]
+slot_path = "res://scenes/ui/hotbar/hotbar_slot.tscn"
+
+[node name="Inventory" parent="Ui" node_paths=PackedStringArray("hotbar") instance=ExtResource("3_m5kab")]
+inventory = ExtResource("4_yryc0")
+hotbar = NodePath("../HotBar")
+
+[node name="TimeUI" parent="." instance=ExtResource("2_jed7o")]
+
 [connection signal="finished" from="BackgroundMusic" to="." method="_on_background_music_finished"]
+[connection signal="inventory_visibility_changed" from="Ui/Inventory" to="." method="_on_inventory_inventory_visibility_changed"]

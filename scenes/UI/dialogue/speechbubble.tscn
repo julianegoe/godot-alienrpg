@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://x1mxtctwuy0u"]
+
+[ext_resource type="Texture2D" uid="uid://4kyv500msmof" path="res://assets/ui/dialogue/ninepatch_dialogue.png" id="1_foh52"]
+[ext_resource type="Script" path="res://scenes/ui/dialogue/speechbubble.gd" id="2_of8h7"]
+[ext_resource type="Script" path="res://scripts/managers/dialogue_manager.gd" id="3_1gu50"]
+[ext_resource type="Theme" uid="uid://wb56k7anlde3" path="res://resources/themes/font_main_theme.tres" id="5_grghk"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c72kv"]
+texture = ExtResource("1_foh52")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 5.0
+texture_margin_bottom = 5.0
+
+[node name="Speechbubble" type="Panel" node_paths=PackedStringArray("character_name_label", "dialogue_label")]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxTexture_c72kv")
+script = ExtResource("2_of8h7")
+character_name_label = NodePath("VBoxContainer/CharacterName")
+dialogue_label = NodePath("VBoxContainer/DialogueText")
+
+[node name="DialogueManager" type="Node" parent="."]
+script = ExtResource("3_1gu50")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 3.0
+offset_right = -4.0
+offset_bottom = -5.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 1
+
+[node name="CharacterName" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_grghk")
+theme_override_colors/font_color = Color(0.411765, 0.141176, 0.392157, 1)
+theme_override_font_sizes/font_size = 7
+
+[node name="DialogueText" type="RichTextLabel" parent="VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("5_grghk")
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 6
+fit_content = true
+
+[connection signal="text_completed" from="DialogueManager" to="." method="_on_dialogue_manager_text_completed"]
+[connection signal="item_rect_changed" from="VBoxContainer/DialogueText" to="." method="_on_dialogue_text_item_rect_changed"]

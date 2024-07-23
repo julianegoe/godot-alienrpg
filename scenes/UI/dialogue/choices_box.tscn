@@ -1,0 +1,40 @@
+[gd_scene load_steps=5 format=3 uid="uid://cm0iaowv6241f"]
+
+[ext_resource type="Texture2D" uid="uid://bjodi2ukbhma8" path="res://assets/ui/dialogue/options_box.png" id="1_8wm8m"]
+[ext_resource type="Script" path="res://scenes/ui/dialogue/choices_box.gd" id="2_qj360"]
+[ext_resource type="Texture2D" uid="uid://b2ucd6655rxx1" path="res://assets/ui/character_portraits/character_portraits.png" id="3_gcgtm"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r8xeo"]
+atlas = ExtResource("3_gcgtm")
+region = Rect2(2.08165e-12, 2.08165e-12, 50, 50)
+
+[node name="ChoicesBox" type="TextureRect"]
+offset_right = 83.0
+texture = ExtResource("1_8wm8m")
+script = ExtResource("2_qj360")
+
+[node name="ChoicesContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.8
+anchor_bottom = 1.0
+offset_left = 10.0
+offset_top = 6.0
+offset_right = -5.0
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -44.0
+offset_top = -13.0
+offset_right = 6.0
+offset_bottom = 37.0
+grow_horizontal = 0
+rotation = 0.102855
+texture = SubResource("AtlasTexture_r8xeo")

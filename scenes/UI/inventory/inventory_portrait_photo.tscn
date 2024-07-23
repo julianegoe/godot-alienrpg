@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4c1w07q4p7gd"]
+
+[ext_resource type="Texture2D" uid="uid://bvyw72ewpobj8" path="res://assets/ui/character_portraits/character_portrait_player.png" id="1_pa7th"]
+[ext_resource type="Script" path="res://scenes/ui/inventory/inventory_portrait_photo.gd" id="2_7qxq7"]
+[ext_resource type="Texture2D" uid="uid://d1a05nvwdeexl" path="res://assets/ui/inventory/inventory_slot_equipped_marker.png" id="2_8nr17"]
+[ext_resource type="Theme" uid="uid://wb56k7anlde3" path="res://resources/themes/font_main_theme.tres" id="4_p1jb8"]
+
+[node name="ItemPhoto" type="Sprite2D"]
+position = Vector2(38, 27)
+rotation = -0.0729567
+texture = ExtResource("1_pa7th")
+script = ExtResource("2_7qxq7")
+
+[node name="Clip" type="Sprite2D" parent="."]
+position = Vector2(-7.22665, -24.5922)
+texture = ExtResource("2_8nr17")
+
+[node name="PhotoLabel" type="Label" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -30.5
+offset_top = -33.0
+offset_right = -19.5
+offset_bottom = -27.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("4_p1jb8")
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 9

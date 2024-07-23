@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="MeleeWeaponResource" load_steps=3 format=3 uid="uid://r4d20rp1bfr6"]
+
+[ext_resource type="Script" path="res://scripts/resources/melee_weapon_resource.gd" id="1_v8txo"]
+[ext_resource type="Texture2D" uid="uid://chfcpaw6t148q" path="res://assets/ui/item_portraits/item_portrait_axe.png" id="2_gkqo0"]
+
+[resource]
+script = ExtResource("1_v8txo")
+weapon_type = 0
+base_damage = 40
+strength_modifier = 1.0
+ineffective_against = Array[StringName]([&"Humanoid"])
+type = 1
+texture_region_rect = Rect2(2.08165e-12, 2.08165e-12, 21, 21)
+portrait_texture = ExtResource("2_gkqo0")
+id = "weapon_axe"
+display_name = "Axe"
+description = "This should come in handy..."
+inventory_quantity = -1
+hotbar_quantity = -1
+is_equipped = false
+is_hotbar = true
+is_inventory = true
+hotbar_position = 1
+inventory_position = 0

@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="StatusResource" load_steps=2 format=3 uid="uid://cmdb8uwuvh1g"]
+
+[ext_resource type="Script" path="res://scripts/resources/status_resource.gd" id="1_ui72o"]
+
+[resource]
+script = ExtResource("1_ui72o")
+health = 100
+energy = 100
+EXPERIMENTAL_dutifulness = 100

@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="DoorsResource" load_steps=2 format=3 uid="uid://8uujifrqsy1"]
+
+[ext_resource type="Script" path="res://scripts/resources/doors_resource.gd" id="1_7lw6s"]
+
+[resource]
+script = ExtResource("1_7lw6s")
+locked = {
+"home": false,
+"shop": false
+}

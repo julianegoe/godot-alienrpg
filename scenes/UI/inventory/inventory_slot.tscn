@@ -1,0 +1,75 @@
+[gd_scene load_steps=9 format=3 uid="uid://6n7315tuj01t"]
+
+[ext_resource type="Texture2D" uid="uid://cfn0vo1pv0tlg" path="res://assets/ui/inventory/inventory_ui_slot_disabled.png" id="1_wolm4"]
+[ext_resource type="Script" path="res://scenes/ui/inventory/inventory_slot.gd" id="2_ikx48"]
+[ext_resource type="Texture2D" uid="uid://dvx5kttbkhhdk" path="res://assets/ui/inventory/inventory_ui_button_focused.png" id="2_xpduf"]
+[ext_resource type="Texture2D" uid="uid://d1a05nvwdeexl" path="res://assets/ui/inventory/inventory_slot_equipped_marker.png" id="3_sy2nu"]
+[ext_resource type="PackedScene" uid="uid://bbqjkd2u7ljlv" path="res://scenes/ui/item_state_machine.tscn" id="4_532a5"]
+[ext_resource type="Texture2D" uid="uid://b1wys7f7wonc6" path="res://assets/tilesets/21bit_item_icons_tileset.png" id="4_ougup"]
+[ext_resource type="PackedScene" uid="uid://cidpcaht1gmr8" path="res://scenes/ui/components/slot_selector.tscn" id="4_v26ig"]
+[ext_resource type="PackedScene" uid="uid://cmlsuhhjjltx0" path="res://scenes/ui/components/slot_dropable.tscn" id="5_ej8im"]
+
+[node name="InventorySlot" type="TextureButton"]
+process_mode = 3
+custom_minimum_size = Vector2(26, 26)
+offset_right = 26.0
+offset_bottom = 26.0
+mouse_filter = 1
+mouse_default_cursor_shape = 2
+disabled = true
+texture_normal = ExtResource("1_wolm4")
+texture_disabled = ExtResource("1_wolm4")
+texture_focused = ExtResource("2_xpduf")
+script = ExtResource("2_ikx48")
+
+[node name="ItemIcon" type="Sprite2D" parent="."]
+visible = false
+texture = ExtResource("4_ougup")
+centered = false
+offset = Vector2(3, 2)
+region_enabled = true
+region_rect = Rect2(2.08165e-12, 2.08165e-12, 21, 21)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = 4.0
+grow_horizontal = 0
+grow_vertical = 0
+mouse_filter = 1
+theme_override_font_sizes/font_size = 9
+text = "0"
+vertical_alignment = 2
+
+[node name="Clip" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(4, 3)
+texture = ExtResource("3_sy2nu")
+
+[node name="Selector" parent="." instance=ExtResource("4_v26ig")]
+process_mode = 3
+position = Vector2(-1, -2)
+collision_layer = 16
+collision_mask = 12
+monitorable = true
+
+[node name="Dropable" parent="." instance=ExtResource("5_ej8im")]
+process_mode = 3
+collision_layer = 4
+collision_mask = 28
+
+[node name="StateMachine" parent="." instance=ExtResource("4_532a5")]
+
+[connection signal="button_down" from="." to="." method="_on_button_down"]
+[connection signal="button_up" from="." to="." method="_on_button_up"]
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]
+[connection signal="area_entered" from="Selector" to="." method="_on_selector_area_entered"]
+[connection signal="area_exited" from="Selector" to="." method="_on_selector_area_exited"]
+[connection signal="mouse_entered" from="Dropable" to="." method="_on_dropable_mouse_entered"]
+
+[editable path="StateMachine"]
