@@ -1,8 +1,6 @@
-class_name AlienFlower extends CharacterBody2D
+class_name AlienFlower extends Enemy
 
 signal has_died
-
-@export var resource: EnemyResource
 
 var health: int = 1000:
 	set(value):
@@ -15,4 +13,5 @@ var health: int = 1000:
 
 func take_damage(amount: int):
 	animation_player.play("hit")
+	player.camera.apply_shake(1.0, 9.0)
 	health = amount

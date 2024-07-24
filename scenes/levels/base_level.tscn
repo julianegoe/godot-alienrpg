@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://bq8rcc5d8ojhe"]
+[gd_scene load_steps=11 format=3 uid="uid://bq8rcc5d8ojhe"]
 
 [ext_resource type="Script" path="res://scenes/levels/base_level.gd" id="1_41pqk"]
 [ext_resource type="TileSet" uid="uid://ca5m17ajimq8v" path="res://resources/tilesets/terrain_tileset.tres" id="1_xiw1o"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://scripts/misc/level_tilemap.gd" id="3_owwb2"]
 [ext_resource type="PackedScene" uid="uid://c44lg1xi25r51" path="res://scenes/ui/hotbar/hotbar.tscn" id="4_x3idk"]
 [ext_resource type="Resource" uid="uid://6ajlrcmxrjts" path="res://resources/inventory_resource.tres" id="4_yryc0"]
+[ext_resource type="Script" path="res://scenes/misc/player_camera.gd" id="5_2jrav"]
 [ext_resource type="Script" path="res://scripts/misc/lights.gd" id="7_um420"]
 
 [node name="BaseLevel" type="Node2D"]
@@ -48,6 +49,7 @@ unique_name_in_owner = true
 
 [node name="Camera2D" type="Camera2D" parent="Characters/Player"]
 zoom = Vector2(1.4, 1.4)
+script = ExtResource("5_2jrav")
 
 [node name="Enemies" type="Node2D" parent="."]
 y_sort_enabled = true

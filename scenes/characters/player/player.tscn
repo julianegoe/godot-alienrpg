@@ -28,10 +28,10 @@
 radius = 3.0
 height = 10.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8g08b"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_i01h4"]
 shader = ExtResource("5_eu00f")
-shader_parameter/apply = false
-shader_parameter/amount = 0.03
+shader_parameter/apply = true
+shader_parameter/amount = 2.08165e-12
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4gwhi"]
 radius = 12.0
@@ -145,6 +145,18 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-5, 10)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Body:material:shader_parameter/amount")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2.08165e-12]
 }
 
 [sub_resource type="Animation" id="Animation_vfani"]
@@ -5176,21 +5188,24 @@ flip_h = true
 hframes = 112
 
 [node name="Body" type="Node2D" parent="."]
+material = SubResource("ShaderMaterial_i01h4")
 
 [node name="Legs" type="Sprite2D" parent="Body"]
+use_parent_material = true
 texture = ExtResource("4_1a5c6")
 flip_h = true
 hframes = 112
 frame = 64
 
 [node name="Body" type="Sprite2D" parent="Body"]
+use_parent_material = true
 texture = ExtResource("5_4neo7")
 flip_h = true
 hframes = 112
 frame = 64
 
 [node name="Head" type="Sprite2D" parent="Body"]
-material = SubResource("ShaderMaterial_8g08b")
+use_parent_material = true
 texture = ExtResource("7_2kxq0")
 flip_h = true
 hframes = 112
@@ -5255,9 +5270,6 @@ libraries = {
 }
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_t50y1")
-}
 tree_root = SubResource("AnimationNodeStateMachine_k1xrj")
 advance_expression_base_node = NodePath("..")
 anim_player = NodePath("../AnimationPlayer")
@@ -5305,15 +5317,6 @@ rotation = 1.5708
 shape = SubResource("CapsuleShape2D_dqh4v")
 debug_color = Color(0.866667, 0.2, 0.729412, 0.419608)
 
-[node name="DebugLabel" type="Label" parent="."]
-offset_left = -16.0
-offset_top = -52.0
-offset_right = 24.0
-offset_bottom = -29.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Test"
-horizontal_alignment = 1
-
 [node name="ChoicesUi" type="CanvasLayer" parent="."]
 
 [node name="Choices" type="Control" parent="ChoicesUi"]
@@ -5340,6 +5343,16 @@ offset_right = 120.0
 offset_bottom = -10.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="DebugLabel" type="Label" parent="."]
+visible = false
+offset_left = -16.0
+offset_top = -52.0
+offset_right = 24.0
+offset_bottom = -29.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Test"
+horizontal_alignment = 1
 
 [connection signal="animation_finished" from="Ui/ChargeIndicator" to="." method="_on_charge_indicator_animation_finished"]
 [connection signal="choices_prompted" from="Ui/Node2D/Speechbubble" to="." method="_on_speechbubble_choices_prompted"]

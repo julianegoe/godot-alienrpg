@@ -35,7 +35,7 @@ func startled():
 func attack():
 	hit_box.monitorable = true
 	var tween = get_tree().create_tween()
-	cpu_particles_2d.emitting = true
+	#cpu_particles_2d.emitting = true
 	await tween.tween_property(hit_box_collision_shape.shape, "radius", 40, 1.5).finished
 	hit_box_collision_shape.shape.radius = 1
 	hit_box.monitorable = false

@@ -4,9 +4,6 @@ class_name Enemy extends CharacterBody2D
 
 @onready var player: Player = %Player
 
-func _ready():
-	print(resource)
-
 func set_animation_for(_direction: Vector2):
 	pass
 	

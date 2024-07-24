@@ -1,8 +1,47 @@
-[gd_scene load_steps=16 format=3 uid="uid://cw3ankg8xx124"]
+[gd_scene load_steps=16 format=3 uid="uid://cep0tu1o1axqr"]
 
-[ext_resource type="Script" path="res://poc/pursuit_poc.gd" id="1_7nrb7"]
 [ext_resource type="Texture2D" uid="uid://chjfavs5djxim" path="res://assets/enemies/humanoid.png" id="2_rxa6d"]
 [ext_resource type="Script" path="res://scripts/components/hurtbox.gd" id="3_2vjns"]
+
+[sub_resource type="GDScript" id="GDScript_00b7q"]
+script/source = "class_name PursuitPoC extends CharacterBody2D
+
+@export var player: Player
+
+const MAX_SPEED: int = 20
+var speed: int = MAX_SPEED
+
+@onready var startle_timer = $StartleTimer
+
+func take_damage(damage: int):
+	speed = 0
+	if damage <= 100:
+		startle_timer.wait_time = 2.5
+	elif damage <= 102:
+		startle_timer.wait_time = 3.0
+	elif damage <= 105:
+		startle_timer.wait_time = 3.5
+	else:
+		startle_timer.wait_time = 4
+	startle_timer.start()
+	
+func _physics_process(_delta):
+	if player:
+		var direction = global_position.direction_to(player.global_position)
+		move_and_slide()
+		velocity = direction * speed
+
+func _on_area_2d_body_entered(body: Player):
+	if body is Player:
+		speed = 0
+
+func _on_area_2d_body_exited(body: Player):
+	if body is Player:
+		speed = MAX_SPEED
+
+func _on_startle_timer_timeout():
+	speed = MAX_SPEED
+"
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_r4iis"]
 atlas = ExtResource("2_rxa6d")
@@ -79,9 +118,8 @@ radius = 31.0644
 radius = 4.0
 height = 12.0
 
-[node name="Humanoid2" type="CharacterBody2D" node_paths=PackedStringArray("player")]
-script = ExtResource("1_7nrb7")
-player = NodePath("")
+[node name="Humanoid2" type="CharacterBody2D"]
+script = SubResource("GDScript_00b7q")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_quawj")

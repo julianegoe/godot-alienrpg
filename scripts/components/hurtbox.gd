@@ -1,7 +1,5 @@
 class_name HurtBox extends Area2D
 
-signal hit(damage)
-
 enum { Off = 0, Hitboxes = 1, Hurtboxes = 2 }
 enum OwnerType { CHARACTER, ENEMY }
 

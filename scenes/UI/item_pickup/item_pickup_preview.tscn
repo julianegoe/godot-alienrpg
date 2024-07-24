@@ -1,17 +1,17 @@
 [gd_scene load_steps=5 format=3 uid="uid://c6r83f2fxetmd"]
 
 [ext_resource type="Texture2D" uid="uid://b3ad277t2vnsi" path="res://assets/ui/misc/item_pickup_preview_bg.png" id="1_6ihfj"]
-[ext_resource type="Script" path="res://scenes/ui/item_pickup/item_pickup_preview.gd" id="1_wxx2j"]
+[ext_resource type="Script" path="res://scenes/ui/item_pickup/item_pickup_preview.gd" id="2_kiar8"]
 [ext_resource type="Theme" uid="uid://wb56k7anlde3" path="res://resources/themes/font_main_theme.tres" id="2_rleu8"]
 [ext_resource type="Texture2D" uid="uid://1pn3mgkm7kf0" path="res://assets/ui/item_icons/item_icon_axe.png" id="3_gou0k"]
 
-[node name="ItemPickupPreview" type="TextureRect"]
+[node name="ItemPreview" type="TextureRect"]
 offset_left = 11.0
 offset_right = 55.0
 offset_bottom = 12.0
 texture = ExtResource("1_6ihfj")
 stretch_mode = 2
-script = ExtResource("1_wxx2j")
+script = ExtResource("2_kiar8")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 1.5

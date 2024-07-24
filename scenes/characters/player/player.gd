@@ -13,7 +13,7 @@ class_name Player extends CharacterBody2D
 @onready var debug_label: Label = $DebugLabel
 @onready var melee_hit_box = $Body/MeleeTool/Container/HitBox
 @onready var choices_box = $ChoicesUi/Choices/ChoicesBox
-
+@onready var body = $Body
 
 @onready var player_state_machine: PlayerStateMachine = $PlayerStateMachine as PlayerStateMachine
 
@@ -39,6 +39,9 @@ func _ready():
 	InventoryManager.item_removed.connect(_on_item_removed)
 
 func take_damage(damage: int):
+	var tween = get_tree().create_tween()
+	tween.tween_method(set_shader_value, 0.04, 0.0, 1).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_BOUNCE) 
+	camera.apply_shake()
 	status.health -= damage
 	if status.health == 0:
 		_on_health_exhausted()
@@ -99,3 +102,6 @@ func _on_speechbubble_choices_prompted(choices):
 
 func _on_speechbubble_dialogue_ended():
 	choices_box.hide()
+
+func set_shader_value(value: float):
+	body.material.set_shader_parameter("amount", value);
