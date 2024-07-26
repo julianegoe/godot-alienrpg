@@ -33,6 +33,7 @@ func startled():
 	animated_sprite_2d.modulate.a = 0.8
 	
 func attack():
+	animated_sprite_2d.play("attack")
 	hit_box.monitorable = true
 	var tween = get_tree().create_tween()
 	#cpu_particles_2d.emitting = true
