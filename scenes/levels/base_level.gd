@@ -11,8 +11,8 @@ class_name BaseLevel extends Node2D
 @export var music_file: AudioStreamOggVorbis
 
 func _ready():
-	# background_music.stream = music_file
-	# background_music.play(0.0)
+	EventBus.dialogue_started.connect(_on_dialogue_started)
+	EventBus.dialogue_ended.connect(_on_dialogue_ended)
 	set_location_properties()
 	day_night_cycle.init()
 	if NavigationManager.door_tag:
@@ -27,6 +27,25 @@ func _on_background_music_finished():
 
 func set_location_properties():
 	DayNightCycle.current_scene_location = scene_location
+	match scene_location:
+		Types.LocationType.INDOORS:
+			hot_bar.disabled = true
+		Types.LocationType.FOREST:
+			hot_bar.disabled = false
+		Types.LocationType.DEFAULT:
+			hot_bar.disabled = false
+
+
+func _on_dialogue_started():
+	match scene_location:
+		Types.LocationType.INDOORS:
+			hot_bar.disabled = true
+		Types.LocationType.FOREST:
+			hot_bar.disabled = true
+		Types.LocationType.DEFAULT:
+			hot_bar.disabled = true
+
+func _on_dialogue_ended():
 	match scene_location:
 		Types.LocationType.INDOORS:
 			hot_bar.disabled = true

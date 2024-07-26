@@ -22,6 +22,7 @@ DayNightCycle="*res://globals/day_night_cycle.tscn"
 Types="*res://globals/types.gd"
 NavigationManager="*res://globals/scene_transition.tscn"
 Utils="*res://globals/utils.gd"
+EventBus="*res://globals/event_bus.gd"
 
 [display]
 

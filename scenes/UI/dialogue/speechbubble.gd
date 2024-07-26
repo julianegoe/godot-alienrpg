@@ -19,6 +19,7 @@ func _ready():
 	deactivate()
 	
 func activate(dialogue_node: int = 0):
+	EventBus.dialogue_started.emit()
 	size = DEFAULT_SIZE
 	is_active = true
 	character_name_label.text = dialogue_manager.get_character_name()
@@ -27,6 +28,7 @@ func activate(dialogue_node: int = 0):
 	dialogue_manager.stream_text(dialogue_label)
 	
 func deactivate():
+	EventBus.dialogue_ended.emit()
 	is_active = false
 	set_label_text(0)
 	hide()
