@@ -18,6 +18,8 @@ func _on_player_entered(_body):
 func _on_player_exited(_body):
 	choices_box.hide()
 	speechbubble.deactivate()
+	for choice_button in choices_box.choices_container.get_children():
+		choice_button.queue_free()
 
 func _on_vicinity_input_event(_viewport, event, _shape_idx):
 	if event.is_action_pressed("interact") and not speechbubble.is_active and interaction_state == DistanceState.IN_VICINITY:
@@ -47,3 +49,5 @@ func _on_speechbubble_choices_prompted(choices):
 
 func _on_speechbubble_dialogue_ended():
 	choices_box.hide()
+	for choice_button in choices_box.choices_container.get_children():
+		choice_button.queue_free()
