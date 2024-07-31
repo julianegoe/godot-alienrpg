@@ -15,7 +15,7 @@ func _create_choices_buttons(choices):
 		choices_container.add_child(button)
 
 func _on_choice_selected(choice):
-	if choice.nextNode:	
+	if choice.next_node:	
 		speechbubble.activate(choice.nextNode)
 	else:
 		speechbubble.deactivate()

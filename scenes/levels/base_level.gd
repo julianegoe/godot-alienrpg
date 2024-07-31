@@ -1,16 +1,21 @@
 class_name BaseLevel extends Node2D
 
+@onready var camera_2d = $Characters/Player/Camera2D
 @onready var player = $Characters/Player
 @onready var day_night_cycle = $"/root/DayNightCycle"
 @onready var background_music = $BackgroundMusic
 @onready var hot_bar = $Ui/HotBar
 @onready var inventory = $Ui/Inventory
 @onready var characters_container = $Characters
+@onready var skill_checker = $SkillChecker
 
+@export var level_dimension: Vector2 = Vector2(10000000, 10000000)
 @export var scene_location: Types.LocationType = Types.LocationType.DEFAULT
 @export var music_file: AudioStreamOggVorbis
 
 func _ready():
+	camera_2d.limit_right = level_dimension.x
+	camera_2d.limit_bottom = level_dimension.y
 	EventBus.dialogue_started.connect(_on_dialogue_started)
 	EventBus.dialogue_ended.connect(_on_dialogue_ended)
 	set_location_properties()

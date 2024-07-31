@@ -88,8 +88,8 @@ func _create_choices_buttons(choices):
 		choices_box.choices_container.add_child(button)
 
 func _on_choice_selected(choice):
-	if choice.nextNode:
-		speechbubble.activate(choice.nextNode)
+	if choice.next_node:
+		speechbubble.activate(choice.next_node.success)
 	else:
 		choices_box.hide()
 		speechbubble.deactivate()

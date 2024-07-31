@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://dx0vld1tas3bp" path="res://scenes/lights/shop_lamp.tscn" id="10_bt572"]
 
 [node name="LevelA2" instance=ExtResource("1_qu62r")]
+level_dimension = Vector2(1025, 481)
 music_file = ExtResource("2_17ksx")
 
 [node name="LevelTilemap" parent="." index="0"]

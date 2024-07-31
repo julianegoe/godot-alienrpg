@@ -45,7 +45,7 @@ func set_label_text(node: int = 0):
 	
 func _on_dialogue_manager_text_completed(dialogue_node):
 	slow_down_text()
-	if dialogue_node.choices.is_empty() and not dialogue_node.nextNode:
+	if dialogue_node.choices.is_empty() and dialogue_node.next_node <= 0:
 		await get_tree().create_timer(1).timeout
 		deactivate()
 		dialogue_ended.emit()
@@ -53,7 +53,7 @@ func _on_dialogue_manager_text_completed(dialogue_node):
 		choices_prompted.emit(dialogue_manager.get_choices())
 	else:
 		await get_tree().create_timer(0.5).timeout
-		set_label_text(dialogue_node.nextNode)
+		set_label_text(dialogue_node.next_node)
 		dialogue_manager.stream_text(dialogue_label)
 
 func _on_dialogue_text_item_rect_changed():

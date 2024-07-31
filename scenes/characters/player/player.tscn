@@ -1,4 +1,4 @@
-[gd_scene load_steps=130 format=3 uid="uid://crvo6u3r2wtnv"]
+[gd_scene load_steps=129 format=3 uid="uid://crvo6u3r2wtnv"]
 
 [ext_resource type="Script" path="res://scenes/characters/player/player.gd" id="1_os17o"]
 [ext_resource type="Resource" uid="uid://6khgkcxvuhbl" path="res://resources/player_resource.tres" id="2_stmy2"]
@@ -20,7 +20,7 @@
 [ext_resource type="Script" path="res://scripts/state_machines/player_states/player_attack_melee_state.gd" id="15_hfgi2"]
 [ext_resource type="Texture2D" uid="uid://i33i6355v2yh" path="res://assets/ui/misc/charge_indicator.png" id="18_ql2l3"]
 [ext_resource type="PackedScene" uid="uid://x1mxtctwuy0u" path="res://scenes/ui/dialogue/speechbubble.tscn" id="19_kx2hc"]
-[ext_resource type="Script" path="res://scripts/resources/dialogue_resource.gd" id="20_0drqs"]
+[ext_resource type="Resource" uid="uid://bya3v4oox0cyl" path="res://resources/npc_dialogues/dialogue_player.tres" id="21_fknye"]
 [ext_resource type="Script" path="res://scripts/components/hurtbox.gd" id="22_gc3is"]
 [ext_resource type="PackedScene" uid="uid://cm0iaowv6241f" path="res://scenes/ui/dialogue/choices_box.tscn" id="23_ye4pu"]
 
@@ -5160,10 +5160,6 @@ animations = [{
 "speed": 7.0
 }]
 
-[sub_resource type="Resource" id="Resource_66e32"]
-script = ExtResource("20_0drqs")
-dialogue_path = "res://data/player_dialogue.json"
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_dqh4v"]
 radius = 4.0
 height = 14.0
@@ -5306,7 +5302,7 @@ sprite_frames = SubResource("SpriteFrames_dwwpb")
 position = Vector2(-14, -21)
 
 [node name="Speechbubble" parent="Ui/Node2D" instance=ExtResource("19_kx2hc")]
-dialogue_resource = SubResource("Resource_66e32")
+dialogue_resource = ExtResource("21_fknye")
 
 [node name="HurtBox" type="Area2D" parent="."]
 script = ExtResource("22_gc3is")

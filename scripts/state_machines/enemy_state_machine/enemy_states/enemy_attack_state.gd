@@ -11,6 +11,9 @@ func exit():
 
 func on_attack_finished():
 	can_attack = true
+
+func on_defeated():
+	transition_requested.emit(self, EnemyState.State.DEFEATED)
 	
 func on_vicinity_body_exited(body):
 	if body is Player:

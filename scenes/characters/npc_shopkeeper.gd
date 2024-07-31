@@ -35,8 +35,15 @@ func _create_choices_buttons(choices):
 		choices_box.choices_container.add_child(button)
 
 func _on_choice_selected(choice):
-	if choice.nextNode:
-		speechbubble.activate(choice.nextNode)
+	var success: bool = true
+	if choice.dice_roll:
+		success = owner.skill_checker.execute(choice.dice_roll.skill, choice.dice_roll.difficulty)
+		print(success)
+		#print(owner.skill_checker.check_skill(choice.dice_roll.skill, int(choice.dice_roll.difficulty)))
+	if choice.next_node and success:
+		speechbubble.activate(choice.next_node.success)
+	elif choice.next_node and not success:
+		speechbubble.activate(choice.next_node.failure)
 	else:
 		choices_box.hide()
 		speechbubble.deactivate()

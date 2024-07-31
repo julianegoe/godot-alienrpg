@@ -5,6 +5,7 @@
 [resource]
 script = ExtResource("1_7f0ua")
 type = 1
+max_speed = 0
 max_health = 500
 health = 500
 immunity = Array[int]([])

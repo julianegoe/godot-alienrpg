@@ -22,20 +22,19 @@ var current_dialogue_string: String
 
 func init(resource: DialogueResource):
 	dialogue_resource = resource
-	dialogue_resource.readJSON()
 	
 func get_character_name():
 	return dialogue_resource.display_name
 
 func get_dialogue_for(node: int) -> String:
 	current_text_node = node
-	var result = pause_calc.get_pauses_from_string(dialogue_resource.dialogue_tree.dialogue[current_text_node].text)
+	var result = pause_calc.get_pauses_from_string(dialogue_resource.dialogue[current_text_node].text)
 	_all_pauses = result[0]
 	current_dialogue_string = result[1]
 	return current_dialogue_string
 
 func get_choices():
-	return dialogue_resource.dialogue_tree.dialogue[current_text_node].choices
+	return dialogue_resource.dialogue[current_text_node].choices
 	
 func set_next_node(next_node: int):
 	current_text_node = next_node
@@ -45,7 +44,7 @@ func stream_text(label: Node):
 	await get_tree().create_timer(duration).timeout
 	label.visible_characters += 1
 	if label.visible_ratio == 1:
-		text_completed.emit(dialogue_resource.dialogue_tree.dialogue[current_text_node])
+		text_completed.emit(dialogue_resource.dialogue[current_text_node])
 		return
 	else:
 		stream_text(label)

@@ -37,7 +37,7 @@ func attack():
 	hit_box.monitorable = true
 	var tween = get_tree().create_tween()
 	#cpu_particles_2d.emitting = true
-	await tween.tween_property(hit_box_collision_shape.shape, "radius", 40, 1.5).finished
+	await tween.tween_property(hit_box_collision_shape.shape, "radius", 30, 1.5).finished
 	hit_box_collision_shape.shape.radius = 1
 	hit_box.monitorable = false
 	attack_finished.emit()
@@ -48,7 +48,9 @@ func take_damage(damage: int):
 	startle_timer.start()
 
 func defeated():
-	await get_tree().create_timer(0.5).timeout
+	animated_sprite_2d.play("die")
+	var tween = create_tween()
+	await tween.tween_property(animated_sprite_2d, "modulate:a", 0, 1).finished
 	queue_free()
 	
 func set_animation_for(direction: Vector2):
