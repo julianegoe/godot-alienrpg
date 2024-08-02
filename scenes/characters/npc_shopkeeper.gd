@@ -27,19 +27,22 @@ func _on_vicinity_input_event(_viewport, event, _shape_idx):
 		interaction_icon.hide()
 
 func _create_choices_buttons(choices):
+	var prob: String
 	for choice in choices:
+		if !!choice.dice_roll:
+			prob = str(choice.dice_roll.calculate_probability()) + "%"
+		else:
+			prob = ""
 		var button_scene = load("res://scenes/ui/dialogue/choice_button.tscn")
 		var button = button_scene.instantiate()
-		button.text = choice.text
+		button.text = choice.text + " " + prob
 		button.pressed.connect(_on_choice_selected.bind(choice))
 		choices_box.choices_container.add_child(button)
 
 func _on_choice_selected(choice):
 	var success: bool = true
 	if choice.dice_roll:
-		success = owner.skill_checker.execute(choice.dice_roll.skill, choice.dice_roll.difficulty)
-		print(success)
-		#print(owner.skill_checker.check_skill(choice.dice_roll.skill, int(choice.dice_roll.difficulty)))
+		success = await owner.skill_checker.execute(choice.dice_roll)
 	if choice.next_node and success:
 		speechbubble.activate(choice.next_node.success)
 	elif choice.next_node and not success:

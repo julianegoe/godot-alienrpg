@@ -40,7 +40,7 @@ func _ready():
 
 func take_damage(damage: int):
 	var tween = get_tree().create_tween()
-	tween.tween_method(set_shader_value, 0.04, 0.0, 1).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_BOUNCE) 
+	tween.tween_method(set_damage_shader_value, 0.04, 0.0, 1).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_BOUNCE) 
 	camera.apply_shake()
 	status.health -= damage
 	if status.health == 0:
@@ -80,16 +80,26 @@ func _on_charge_indicator_animation_finished():
 	player_state_machine.on_charge_indicator_animation_finished()
 
 func _create_choices_buttons(choices):
+	var prob: String
 	for choice in choices:
+		if !!choice.dice_roll:
+			prob = str(choice.dice_roll.calculate_probability()) + "%"
+		else:
+			prob = ""
 		var button_scene = load("res://scenes/ui/dialogue/choice_button.tscn")
 		var button = button_scene.instantiate()
-		button.text = choice.text
+		button.text = choice.text + " " + prob
 		button.pressed.connect(_on_choice_selected.bind(choice))
 		choices_box.choices_container.add_child(button)
 
 func _on_choice_selected(choice):
-	if choice.next_node:
+	var success: bool = true
+	if choice.dice_roll:
+		success = await owner.skill_checker.execute(choice.dice_roll)
+	if choice.next_node and success:
 		speechbubble.activate(choice.next_node.success)
+	elif choice.next_node and not success:
+		speechbubble.activate(choice.next_node.failure)
 	else:
 		choices_box.hide()
 		speechbubble.deactivate()
@@ -103,5 +113,5 @@ func _on_speechbubble_choices_prompted(choices):
 func _on_speechbubble_dialogue_ended():
 	choices_box.hide()
 
-func set_shader_value(value: float):
+func set_damage_shader_value(value: float):
 	body.material.set_shader_parameter("amount", value);

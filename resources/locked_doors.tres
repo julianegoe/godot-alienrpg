@@ -6,5 +6,6 @@
 script = ExtResource("1_7lw6s")
 locked = {
 "home": false,
+"ladder": false,
 "shop": false
 }

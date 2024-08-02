@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="RangedWeaponResource" load_steps=3 format=3 uid="uid://cporn16b38m2p"]
 
-[ext_resource type="Script" path="res://scripts/resources/ranged_weapon_resource.gd" id="1_gh372"]
+[ext_resource type="Script" path="res://scripts/resources/items/ranged_weapon_resource.gd" id="1_gh372"]
 [ext_resource type="Texture2D" uid="uid://da3uh5hvvo0nt" path="res://assets/ui/item_portraits/item_portrait_snowball.png" id="2_h3fc1"]
 
 [resource]

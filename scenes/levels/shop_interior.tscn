@@ -36,7 +36,4 @@ destination_door = "ShopExterior"
 [node name="SpawnMarker" parent="LevelTeleporters/Door_ShopInterior" index="1"]
 position = Vector2(0, -30)
 
-[node name="Ui" parent="." index="9"]
-visible = false
-
 [editable path="LevelTeleporters/Door_ShopInterior"]

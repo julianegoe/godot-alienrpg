@@ -1,57 +1,49 @@
-[gd_resource type="Resource" script_class="DialogueResource" load_steps=18 format=3 uid="uid://bya3v4oox0cyl"]
+[gd_resource type="Resource" script_class="DialogueResource" load_steps=16 format=3 uid="uid://bya3v4oox0cyl"]
 
 [ext_resource type="Script" path="res://scripts/resources/dialogue/prompt_resource.gd" id="1_fpryj"]
 [ext_resource type="Script" path="res://scripts/resources/dialogue/dice_roll_resource.gd" id="2_mqt7v"]
-[ext_resource type="Script" path="res://scripts/resources/dialogue/next_node_resource.gd" id="3_kpsms"]
 [ext_resource type="Script" path="res://scripts/resources/dialogue/choice_resource.gd" id="4_80xia"]
-[ext_resource type="Script" path="res://scripts/resources/dialogue_resource.gd" id="5_6vxpt"]
+[ext_resource type="Script" path="res://scripts/resources/dialogue/dialogue_resource.gd" id="5_qe0rl"]
 
 [sub_resource type="Resource" id="Resource_rwi4d"]
 script = ExtResource("1_fpryj")
-index = 0
-text = "Zzzzz...{p=0.5} Zzzzz..{p=0.5}"
+text = ""
 choices = Array[ExtResource("4_80xia")]([])
 next_node = 1
 
 [sub_resource type="Resource" id="Resource_mdwkt"]
 script = ExtResource("1_fpryj")
-index = 1
-text = "Zzzzz...{p=0.5} Zzzzz..{p=0.5}"
+text = ""
 choices = Array[ExtResource("4_80xia")]([])
 next_node = -1
 
 [sub_resource type="Resource" id="Resource_027r4"]
 script = ExtResource("1_fpryj")
-index = 2
-text = "Hmm, da komm ich ohne Leiter nicht hoch."
+text = ""
 choices = Array[ExtResource("4_80xia")]([])
 next_node = -1
 
 [sub_resource type="Resource" id="Resource_o7x5s"]
 script = ExtResource("1_fpryj")
-index = 3
-text = "Mehr kann ich nicht mitnehmen."
+text = ""
 choices = Array[ExtResource("4_80xia")]([])
 next_node = -1
 
 [sub_resource type="Resource" id="Resource_pylv7"]
 script = ExtResource("1_fpryj")
-index = 4
-text = "Those fruit and veggies look so fresh."
+text = ""
 choices = Array[ExtResource("4_80xia")]([])
 next_node = -1
 
 [sub_resource type="Resource" id="Resource_8exv0"]
 script = ExtResource("1_fpryj")
-index = 5
-text = "Some of those magazines are not even new."
+text = ""
 choices = Array[ExtResource("4_80xia")]([])
 next_node = -1
 
 [sub_resource type="Resource" id="Resource_i8r4a"]
 script = ExtResource("1_fpryj")
-index = 6
-text = "Curious looking rug."
+text = ""
 choices = Array[ExtResource("4_80xia")]([])
 next_node = -1
 
@@ -60,32 +52,24 @@ script = ExtResource("2_mqt7v")
 skill = 3
 difficulty = 10.0
 
-[sub_resource type="Resource" id="Resource_wdllf"]
-script = ExtResource("3_kpsms")
-success = -1
-failure = -1
-
 [sub_resource type="Resource" id="Resource_3aypx"]
 script = ExtResource("4_80xia")
-index = 0
+id = ""
 text = "I must look closer"
-next_node = SubResource("Resource_wdllf")
 dice_roll = SubResource("Resource_3q7yf")
 
 [sub_resource type="Resource" id="Resource_d4foj"]
 script = ExtResource("4_80xia")
-index = 1
+id = ""
 text = "Nope..."
 
 [sub_resource type="Resource" id="Resource_lb4iv"]
 script = ExtResource("1_fpryj")
-index = 7
-text = "This hole is way too deep."
+text = ""
 choices = Array[ExtResource("4_80xia")]([SubResource("Resource_3aypx"), SubResource("Resource_d4foj")])
 next_node = -1
 
 [resource]
-script = ExtResource("5_6vxpt")
+script = ExtResource("5_qe0rl")
 display_name = "Renate"
 dialogue = Array[ExtResource("1_fpryj")]([SubResource("Resource_rwi4d"), SubResource("Resource_mdwkt"), SubResource("Resource_027r4"), SubResource("Resource_o7x5s"), SubResource("Resource_pylv7"), SubResource("Resource_8exv0"), SubResource("Resource_i8r4a"), SubResource("Resource_lb4iv")])
-dialogue_path = null

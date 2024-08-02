@@ -11,5 +11,5 @@ charisma_texture = ExtResource("1_3rkxt")
 display_name = "Name"
 strength = 15
 intelligence = 15
-charisma = 10
+charisma = 30
 survival = 10

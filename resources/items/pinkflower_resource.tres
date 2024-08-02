@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="FloraResource" load_steps=3 format=3 uid="uid://b3m2c7htotlkh"]
 
-[ext_resource type="Script" path="res://scripts/resources/flora_resource.gd" id="1_fsbum"]
+[ext_resource type="Script" path="res://scripts/resources/items/flora_resource.gd" id="1_fsbum"]
 [ext_resource type="Texture2D" uid="uid://bprmenr0xba05" path="res://assets/ui/item_portraits/item_portrait_pinkflower.png" id="2_x3b6f"]
 
 [resource]

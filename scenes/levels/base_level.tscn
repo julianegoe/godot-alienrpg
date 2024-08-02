@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bq8rcc5d8ojhe"]
+[gd_scene load_steps=13 format=3 uid="uid://bq8rcc5d8ojhe"]
 
 [ext_resource type="Script" path="res://scenes/levels/base_level.gd" id="1_41pqk"]
 [ext_resource type="TileSet" uid="uid://ca5m17ajimq8v" path="res://resources/tilesets/terrain_tileset.tres" id="1_xiw1o"]
@@ -10,6 +10,7 @@
 [ext_resource type="Resource" uid="uid://6ajlrcmxrjts" path="res://resources/inventory_resource.tres" id="4_yryc0"]
 [ext_resource type="Script" path="res://scenes/misc/player_camera.gd" id="5_2jrav"]
 [ext_resource type="Script" path="res://scripts/misc/lights.gd" id="7_um420"]
+[ext_resource type="PackedScene" uid="uid://c8no1s0yewak" path="res://scenes/ui/dice_roll/dice_roll.tscn" id="10_nsama"]
 [ext_resource type="Script" path="res://scripts/components/skill_checker.gd" id="11_geian"]
 
 [node name="BaseLevel" type="Node2D"]
@@ -75,11 +76,14 @@ slot_path = "res://scenes/ui/hotbar/hotbar_slot.tscn"
 inventory = ExtResource("4_yryc0")
 hotbar = NodePath("../HotBar")
 
+[node name="DiceRoll" parent="Ui" instance=ExtResource("10_nsama")]
+visible = false
+
 [node name="TimeUI" parent="." instance=ExtResource("2_jed7o")]
 
-[node name="SkillChecker" type="Node" parent="."]
+[node name="SkillChecker" type="Node" parent="." node_paths=PackedStringArray("dice_ui")]
 script = ExtResource("11_geian")
-dice_sides = 100
+dice_ui = NodePath("../Ui/DiceRoll")
 
 [connection signal="finished" from="BackgroundMusic" to="." method="_on_background_music_finished"]
 [connection signal="inventory_visibility_changed" from="Ui/Inventory" to="." method="_on_inventory_inventory_visibility_changed"]
