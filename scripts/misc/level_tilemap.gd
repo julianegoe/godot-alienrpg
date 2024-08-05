@@ -62,10 +62,10 @@ func pick_up(item: Materials, quantitiy: int = 1) -> void:
 func look(material_item: int):
 	var lookup = { 
 		Materials.DEFAULT: null,
-		Materials.FRUIT: 4,
-		Materials.MAGAZINS: 5,
-		Materials.MYSTERY_RUG: 6,
-		Materials.HOLE: 7
+		Materials.FRUIT: 3,
+		Materials.MAGAZINS: 4,
+		Materials.MYSTERY_RUG: 5,
+		Materials.HOLE: 0
 	}
 	return lookup.get(material_item)	
 	

@@ -20,7 +20,7 @@
 [ext_resource type="Script" path="res://scripts/state_machines/player_states/player_attack_melee_state.gd" id="15_hfgi2"]
 [ext_resource type="Texture2D" uid="uid://i33i6355v2yh" path="res://assets/ui/misc/charge_indicator.png" id="18_ql2l3"]
 [ext_resource type="PackedScene" uid="uid://x1mxtctwuy0u" path="res://scenes/ui/dialogue/speechbubble.tscn" id="19_kx2hc"]
-[ext_resource type="Resource" uid="uid://bya3v4oox0cyl" path="res://resources/npc_dialogues/dialogue_player.tres" id="21_fknye"]
+[ext_resource type="Resource" uid="uid://bya3v4oox0cyl" path="res://resources/dialogues/dialogue_player.tres" id="21_fknye"]
 [ext_resource type="Script" path="res://scripts/components/hurtbox.gd" id="22_gc3is"]
 [ext_resource type="PackedScene" uid="uid://cm0iaowv6241f" path="res://scenes/ui/dialogue/choices_box.tscn" id="23_ye4pu"]
 

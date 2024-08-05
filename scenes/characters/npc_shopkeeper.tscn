@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dy78t0hu8m4w6" path="res://assets/characters/shopkeeper_v2.png" id="3_cj56t"]
 [ext_resource type="Texture2D" uid="uid://bmbfe6gq4bt8o" path="res://assets/shadows/character_shadow.png" id="4_eo6j4"]
 [ext_resource type="PackedScene" uid="uid://x1mxtctwuy0u" path="res://scenes/ui/dialogue/speechbubble.tscn" id="5_56u1f"]
-[ext_resource type="Resource" uid="uid://rq5dmuxpguau" path="res://resources/npc_dialogues/dialogue_shopkeeper.tres" id="6_fchb2"]
+[ext_resource type="Resource" uid="uid://rq5dmuxpguau" path="res://resources/dialogues/dialogue_shopkeeper.tres" id="6_fchb2"]
 [ext_resource type="PackedScene" uid="uid://cm0iaowv6241f" path="res://scenes/ui/dialogue/choices_box.tscn" id="8_ls0ir"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n7rik"]
