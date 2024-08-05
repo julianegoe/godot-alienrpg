@@ -3,3 +3,5 @@
 .godot/
 .gitattributes
 .vscode/
+.DS-Store
+*/.DS_Store

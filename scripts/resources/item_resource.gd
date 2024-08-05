@@ -1,4 +1,3 @@
-@tool
 class_name ItemResource extends Resource
 
 enum ItemType { FLORA, WEAPON, ALCHEMY, ITEM, BODY, NONE }
