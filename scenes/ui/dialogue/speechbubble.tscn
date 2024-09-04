@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://4kyv500msmof" path="res://assets/ui/dialogue/ninepatch_dialogue.png" id="1_foh52"]
 [ext_resource type="Script" path="res://scenes/ui/dialogue/speechbubble.gd" id="2_of8h7"]
-[ext_resource type="Script" path="res://scripts/managers/dialogue_manager.gd" id="3_1gu50"]
+[ext_resource type="Script" path="res://scenes/ui/dialogue/dialogue_manager.gd" id="3_1gu50"]
 [ext_resource type="Theme" uid="uid://wb56k7anlde3" path="res://resources/themes/font_main_theme.tres" id="5_grghk"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_c72kv"]

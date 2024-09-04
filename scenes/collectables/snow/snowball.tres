@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_gh372")
 vertical_velocity = -60
-scene_path = "res://scenes/weapons/snowball.tscn"
+scene_path = "res://scenes/weapons/snowball/snowball.tscn"
 weapon_type = 1
 base_damage = 5
 strength_modifier = 0.2

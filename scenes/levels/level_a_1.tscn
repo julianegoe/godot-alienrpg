@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://c4mvcfqex3tor"]
+[gd_scene load_steps=9 format=3 uid="uid://c4mvcfqex3tor"]
 
 [ext_resource type="PackedScene" uid="uid://bq8rcc5d8ojhe" path="res://scenes/levels/base_level.tscn" id="1_iitfh"]
 [ext_resource type="PackedScene" uid="uid://br174ejjc2ao2" path="res://scenes/buildings/tent.tscn" id="2_752a5"]
 [ext_resource type="PackedScene" uid="uid://35mmfwmhfhoy" path="res://scenes/levels/level_transition/level_teleporter.tscn" id="2_q1m4x"]
 [ext_resource type="PackedScene" uid="uid://dligkucy2lppl" path="res://scenes/enemies/physical_enemies/alien_flower/alien_flower.tscn" id="3_ycia7"]
 [ext_resource type="PackedScene" uid="uid://b6j1wu22ysa6s" path="res://scenes/enemies/tethered_enemies/humanoid/humanoid.tscn" id="4_1ml11"]
-[ext_resource type="PackedScene" uid="uid://dlga8od4nqbbh" path="res://scenes/collectables/shroom_small/shroom_small.tscn" id="5_ywmxe"]
 [ext_resource type="PackedScene" uid="uid://blhdcyyd4j5v5" path="res://scenes/enemies/physical_enemies/ground_kraken.tscn" id="6_t3t6c"]
 [ext_resource type="PackedScene" uid="uid://bmpwu7w7xyhfv" path="res://scenes/collectables/axe/axe_item.tscn" id="6_t8cq1"]
 [ext_resource type="PackedScene" uid="uid://drw2of6u7hb5b" path="res://scenes/collectables/snow/fresh_snow.tscn" id="8_260v5"]
@@ -72,24 +71,14 @@ visible = true
 [node name="Vicinity" parent="Enemies/Humanoid" index="6"]
 visible = true
 
-[node name="ShroomSmall" parent="Enemies" index="11" instance=ExtResource("5_ywmxe")]
-position = Vector2(364, 65)
-
-[node name="ShroomSmall2" parent="Enemies" index="12" instance=ExtResource("5_ywmxe")]
-position = Vector2(390, 84)
-
-[node name="GroundKraken" parent="Enemies" index="13" instance=ExtResource("6_t3t6c")]
+[node name="GroundKraken" parent="Enemies" index="11" instance=ExtResource("6_t3t6c")]
 position = Vector2(78, 255)
 
-[node name="Axe" parent="Interactables" index="0" instance=ExtResource("6_t8cq1")]
-position = Vector2(82, 74)
+[node name="Axe" parent="Collectables" index="0" instance=ExtResource("6_t8cq1")]
+position = Vector2(72, 74)
 
-[node name="FreshSnow" parent="Interactables" index="1" instance=ExtResource("8_260v5")]
-position = Vector2(228, 109)
-
-[node name="FreshSnow2" parent="Interactables" index="2" instance=ExtResource("8_260v5")]
-position = Vector2(27, 174)
-scale = Vector2(-1, 1)
+[node name="FreshSnow" parent="Collectables" index="1" instance=ExtResource("8_260v5")]
+position = Vector2(199, 131)
 
 [node name="Door_S" parent="LevelTeleporters" index="0" instance=ExtResource("2_q1m4x")]
 position = Vector2(142, 439)

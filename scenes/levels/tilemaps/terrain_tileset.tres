@@ -1,11 +1,8 @@
-[gd_resource type="TileSet" load_steps=17 format=3 uid="uid://ca5m17ajimq8v"]
+[gd_resource type="TileSet" load_steps=11 format=3 uid="uid://ca5m17ajimq8v"]
 
 [ext_resource type="Texture2D" uid="uid://bk2hlopoxrcng" path="res://assets/tilesets/32bit_terrain.png" id="1_0rvmd"]
 [ext_resource type="Texture2D" uid="uid://b1uvi8hv0nrkf" path="res://assets/tilesets/32bit_objects.png" id="2_4edqi"]
-[ext_resource type="Texture2D" uid="uid://ucy3wsjm8l4c" path="res://assets/tilesets/32bit_shadows.png" id="3_271y0"]
-[ext_resource type="Texture2D" uid="uid://dcpc5mvaaggft" path="res://assets/tilesets/32bit_items.png" id="4_08ti3"]
 [ext_resource type="Texture2D" uid="uid://bom6btdptdg56" path="res://assets/tilesets/32bit_trees.png" id="4_gavp4"]
-[ext_resource type="PackedScene" uid="uid://dligkucy2lppl" path="res://scenes/enemies/physical_enemies/alien_flower/alien_flower.tscn" id="6_ob7ic"]
 [ext_resource type="Texture2D" uid="uid://coaqw3gqy4ox4" path="res://assets/tilesets/32bit_floor_interior.png" id="7_1nknd"]
 [ext_resource type="Texture2D" uid="uid://dxnifvad63ius" path="res://assets/placeholders/TopDownHouse_FurnitureState2.png" id="8_swbqg"]
 
@@ -210,22 +207,6 @@ texture = ExtResource("2_4edqi")
 16:10/0 = 0
 16:10/0/texture_origin = Vector2i(0, 4)
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jdumc"]
-resource_name = "shadows"
-texture = ExtResource("3_271y0")
-0:0/size_in_atlas = Vector2i(2, 1)
-0:0/0 = 0
-6:1/size_in_atlas = Vector2i(2, 2)
-6:1/0 = 0
-0:2/size_in_atlas = Vector2i(2, 1)
-0:2/0 = 0
-2:2/size_in_atlas = Vector2i(2, 2)
-2:2/0 = 0
-4:2/size_in_atlas = Vector2i(2, 2)
-4:2/0 = 0
-2:1/size_in_atlas = Vector2i(4, 1)
-2:1/0 = 0
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8qiof"]
 resource_name = "trees"
 texture = ExtResource("4_gavp4")
@@ -267,35 +248,6 @@ texture_region_size = Vector2i(32, 32)
 7:0/0 = 0
 7:0/0/y_sort_origin = 18
 7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(1.875, 32.75, 14.125, 35, 22.875, 43.5, -15.375, 43.25, -9.125, 32.75)
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_4tf4n"]
-resource_name = "items"
-texture = ExtResource("4_08ti3")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-0:0/0/y_sort_origin = -8
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-14, -1, 13.5, 1.25, 11.5, 11.25, 1.25, 16, -11.25, 11.25)
-1:0/0 = 0
-1:0/0/y_sort_origin = -8
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-14, -1, 13.5, 1.25, 11.5, 11.25, 1.25, 16, -11.25, 11.25)
-2:0/0 = 0
-2:0/0/y_sort_origin = -8
-2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-12.3125, 3.375, 16, 3.75, 12.75, 13.25, 1.25, 16, -12.25, 13.25)
-3:0/0 = 0
-3:0/0/y_sort_origin = -8
-3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-13, -2, 16, 3, 16, 12.25, 1.75, 14, -7, 9.75, -16, 10)
-4:0/0 = 0
-4:0/0/y_sort_origin = -8
-4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, 1.5, 11.8125, 0.75, 16, 11.5, 9.5, 11.5, 1.5, 13.75, -7.5, 12, -16, 12)
-5:0/0 = 0
-5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-1.875, -7.625, 0, -3.71231, 4.59619, -2.82843, 1.76777, 2.65165, -2.82843, 4.59619, -4.24264, -0.176777, -6.01041, 0.883883, -7.95495, -1.59099)
-6:0/0 = 0
-6:0/0/y_sort_origin = -8
-6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-7.75, 4.75, 10.0763, 6.36396, 13.9654, 12.0208, 7.5, 16, -5, 16, -12.5, 11)
-
-[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_a71fu"]
-resource_name = "scenes"
-scenes/1/scene = ExtResource("6_ob7ic")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m4g5a"]
 texture = ExtResource("7_1nknd")
@@ -481,9 +433,6 @@ custom_data_layer_1/name = "is_interactable"
 custom_data_layer_1/type = 1
 sources/0 = SubResource("TileSetAtlasSource_02e38")
 sources/1 = SubResource("TileSetAtlasSource_gv7qw")
-sources/2 = SubResource("TileSetAtlasSource_jdumc")
-sources/4 = SubResource("TileSetAtlasSource_4tf4n")
 sources/3 = SubResource("TileSetAtlasSource_8qiof")
-sources/5 = SubResource("TileSetScenesCollectionSource_a71fu")
 sources/6 = SubResource("TileSetAtlasSource_m4g5a")
 sources/7 = SubResource("TileSetAtlasSource_o2qbd")
