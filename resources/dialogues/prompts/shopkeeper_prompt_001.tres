@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="PromptResource" load_steps=7 format=3 uid="uid://bfa1q657est7f"]
+
+[ext_resource type="Resource" uid="uid://iopbtbtllqsa" path="res://resources/dialogues/choices/shopkeeper_choice_001.tres" id="1_kd38r"]
+[ext_resource type="Script" path="res://scripts/resources/dialogue/next_node_resource.gd" id="2_au36j"]
+[ext_resource type="Script" path="res://scripts/resources/dialogue/choice_resource.gd" id="3_tjvbw"]
+[ext_resource type="Script" path="res://scripts/resources/dialogue/prompt_resource.gd" id="4_0h6df"]
+
+[sub_resource type="Resource" id="Resource_lyedi"]
+script = ExtResource("2_au36j")
+success = -1
+failure = -1
+
+[sub_resource type="Resource" id="Resource_jxl4d"]
+script = ExtResource("3_tjvbw")
+type = "Dialogue"
+id = "002"
+text = "Okay."
+next_node = SubResource("Resource_lyedi")
+
+[resource]
+script = ExtResource("4_0h6df")
+text = "Shop's closed. I need to finish my cigarette first."
+choices = Array[ExtResource("3_tjvbw")]([ExtResource("1_kd38r"), SubResource("Resource_jxl4d")])
+next_node = -1

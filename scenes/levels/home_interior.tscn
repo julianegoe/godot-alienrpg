@@ -1,0 +1,62 @@
+[gd_scene load_steps=6 format=3 uid="uid://qq3ww0wlclap"]
+
+[ext_resource type="PackedScene" uid="uid://bq8rcc5d8ojhe" path="res://scenes/levels/base_level.tscn" id="1_e77gv"]
+[ext_resource type="PackedScene" uid="uid://uxy3fisb2ycr" path="res://scenes/misc/door.tscn" id="2_hg0w4"]
+[ext_resource type="Texture2D" uid="uid://dxq6nxf4hajwj" path="res://assets/lights/window.png" id="2_w7n4n"]
+
+[sub_resource type="Gradient" id="Gradient_sk57r"]
+offsets = PackedFloat32Array(0.236413, 0.5625)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_hu871"]
+gradient = SubResource("Gradient_sk57r")
+width = 128
+height = 128
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+
+[node name="HomeInterior" instance=ExtResource("1_e77gv")]
+scene_location = 2
+
+[node name="LevelTilemap" parent="." index="0"]
+z_as_relative = false
+position = Vector2(1, 0)
+layer_0/tile_data = PackedInt32Array(655366, 65542, 268435456, 720902, 6, 268435460, 655367, 6, 0, 720903, 65542, 2, 655368, 65542, 0, 720904, 6, 4, 524294, 131078, 2, 589830, 131078, 3, 524295, 262150, 2, 589831, 262150, 3, 524296, 458758, 1, 458760, 65542, 0, 393224, 65542, 0, 458759, 6, 0, 458758, 6, 0, 458757, 6, 2, 458756, 6, 2, 458755, 6, 2, 458754, 6, 268435460, 393218, 65542, 268435456, 327682, 65542, 268435456, 327688, 65542, 0, 393223, 6, 0, 393222, 6, 0, 393221, 6, 0, 393220, 6, 0, 393219, 6, 0, 327683, 6, 0, 327684, 6, 0, 327685, 6, 0, 327686, 6, 0, 327687, 6, 0, 196610, 131078, 2, 262146, 131078, 3, 196611, 196614, 2, 262147, 196614, 3, 196612, 196614, 2, 262148, 196614, 3, 196613, 196614, 2, 262149, 196614, 3, 196614, 196614, 2, 262150, 196614, 3, 196615, 196614, 2, 262151, 196614, 3, 196616, 262150, 2, 262152, 262150, 3)
+layer_1/tile_data = PackedInt32Array(327683, 1441793, 12, 327688, 786433, 13)
+layer_3/tile_data = PackedInt32Array(262149, 262145, 12, 458756, 524289, 14, 262147, 1507329, 8, 655366, 524295, 3, 196612, 1048577, 12, 262151, 1179649, 12, 589830, 1310721, 12, 589831, 65543, 16, 262148, 1310721, 12, 327685, 1048577, 14, 393220, 1114113, 14, 458757, 1179649, 15, 196611, 1048577, 12)
+layer_4/tile_data = PackedInt32Array(458756, 131073, 14, 262149, 1, 14, 262150, 917505, 13, 196612, 589825, 6, 262146, 917505, 13, 196614, 524295, 15, 327688, 786433, 16, 458759, 720903, 16)
+
+[node name="Player" parent="Characters" index="0"]
+position = Vector2(233, 339)
+
+[node name="Door_HomeInterior" parent="LevelTeleporters" index="0" instance=ExtResource("2_hg0w4")]
+position = Vector2(242, 382)
+id = "home"
+destination_level = 1
+destination_door = "HomeExterior"
+
+[node name="SpawnMarker" parent="LevelTeleporters/Door_HomeInterior" index="1"]
+position = Vector2(0, -36)
+
+[node name="Ui" parent="." index="10"]
+visible = false
+
+[node name="WindowLight" type="PointLight2D" parent="." index="12"]
+position = Vector2(137, 206)
+energy = 0.8
+texture = ExtResource("2_w7n4n")
+texture_scale = 0.2
+
+[node name="LampUpstairs" type="PointLight2D" parent="." index="13"]
+position = Vector2(144, 141)
+color = Color(1, 0.851312, 0.398009, 1)
+energy = 0.7
+texture = SubResource("GradientTexture2D_hu871")
+
+[node name="LampDownstairs" type="PointLight2D" parent="." index="14"]
+position = Vector2(209, 301)
+color = Color(1, 0.851312, 0.398009, 1)
+energy = 0.8
+texture = SubResource("GradientTexture2D_hu871")
+
+[editable path="LevelTeleporters/Door_HomeInterior"]

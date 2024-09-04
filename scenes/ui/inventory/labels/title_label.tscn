@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://ci4e6ks852omx"]
+
+[ext_resource type="FontFile" uid="uid://dmouaewsqx0n2" path="res://assets/fonts/monogram.ttf" id="1_sbs4d"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_l8pe1"]
+font = ExtResource("1_sbs4d")
+font_size = 9
+font_color = Color(0.0361009, 0.0361009, 0.0361009, 1)
+
+[node name="TitleLabel" type="Label"]
+text = "Main Quests"
+label_settings = SubResource("LabelSettings_l8pe1")

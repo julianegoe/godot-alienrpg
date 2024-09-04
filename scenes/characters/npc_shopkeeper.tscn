@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bv6xpju5vv6ms"]
+[gd_scene load_steps=13 format=3 uid="uid://bv6xpju5vv6ms"]
 
 [ext_resource type="PackedScene" uid="uid://dn0xejscrtpfb" path="res://scenes/characters/npc.tscn" id="1_skejw"]
 [ext_resource type="Script" path="res://scenes/characters/npc_shopkeeper.gd" id="2_nn7mj"]
@@ -7,9 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://x1mxtctwuy0u" path="res://scenes/ui/dialogue/speechbubble.tscn" id="5_56u1f"]
 [ext_resource type="Resource" uid="uid://rq5dmuxpguau" path="res://resources/dialogues/dialogue_shopkeeper.tres" id="6_fchb2"]
 [ext_resource type="PackedScene" uid="uid://cm0iaowv6241f" path="res://scenes/ui/dialogue/choices_box.tscn" id="8_ls0ir"]
+[ext_resource type="Script" path="res://scripts/components/talkable_entity.gd" id="8_s4hef"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_n7rik"]
-radius = 30.0
+[sub_resource type="CircleShape2D" id="CircleShape2D_oykpj"]
+radius = 41.0122
 
 [sub_resource type="Animation" id="Animation_2fijc"]
 length = 0.001
@@ -52,10 +53,18 @@ _data = {
 [node name="Shopkeeper" instance=ExtResource("1_skejw")]
 script = ExtResource("2_nn7mj")
 
-[node name="CollisionShape2D" parent="." index="0"]
+[node name="TalkableEntity" type="Area2D" parent="." index="0" node_paths=PackedStringArray("speechbubble", "choices_box")]
+script = ExtResource("8_s4hef")
+speechbubble = NodePath("../UI/PosHelper/Speechbubble")
+choices_box = NodePath("../ChoicesUi/Control/Choices")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TalkableEntity" index="0"]
+shape = SubResource("CircleShape2D_oykpj")
+
+[node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(6.82121e-13, 15)
 
-[node name="Texture" parent="." index="1"]
+[node name="Texture" parent="." index="2"]
 texture = ExtResource("3_cj56t")
 hframes = 8
 
@@ -64,9 +73,6 @@ self_modulate = Color(1, 1, 1, 0.517647)
 show_behind_parent = true
 position = Vector2(1, 17)
 texture = ExtResource("4_eo6j4")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Vicinity" index="0"]
-shape = SubResource("CircleShape2D_n7rik")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." index="3"]
 libraries = {
@@ -114,8 +120,8 @@ grow_horizontal = 2
 grow_vertical = 0
 portrait = 1
 
-[connection signal="player_entered" from="." to="." method="_on_player_entered"]
-[connection signal="player_exited" from="." to="." method="_on_player_exited"]
-[connection signal="input_event" from="Vicinity" to="." method="_on_vicinity_input_event"]
+[connection signal="approached" from="TalkableEntity" to="." method="_on_talkable_entity_approached"]
+[connection signal="removed" from="TalkableEntity" to="." method="_on_talkable_entity_removed"]
+[connection signal="talked_to" from="TalkableEntity" to="." method="_on_talkable_entity_talked_to"]
 [connection signal="choices_prompted" from="UI/PosHelper/Speechbubble" to="." method="_on_speechbubble_choices_prompted"]
 [connection signal="dialogue_ended" from="UI/PosHelper/Speechbubble" to="." method="_on_speechbubble_dialogue_ended"]

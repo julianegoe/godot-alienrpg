@@ -1,5 +1,7 @@
 class_name ItemResource extends Resource
 
+signal quantity_changed(value: int)
+
 enum ItemType { FLORA, WEAPON, ALCHEMY, ITEM, BODY, NONE }
 enum QuantityType { TOTAL, INVENTORY, HOTBAR }
 
@@ -15,7 +17,9 @@ enum QuantityType { TOTAL, INVENTORY, HOTBAR }
 @export var id: String
 @export var display_name: String
 @export var description: String
-var total_quantity: int = 0 # -1 is used as infinite uses
+var total_quantity: int = 0:
+	set(value):
+		total_quantity = value # -1 is used as infinite uses
 @export var inventory_quantity: int = 0:
 	set(value):
 		inventory_quantity = value
@@ -23,7 +27,8 @@ var total_quantity: int = 0 # -1 is used as infinite uses
 			total_quantity = -1
 			return
 		total_quantity = inventory_quantity + hotbar_quantity
-	
+		quantity_changed.emit(value)
+		
 @export var hotbar_quantity: int = 0:
 	set(value):
 		hotbar_quantity = value
@@ -39,6 +44,9 @@ var total_quantity: int = 0 # -1 is used as infinite uses
 @export var hotbar_position: int = 0
 @export var inventory_position: int = 0
 
+func _init():
+	total_quantity = hotbar_quantity + inventory_quantity
+	
 func increase_quantity_by(value: int, quantity_type: QuantityType):
 	if total_quantity == -1:
 		return

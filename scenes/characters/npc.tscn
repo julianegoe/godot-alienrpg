@@ -19,12 +19,8 @@ shape = SubResource("CapsuleShape2D_dm4w6")
 
 [node name="Texture" type="Sprite2D" parent="."]
 
-[node name="Vicinity" type="Area2D" parent="."]
-collision_layer = 32
-collision_mask = 128
-
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="."]
-position = Vector2(0, -49)
+position = Vector2(2.08165e-12, -30)
 remote_path = NodePath("../Ui/icon")
 update_rotation = false
 update_scale = false
@@ -33,8 +29,5 @@ update_scale = false
 follow_viewport_enabled = true
 
 [node name="icon" parent="Ui" instance=ExtResource("2_ib5w7")]
-position = Vector2(0, -49)
+position = Vector2(2.08165e-12, -30)
 sprite_texture = ExtResource("3_s8vcb")
-
-[connection signal="body_entered" from="Vicinity" to="." method="_on_vicinity_body_entered"]
-[connection signal="body_exited" from="Vicinity" to="." method="_on_vicinity_body_exited"]

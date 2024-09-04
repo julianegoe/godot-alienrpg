@@ -1,64 +1,13 @@
-[gd_resource type="Resource" script_class="DialogueResource" load_steps=15 format=3 uid="uid://rq5dmuxpguau"]
+[gd_resource type="Resource" script_class="DialogueResource" load_steps=6 format=3 uid="uid://rq5dmuxpguau"]
 
-[ext_resource type="Script" path="res://scripts/resources/dialogue/dice_roll_resource.gd" id="1_be6id"]
-[ext_resource type="Script" path="res://scripts/resources/dialogue/next_node_resource.gd" id="2_bb67q"]
-[ext_resource type="Script" path="res://scripts/resources/dialogue/choice_resource.gd" id="3_oqvyp"]
-[ext_resource type="Script" path="res://scripts/resources/dialogue/prompt_resource.gd" id="4_3v1nk"]
+[ext_resource type="Script" path="res://scripts/resources/dialogue/prompt_resource.gd" id="1_7mxtr"]
+[ext_resource type="Resource" uid="uid://bfa1q657est7f" path="res://resources/dialogues/prompts/shopkeeper_prompt_001.tres" id="1_yg6sx"]
+[ext_resource type="Resource" uid="uid://brjhxprvdgpl0" path="res://resources/dialogues/prompts/shopkeeper_prompt_002.tres" id="2_twlvd"]
+[ext_resource type="Resource" uid="uid://kdchyxcbdvyu" path="res://resources/dialogues/prompts/shopkeeper_prompt_003.tres" id="3_q4bwu"]
 [ext_resource type="Script" path="res://scripts/resources/dialogue/dialogue_resource.gd" id="5_np6vl"]
-
-[sub_resource type="Resource" id="Resource_70ou2"]
-script = ExtResource("1_be6id")
-skill = 0
-difficulty = 10.0
-
-[sub_resource type="Resource" id="Resource_frnd8"]
-script = ExtResource("2_bb67q")
-success = 2
-failure = 1
-
-[sub_resource type="Resource" id="Resource_bhqbv"]
-script = ExtResource("3_oqvyp")
-id = ""
-text = "I really need to buy some groceries."
-next_node = SubResource("Resource_frnd8")
-dice_roll = SubResource("Resource_70ou2")
-
-[sub_resource type="Resource" id="Resource_c1o13"]
-script = ExtResource("2_bb67q")
-success = 3
-failure = -1
-
-[sub_resource type="Resource" id="Resource_276lg"]
-script = ExtResource("3_oqvyp")
-id = ""
-text = "Okay."
-next_node = SubResource("Resource_c1o13")
-
-[sub_resource type="Resource" id="Resource_72cbq"]
-script = ExtResource("4_3v1nk")
-text = "Sorry...{p=0.5} shop's closed right now. Gotta finish this cigarette first."
-choices = Array[ExtResource("3_oqvyp")]([SubResource("Resource_bhqbv"), SubResource("Resource_276lg")])
-next_node = 1
-
-[sub_resource type="Resource" id="Resource_2ewy3"]
-script = ExtResource("4_3v1nk")
-text = "Well too bad"
-choices = Array[ExtResource("3_oqvyp")]([])
-next_node = 0
-
-[sub_resource type="Resource" id="Resource_44yji"]
-script = ExtResource("4_3v1nk")
-text = "*sigh* Alright, what do you want?"
-choices = Array[ExtResource("3_oqvyp")]([])
-next_node = 0
-
-[sub_resource type="Resource" id="Resource_am2s5"]
-script = ExtResource("4_3v1nk")
-text = "Stop by later."
-choices = Array[ExtResource("3_oqvyp")]([])
-next_node = 0
 
 [resource]
 script = ExtResource("5_np6vl")
+start_node = 0
 display_name = "Shopkeeper"
-dialogue = Array[ExtResource("4_3v1nk")]([SubResource("Resource_72cbq"), SubResource("Resource_2ewy3"), SubResource("Resource_44yji"), SubResource("Resource_am2s5")])
+prompts = Array[ExtResource("1_7mxtr")]([ExtResource("1_yg6sx"), ExtResource("2_twlvd"), ExtResource("3_q4bwu")])

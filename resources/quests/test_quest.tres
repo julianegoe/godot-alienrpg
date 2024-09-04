@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="QuestResource" load_steps=5 format=3 uid="uid://tfbyjvnfp7ks"]
+
+[ext_resource type="Script" path="res://scripts/resources/quests/quest_resource.gd" id="1_t3sh0"]
+[ext_resource type="Resource" uid="uid://bi58m7p10rlye" path="res://resources/quests/tasks/pick_up_snowball.tres" id="2_853mc"]
+[ext_resource type="Script" path="res://scripts/resources/quests/tasks/task_resource.gd" id="2_c1wor"]
+[ext_resource type="Resource" uid="uid://du3vxy60f2u02" path="res://resources/quests/tasks/talk_to_shopkeeper_001.tres" id="3_yn84j"]
+
+[resource]
+script = ExtResource("1_t3sh0")
+id = "001"
+name = "Test Quest"
+description = Array[String](["Get yourself acquainted with your new home."])
+status = 0
+is_hidden = false
+tasks = Array[ExtResource("2_c1wor")]([ExtResource("2_853mc"), ExtResource("3_yn84j")])

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dlonkna2yl1rm"]
+[gd_scene load_steps=12 format=3 uid="uid://dlonkna2yl1rm"]
 
 [ext_resource type="Script" path="res://scenes/ui/inventory/inventory_files.gd" id="1_acq3v"]
 [ext_resource type="PackedScene" uid="uid://b4c1w07q4p7gd" path="res://scenes/ui/inventory/inventory_portrait_photo.tscn" id="1_db066"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://bry5c3rk6ep5m" path="res://assets/ui/inventory/inventory_character_stats_intelligence.png" id="7_j5tqk"]
 [ext_resource type="Texture2D" uid="uid://bwdi7bbpe52em" path="res://assets/ui/inventory/inventory_character_stats_survival.png" id="8_tvcmy"]
 [ext_resource type="Theme" uid="uid://wb56k7anlde3" path="res://resources/themes/font_main_theme.tres" id="9_endxe"]
+[ext_resource type="PackedScene" uid="uid://0iu7y2acyutd" path="res://scenes/ui/inventory/quest_display.tscn" id="11_st0mb"]
 
 [node name="InventoryFiles" type="Control"]
 layout_mode = 3
@@ -19,6 +20,10 @@ anchor_bottom = 0.6
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_acq3v")
+
+[node name="QuestDisplay" parent="." instance=ExtResource("11_st0mb")]
+visible = false
+layout_mode = 1
 
 [node name="PortraitPhoto" parent="." instance=ExtResource("1_db066")]
 position = Vector2(26, 27)

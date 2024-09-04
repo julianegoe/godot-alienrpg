@@ -1,0 +1,24 @@
+[gd_resource type="Resource" script_class="ChoiceResource" load_steps=6 format=3 uid="uid://iopbtbtllqsa"]
+
+[ext_resource type="Script" path="res://scripts/resources/dialogue/dice_roll_resource.gd" id="1_y7f1e"]
+[ext_resource type="Script" path="res://scripts/resources/dialogue/next_node_resource.gd" id="2_eyle0"]
+[ext_resource type="Script" path="res://scripts/resources/dialogue/choice_resource.gd" id="3_1svig"]
+
+[sub_resource type="Resource" id="Resource_70ou2"]
+script = ExtResource("1_y7f1e")
+skill = 0
+difficulty = 10.0
+one_shot = false
+
+[sub_resource type="Resource" id="Resource_frnd8"]
+script = ExtResource("2_eyle0")
+success = 1
+failure = 2
+
+[resource]
+script = ExtResource("3_1svig")
+type = "Dialogue"
+id = "001"
+text = "I really need to buy some groceries."
+next_node = SubResource("Resource_frnd8")
+dice_roll = SubResource("Resource_70ou2")

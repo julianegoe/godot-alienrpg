@@ -11,7 +11,7 @@ health = 0
 immunity = Array[int]([0, 1, 2])
 startle_time = {
 "default": 4.0,
-"high": 3.5,
+"high": 5.0,
 "low": 2.5,
 "medium": 3.0
 }

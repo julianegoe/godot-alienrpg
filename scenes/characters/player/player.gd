@@ -95,7 +95,7 @@ func _create_choices_buttons(choices):
 func _on_choice_selected(choice):
 	var success: bool = true
 	if choice.dice_roll:
-		success = await owner.skill_checker.execute(choice.dice_roll)
+		success = await DiceRoll.execute(choice.dice_roll)
 	if choice.next_node and success:
 		speechbubble.activate(choice.next_node.success)
 	elif choice.next_node and not success:

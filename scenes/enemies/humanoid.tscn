@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://chjfavs5djxim" path="res://assets/enemies/humanoid.png" id="1_4b73h"]
 [ext_resource type="Resource" uid="uid://6nvxur0ntpyt" path="res://resources/enemies/humanoid_resource.tres" id="2_vx7to"]
+[ext_resource type="Script" path="res://scripts/components/tethered_enemies.gd" id="3_kaia1"]
 [ext_resource type="Script" path="res://scenes/enemies/humanoid.gd" id="3_wwvce"]
 [ext_resource type="Script" path="res://scripts/components/hurtbox.gd" id="4_16ts3"]
 [ext_resource type="Script" path="res://scripts/state_machines/enemy_state_machine/enemy_state_machine.gd" id="4_jsnld"]
@@ -11,6 +12,7 @@
 [ext_resource type="Script" path="res://scenes/enemies/enemy_defeated_state.gd" id="7_h844u"]
 [ext_resource type="Script" path="res://scripts/state_machines/enemy_state_machine/enemy_states/enemy_startled_state.gd" id="7_v47p3"]
 [ext_resource type="Shader" path="res://scenes/enemies/glow.gdshader" id="8_uevfl"]
+[ext_resource type="PackedScene" uid="uid://dv76brcp2gvum" path="res://scenes/particles/spore_explosion.tscn" id="11_aaaes"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ojde8"]
 shader = ExtResource("8_uevfl")
@@ -436,16 +438,6 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="Curve" id="Curve_6qjdj"]
-min_value = 1.0
-max_value = 1.4
-_data = [Vector2(0.0167598, 1.39629), 0.0, 0.0, 0, 0, Vector2(0.731844, 1), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Gradient" id="Gradient_dousc"]
-offsets = PackedFloat32Array(0.08, 0.526667, 0.986667)
-colors = PackedColorArray(0.200762, 0.0106952, 0.170564, 1, 0.67687, 0.126934, 0.591189, 1, 0.399427, 0.241465, 0.870587, 1)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_mfcpq"]
 radius = 3.99588
 height = 14.0763
@@ -494,6 +486,9 @@ radius = 21.0
 script = ExtResource("3_wwvce")
 resource = ExtResource("2_vx7to")
 
+[node name="Tethered" type="Node2D" parent="."]
+script = ExtResource("3_kaia1")
+
 [node name="EnemyStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_jsnld")
 initial_state = NodePath("EnemyPursuitState")
@@ -516,25 +511,12 @@ state = 3
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 material = SubResource("ShaderMaterial_ojde8")
 sprite_frames = SubResource("SpriteFrames_4dtsr")
-animation = &"pursue_front"
+animation = &"die"
+frame = 14
+frame_progress = 1.0
+speed_scale = 0.5
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-position = Vector2(0, -2)
-emitting = false
-amount = 100
-lifetime = 2.0
-one_shot = true
-explosiveness = 0.65
-randomness = 1.0
-emission_shape = 1
-emission_sphere_radius = 15.0
-spread = 180.0
-gravity = Vector2(2.08165e-12, 2.08165e-12)
-initial_velocity_min = 15.0
-initial_velocity_max = 30.0
-scale_amount_max = 1.4
-scale_amount_curve = SubResource("Curve_6qjdj")
-color_ramp = SubResource("Gradient_dousc")
+[node name="CPUParticles2D" parent="." instance=ExtResource("11_aaaes")]
 
 [node name="HurtBox" type="Area2D" parent="."]
 visible = false
@@ -568,6 +550,7 @@ debug_color = Color(0.666667, 0.443137, 0.670588, 0.419608)
 [node name="StartleTimer" type="Timer" parent="."]
 
 [connection signal="attack_finished" from="." to="." method="_on_attack_finished"]
+[connection signal="freed" from="Tethered" to="." method="_on_tethered_freed"]
 [connection signal="body_entered" from="Vicinity" to="." method="_on_vicinity_body_entered"]
 [connection signal="body_exited" from="Vicinity" to="." method="_on_vicinity_body_exited"]
 [connection signal="timeout" from="StartleTimer" to="." method="_on_startle_timer_timeout"]

@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="EnemyResource" load_steps=2 format=3 uid="uid://dhpxvp13htwmq"]
+
+[ext_resource type="Script" path="res://scripts/resources/enemy_resource.gd" id="1_aqhg8"]
+
+[resource]
+script = ExtResource("1_aqhg8")
+type = 1
+max_speed = 0
+max_health = 0
+health = 50
+immunity = Array[int]([])
+startle_time = {
+"default": 0.0,
+"high": 0.0,
+"low": 0.0,
+"medium": 0.0
+}

@@ -1,7 +1,7 @@
-class_name ItemPickupPreview extends TextureRect
+class_name ItemPickupPreview extends BoxContainer
 
-@onready var item_icon = $HBoxContainer/ItemIcon
-@onready var display_name = $HBoxContainer/DisplayName
+@onready var item_icon = $ItemIcon
+@onready var display_name = $PanelContainer/HBoxContainer/DisplayName
 @onready var timer = $Timer
 
 func _on_timer_timeout():

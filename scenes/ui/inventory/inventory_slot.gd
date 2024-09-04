@@ -25,7 +25,6 @@ var text: String:
 			label.text = text
 
 func _ready():
-	process_mode = Node.PROCESS_MODE_ALWAYS
 	state_machine.init(self)
 		
 func _on_pressed():
@@ -43,6 +42,9 @@ func _on_button_down():
 func _on_dropable_mouse_entered():
 	state_machine.on_dropable_mouse_entered(get_index())
 
+func _on_selector_area_entered(area):
+	state_machine.on_selector_area_entered(area)
+	
 func _on_selector_area_exited(area):
 	state_machine.on_selector_area_exited(area)
 
@@ -51,6 +53,3 @@ func _on_focus_entered():
 
 func _process(delta):
 	state_machine.on_update(delta)
-
-func _on_selector_area_entered(area):
-	state_machine.on_selector_area_entered(area)

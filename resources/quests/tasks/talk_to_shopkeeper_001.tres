@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="TalkToResource" load_steps=4 format=3 uid="uid://du3vxy60f2u02"]
+
+[ext_resource type="Resource" uid="uid://iopbtbtllqsa" path="res://resources/dialogues/choices/shopkeeper_choice_001.tres" id="1_foivd"]
+[ext_resource type="Resource" uid="uid://rq5dmuxpguau" path="res://resources/dialogues/dialogue_shopkeeper.tres" id="1_nu6nx"]
+[ext_resource type="Script" path="res://scripts/resources/quests/tasks/talk_to_task_resource.gd" id="2_6od32"]
+
+[resource]
+script = ExtResource("2_6od32")
+dialogue = ExtResource("1_nu6nx")
+selected_choice = ExtResource("1_foivd")
+id = "002"
+name = "Be convincing"
+description = "Make the shopkeeper open his shop."
+status = 1

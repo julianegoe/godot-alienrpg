@@ -58,16 +58,13 @@ horizontal_alignment = 2
 vertical_alignment = 2
 
 [node name="Selector" parent="." instance=ExtResource("4_jqnfg")]
-process_mode = 3
 position = Vector2(-2, -2)
 collision_layer = 16
 collision_mask = 12
-monitorable = true
 
 [node name="Dropable" parent="." instance=ExtResource("5_avpdq")]
-process_mode = 3
 collision_layer = 8
-collision_mask = 28
+collision_mask = 16
 
 [node name="StateMachine" parent="." instance=ExtResource("4_1hmbe")]
 

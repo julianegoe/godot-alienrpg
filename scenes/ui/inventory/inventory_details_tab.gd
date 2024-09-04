@@ -3,7 +3,7 @@ class_name InventoryFileCategory extends TextureButton
 
 signal category_selected(category: InventoryFileCategory)
 
-enum FileCategory { DETAILS, STATS }
+enum FileCategory { DETAILS, STATS, ASSIGNMENTS }
 
 @export var type: FileCategory
 

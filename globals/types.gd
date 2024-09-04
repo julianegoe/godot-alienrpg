@@ -1,4 +1,4 @@
-class_name GameTypes extends Node
+extends Node
 
 enum GameTime {
 	DAWN,

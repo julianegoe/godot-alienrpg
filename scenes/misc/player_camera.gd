@@ -14,8 +14,6 @@ func random_offset():
 	return Vector2(rng.randf_range(-shake_strength, shake_strength), rng.randf_range(-shake_strength, shake_strength))
 
 func _process(delta):
-	#if Input.is_action_just_pressed("skip"):
-		#apply_shake()
 	if shake_strength > 0:
 		shake_strength = lerp(shake_strength, 0.0, shake_fade * delta)
 		offset = random_offset()

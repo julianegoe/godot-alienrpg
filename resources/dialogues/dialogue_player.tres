@@ -1,70 +1,42 @@
-[gd_resource type="Resource" script_class="DialogueResource" load_steps=16 format=3 uid="uid://bya3v4oox0cyl"]
+[gd_resource type="Resource" script_class="DialogueResource" load_steps=10 format=3 uid="uid://bya3v4oox0cyl"]
 
-[ext_resource type="Script" path="res://scripts/resources/dialogue/dice_roll_resource.gd" id="1_36bje"]
-[ext_resource type="Script" path="res://scripts/resources/dialogue/next_node_resource.gd" id="2_lsj0b"]
-[ext_resource type="Script" path="res://scripts/resources/dialogue/choice_resource.gd" id="3_5mg8x"]
-[ext_resource type="Script" path="res://scripts/resources/dialogue/prompt_resource.gd" id="4_x5hmg"]
+[ext_resource type="Resource" uid="uid://c1c2m3lo61f5f" path="res://resources/dialogues/prompts/player_prompt_001.tres" id="1_si3gd"]
+[ext_resource type="Script" path="res://scripts/resources/dialogue/prompt_resource.gd" id="2_6kjlm"]
+[ext_resource type="Script" path="res://scripts/resources/dialogue/choice_resource.gd" id="3_1xtbu"]
 [ext_resource type="Script" path="res://scripts/resources/dialogue/dialogue_resource.gd" id="5_0j3b5"]
 
-[sub_resource type="Resource" id="Resource_5866v"]
-script = ExtResource("1_36bje")
-skill = 3
-difficulty = 5.0
-
-[sub_resource type="Resource" id="Resource_h0smp"]
-script = ExtResource("2_lsj0b")
-success = 1
-failure = 2
-
-[sub_resource type="Resource" id="Resource_wdvio"]
-script = ExtResource("3_5mg8x")
-id = "0"
-text = "Look over the edge."
-next_node = SubResource("Resource_h0smp")
-dice_roll = SubResource("Resource_5866v")
-
-[sub_resource type="Resource" id="Resource_squvl"]
-script = ExtResource("3_5mg8x")
-id = "1"
-text = "Nope."
-
-[sub_resource type="Resource" id="Resource_g0g05"]
-script = ExtResource("4_x5hmg")
-text = "I must look closer."
-choices = Array[ExtResource("3_5mg8x")]([SubResource("Resource_wdvio"), SubResource("Resource_squvl")])
+[sub_resource type="Resource" id="Resource_fk42p"]
+script = ExtResource("2_6kjlm")
+text = ""
+choices = Array[ExtResource("3_1xtbu")]([])
 next_node = 0
 
-[sub_resource type="Resource" id="Resource_1jsuc"]
-script = ExtResource("4_x5hmg")
-text = "What is this...."
-choices = Array[ExtResource("3_5mg8x")]([])
-next_node = -1
+[sub_resource type="Resource" id="Resource_qjjb8"]
+script = ExtResource("2_6kjlm")
+text = ""
+choices = Array[ExtResource("3_1xtbu")]([])
+next_node = 0
 
-[sub_resource type="Resource" id="Resource_1b5qv"]
-script = ExtResource("4_x5hmg")
-text = "Oh shit..."
-choices = Array[ExtResource("3_5mg8x")]([])
-next_node = -1
+[sub_resource type="Resource" id="Resource_3fpbx"]
+script = ExtResource("2_6kjlm")
+text = "This fruit looks so fresh."
+choices = Array[ExtResource("3_1xtbu")]([])
+next_node = 0
 
-[sub_resource type="Resource" id="Resource_5ahpb"]
-script = ExtResource("4_x5hmg")
-text = "They look so fresh."
-choices = Array[ExtResource("3_5mg8x")]([])
-next_node = -1
+[sub_resource type="Resource" id="Resource_aqust"]
+script = ExtResource("2_6kjlm")
+text = "Old and new magazins."
+choices = Array[ExtResource("3_1xtbu")]([])
+next_node = 0
 
-[sub_resource type="Resource" id="Resource_so43l"]
-script = ExtResource("4_x5hmg")
-text = "Those magazines seem old."
-choices = Array[ExtResource("3_5mg8x")]([])
-next_node = -1
-
-[sub_resource type="Resource" id="Resource_hhwvr"]
-script = ExtResource("4_x5hmg")
-text = "Curious looking rug."
-choices = Array[ExtResource("3_5mg8x")]([])
-next_node = -1
+[sub_resource type="Resource" id="Resource_qplb1"]
+script = ExtResource("2_6kjlm")
+text = "The rug looks curious."
+choices = Array[ExtResource("3_1xtbu")]([])
+next_node = 0
 
 [resource]
 script = ExtResource("5_0j3b5")
+start_node = 0
 display_name = "Renate"
-dialogue = Array[ExtResource("4_x5hmg")]([SubResource("Resource_g0g05"), SubResource("Resource_1jsuc"), SubResource("Resource_1b5qv"), SubResource("Resource_5ahpb"), SubResource("Resource_so43l"), SubResource("Resource_hhwvr")])
+prompts = Array[ExtResource("2_6kjlm")]([ExtResource("1_si3gd"), SubResource("Resource_fk42p"), SubResource("Resource_qjjb8"), SubResource("Resource_3fpbx"), SubResource("Resource_aqust"), SubResource("Resource_qplb1")])

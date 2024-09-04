@@ -10,6 +10,7 @@ const level_a_1 = preload("res://scenes/levels/level_a_1.tscn")
 const level_a_2 = preload("res://scenes/levels/level_a_2.tscn")
 const level_a_3 = preload("res://scenes/levels/level_a_3.tscn")
 const shop_interior = preload("res://scenes/levels/shop_interior.tscn")
+const home_interior = preload("res://scenes/levels/home_interior.tscn")
 
 var scene_to_load: PackedScene
 var door_tag: String
@@ -39,6 +40,8 @@ func go_to_level(level_tag: Types.Levels, door: String):
 			scene_to_load = level_a_3
 		Types.Levels.SHOP:
 			scene_to_load = shop_interior
+		Types.Levels.HOME:
+			scene_to_load = home_interior
 	door_tag = door
 	if scene_to_load != null:
 		animation_player.play("fade_out")

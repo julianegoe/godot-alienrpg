@@ -1,6 +1,6 @@
 class_name AlienFlower extends Enemy
 
-signal has_died
+signal has_died(enemy: Enemy)
 
 @onready var health: int = resource.health:
 	set(value):

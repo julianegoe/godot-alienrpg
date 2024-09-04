@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemResource" load_steps=2 format=3 uid="uid://db8shdb0dj8dq"]
+
+[ext_resource type="Script" path="res://scripts/resources/item_resource.gd" id="2_i8d75"]
+
+[resource]
+script = ExtResource("2_i8d75")
+type = 0
+texture_region_rect = Rect2(105, 2.08165e-12, 21, 21)
+id = "infected_reeds"
+display_name = "Glowing Reeds"
+description = "Why are those reeds glowing?"
+inventory_quantity = 0
+hotbar_quantity = 0
+is_equipped = false
+is_hotbar = false
+is_inventory = false
+hotbar_position = 0
+inventory_position = 0

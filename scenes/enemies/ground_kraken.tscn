@@ -1,0 +1,65 @@
+[gd_scene load_steps=6 format=3 uid="uid://blhdcyyd4j5v5"]
+
+[ext_resource type="Texture2D" uid="uid://dkpl6sbg7vjka" path="res://assets/enemies/ground_kraken.png" id="1_gap6g"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qc6tx"]
+radius = 4.0
+height = 18.0
+
+[sub_resource type="Animation" id="Animation_o5n3q"]
+resource_name = "routine"
+length = 1.26
+loop_mode = 2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1, 1.1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+}
+
+[sub_resource type="Animation" id="Animation_rbne5"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_egko5"]
+_data = {
+"RESET": SubResource("Animation_rbne5"),
+"routine": SubResource("Animation_o5n3q")
+}
+
+[node name="GroundKraken" type="StaticBody2D"]
+collision_layer = 32
+collision_mask = 128
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_gap6g")
+offset = Vector2(2.08165e-12, 8)
+hframes = 13
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 13)
+rotation = 1.5708
+shape = SubResource("CapsuleShape2D_qc6tx")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_egko5")
+}
+autoplay = "routine"

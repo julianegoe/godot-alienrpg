@@ -41,7 +41,7 @@ func tween_color(new_color: Color):
 func modulate_color(base_color: Color):
 	match current_scene_location:
 		Types.LocationType.INDOORS:
-			return base_color.lightened(0.4)
+			return Color(0.557, 0.557, 0.557, 1)
 		Types.LocationType.FOREST:
 			return base_color.darkened(0.4)
 		Types.LocationType.DEFAULT:

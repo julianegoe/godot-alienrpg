@@ -7,6 +7,7 @@ signal attack_finished
 @onready var max_speed: int = resource.max_speed
 @onready var enemy_state_machine = $EnemyStateMachine
 
+@onready var tethered = $Tethered
 @onready var animated_sprite_2d = $AnimatedSprite2D
 @onready var startle_timer = $StartleTimer
 @onready var cpu_particles_2d = $CPUParticles2D
@@ -15,12 +16,9 @@ signal attack_finished
 @onready var hit_box_collision_shape = $HitBox/HitBoxCollisionShape
 
 func _ready():
+	tethered.init(tethered_enemies)
 	hit_box.monitorable = false
 	enemy_state_machine.init(self)
-	if not tethered_enemies.is_empty():
-		for enemy in tethered_enemies:
-			if enemy.has_signal("has_died"):
-				enemy.has_died.connect(_on_tethered_enemy_has_died)
 
 func pursuit():
 	animated_sprite_2d.stop()
@@ -50,7 +48,7 @@ func take_damage(damage: int):
 func defeated():
 	animated_sprite_2d.play("die")
 	var tween = create_tween()
-	await tween.tween_property(animated_sprite_2d, "modulate:a", 0, 1).finished
+	await tween.tween_property(animated_sprite_2d, "modulate:a", 0, 2).finished
 	queue_free()
 	
 func set_animation_for(direction: Vector2):
@@ -78,11 +76,8 @@ func _on_attack_finished():
 	cpu_particles_2d.emitting = false
 	enemy_state_machine.on_attack_finished()
 
-func _on_tethered_enemy_has_died(enemy: Node):
-	var index = tethered_enemies.find(enemy)
-	tethered_enemies.remove_at(index)
-	if tethered_enemies.is_empty():
-		enemy_state_machine.on_defeated()
-
 func _physics_process(delta):
 	enemy_state_machine.physics_update(delta)
+
+func _on_tethered_freed():
+	enemy_state_machine.on_defeated()

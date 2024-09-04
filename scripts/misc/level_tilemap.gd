@@ -7,15 +7,12 @@ enum TILESET_ID { GROUND, OBJECTS, SHADOWS, TREES, ITEMS }
 
 @export var player: Player
 
-var aStar_grid: AStarGrid2D
 var tile_position: Vector2
 var player_position: Vector2
 var is_player_in_vicinity: bool = false
 var previous_items_in_vicinity: Array
 var info_icons: Array[Icon]
 
-@onready var arrow_cursor = preload("res://assets/cursors/arrow_outlined.png")
-@onready var target_cursor = preload("res://assets/cursors/cursor_target.png")
 @onready var icon = preload("res://scenes/ui/misc/icon.tscn")
 
 func _input(event):
@@ -58,7 +55,8 @@ func pick_up(item: Materials, quantitiy: int = 1) -> void:
 		if item == Materials.AXE:
 			delete_tile(tile_position, item)
 		InventoryManager.add_item(ability_resource, quantitiy)
-	
+
+## maps custom data layer to dialogue node in player dialogue resource
 func look(material_item: int):
 	var lookup = { 
 		Materials.DEFAULT: null,
@@ -109,19 +107,12 @@ func delete_info_icons() -> void:
 			info_icon.queue_free()
 		info_icons.clear()
 
-func set_cursor_shape():
-	var mouse_pos = local_to_map(get_local_mouse_position())
-	var tile_item = get_custom_data_at(mouse_pos, "material")
-	if not tile_item == Materials.DEFAULT:
-		Input.set_custom_mouse_cursor(arrow_cursor, Input.CURSOR_ARROW)
-	else:
-		Input.set_custom_mouse_cursor(target_cursor, Input.CURSOR_ARROW)
+#func set_cursor_shape():
+	#var mouse_pos = local_to_map(get_local_mouse_position())
+	#var tile_item = get_custom_data_at(mouse_pos, "material")
 
-func getAStarCellId(vCell: Vector2) -> int:
-	return int(vCell.y + vCell.x * get_used_rect().size.y)
 
 func _process(_delta):
-	set_cursor_shape()
 	var player_pos = local_to_map(player.position)
 	var current_items_in_vicinity = get_items_in_vicinity(player_pos) 
 	if current_items_in_vicinity != previous_items_in_vicinity:
@@ -130,4 +121,3 @@ func _process(_delta):
 		elif current_items_in_vicinity.is_empty():
 			delete_info_icons()
 	previous_items_in_vicinity = current_items_in_vicinity
-

@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://dv76brcp2gvum"]
+
+[sub_resource type="Curve" id="Curve_6qjdj"]
+min_value = 1.0
+max_value = 1.4
+_data = [Vector2(0.0167598, 1.39629), 0.0, 0.0, 0, 0, Vector2(0.731844, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_dousc"]
+offsets = PackedFloat32Array(0.0928726, 0.526667, 0.986667)
+colors = PackedColorArray(0.0832251, 0.349921, 0.414942, 1, 0.196662, 0.551691, 0.507506, 1, 0.263931, 0.917284, 1, 1)
+
+[node name="SporeExplosion" type="CPUParticles2D"]
+light_mask = 8
+position = Vector2(0, -2)
+emitting = false
+amount = 100
+one_shot = true
+explosiveness = 0.65
+randomness = 1.0
+emission_shape = 1
+emission_sphere_radius = 15.0
+spread = 180.0
+gravity = Vector2(2.08165e-12, -50)
+initial_velocity_min = 15.0
+initial_velocity_max = 30.0
+scale_amount_max = 1.4
+scale_amount_curve = SubResource("Curve_6qjdj")
+color_ramp = SubResource("Gradient_dousc")
+hue_variation_min = -0.26
+hue_variation_max = 0.28

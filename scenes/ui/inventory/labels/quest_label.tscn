@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://6qs2wllfg046"]
+
+[ext_resource type="FontFile" uid="uid://dmouaewsqx0n2" path="res://assets/fonts/monogram.ttf" id="1_hghgf"]
+
+[node name="QuestLabel" type="RichTextLabel"]
+custom_minimum_size = Vector2(80, 2.08165e-12)
+mouse_filter = 2
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+theme_override_fonts/normal_font = ExtResource("1_hghgf")
+theme_override_font_sizes/normal_font_size = 7
+bbcode_enabled = true
+fit_content = true
+scroll_active = false

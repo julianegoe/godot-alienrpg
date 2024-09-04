@@ -18,7 +18,6 @@ signal inventory_visibility_changed(value: bool)
 const SLOT_COUNT = 12
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	process_mode = Node.PROCESS_MODE_ALWAYS
 	hide()
 	for tab in tabs_container.get_children():
 		tab.tab_selected.connect(_on_tab_selected)
@@ -39,7 +38,15 @@ func _ready():
 
 func _input(event):
 	if event.is_action_pressed("inventory"):
-		visible = !visible
+		if visible:
+			visible = false
+			get_tree().paused = false
+	
+		else:
+			visible = true
+			get_tree().paused = true
+			PhysicsServer2D.set_active(true)
+			
 		inventory_visibility_changed.emit(visible)
 		
 func _on_item_added(_item: ItemResource):
@@ -105,4 +112,3 @@ func update_inventory_files(selected_file_category: InventoryFileCategory):
 	if current_selected_item:
 		inventory_files.item_resource = current_selected_item
 		inventory_files.category_type = current_file_category
-

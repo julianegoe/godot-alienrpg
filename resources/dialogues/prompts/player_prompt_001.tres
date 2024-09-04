@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="PromptResource" load_steps=7 format=3 uid="uid://c1c2m3lo61f5f"]
+
+[ext_resource type="Script" path="res://scripts/resources/dialogue/dice_roll_resource.gd" id="1_20xa5"]
+[ext_resource type="Script" path="res://scripts/resources/dialogue/choice_resource.gd" id="3_mnxq0"]
+[ext_resource type="Script" path="res://scripts/resources/dialogue/prompt_resource.gd" id="4_c73uw"]
+
+[sub_resource type="Resource" id="Resource_h3xic"]
+script = ExtResource("1_20xa5")
+skill = 3
+difficulty = 8.0
+one_shot = true
+
+[sub_resource type="Resource" id="Resource_t7gyl"]
+script = ExtResource("3_mnxq0")
+type = "Dialogue"
+id = "001"
+text = "The abyss is calling to me."
+dice_roll = SubResource("Resource_h3xic")
+
+[sub_resource type="Resource" id="Resource_htaji"]
+script = ExtResource("3_mnxq0")
+type = "Dialogue"
+id = "002"
+text = "Nope."
+
+[resource]
+script = ExtResource("4_c73uw")
+text = "I must look closer"
+choices = Array[ExtResource("3_mnxq0")]([SubResource("Resource_t7gyl"), SubResource("Resource_htaji")])
+next_node = -1

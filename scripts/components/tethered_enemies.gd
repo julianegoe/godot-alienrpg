@@ -1,15 +1,18 @@
-class_name TetheredEnemeies extends Node
+class_name TetheredEntities extends Node2D
 
-@export var tethered_enemies: Array[Node]
+signal freed
 
-func _ready():
-	if not tethered_enemies.is_empty():
-		for enemy in tethered_enemies:
-			if enemy.has_signal("has_died"):
-				enemy.has_died.connect(_on_tethered_enemy_has_died)
+var entities: Array[Node]
 
-func _on_tethered_enemy_has_died(enemy: Node):
-	var index = tethered_enemies.find(enemy)
-	tethered_enemies.remove_at(index)
-	if tethered_enemies.is_empty():
-		owner.queue_free()
+func init(tethered: Array[Node]):
+	entities = tethered
+	if not entities.is_empty():
+		for entity in entities:
+			if entity.has_signal("has_died"):
+				entity.has_died.connect(_on_tethered_entity_has_died)
+				
+func _on_tethered_entity_has_died(entity: Node):
+	var index = entities.find(entity)
+	entities.remove_at(index)
+	if entities.is_empty():
+		freed.emit()

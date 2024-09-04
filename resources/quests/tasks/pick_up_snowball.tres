@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="PickUpResource" load_steps=3 format=3 uid="uid://bi58m7p10rlye"]
+
+[ext_resource type="Resource" uid="uid://cporn16b38m2p" path="res://resources/items/snowball_resource.tres" id="1_n8epw"]
+[ext_resource type="Script" path="res://scripts/resources/quests/tasks/pick_up_task_resource.gd" id="2_8myj4"]
+
+[resource]
+script = ExtResource("2_8myj4")
+item = ExtResource("1_n8epw")
+TARGET_QUANTITY = 10
+current_quantity = 0
+id = "001"
+name = "Collect snowballs"
+description = "Collect ten snowballs"
+status = 1

@@ -10,6 +10,7 @@ scene_path = "res://scenes/weapons/snowball.tscn"
 weapon_type = 1
 base_damage = 5
 strength_modifier = 0.2
+ineffective_against = Array[StringName]([])
 type = 1
 texture_region_rect = Rect2(63, 2.08165e-12, 20, 20)
 portrait_texture = ExtResource("2_h3fc1")

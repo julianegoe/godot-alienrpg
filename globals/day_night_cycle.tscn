@@ -8,6 +8,7 @@ script = ExtResource("2_8fmjr")
 current_time_index = 1
 
 [node name="DayNightCycle" type="CanvasModulate"]
+color = Color(0.556863, 0.556863, 0.556863, 1)
 script = ExtResource("1_3hlg2")
 game_time = SubResource("Resource_7415g")
 

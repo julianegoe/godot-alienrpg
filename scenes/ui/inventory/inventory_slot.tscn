@@ -51,16 +51,12 @@ position = Vector2(4, 3)
 texture = ExtResource("3_sy2nu")
 
 [node name="Selector" parent="." instance=ExtResource("4_v26ig")]
-process_mode = 3
-position = Vector2(-1, -2)
 collision_layer = 16
 collision_mask = 12
-monitorable = true
 
 [node name="Dropable" parent="." instance=ExtResource("5_ej8im")]
-process_mode = 3
 collision_layer = 4
-collision_mask = 28
+collision_mask = 16
 
 [node name="StateMachine" parent="." instance=ExtResource("4_532a5")]
 

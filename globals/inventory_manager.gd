@@ -8,7 +8,7 @@ signal item_stashed(item: ItemResource)
 signal item_changed_hotbar_position(item: ItemResource, new_position: int)
 signal item_changed_inventory_position(item: ItemResource, new_position: int)
 
-var inventory_data: InventoryResource = load("res://resources/inventory_resource.tres")
+@onready var inventory_data: InventoryResource = preload("res://resources/inventory_resource.tres")
 
 func add_item(new_item: ItemResource, quantity: int):
 	if inventory_data.items.has(new_item):

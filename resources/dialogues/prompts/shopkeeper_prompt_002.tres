@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="PromptResource" load_steps=2 format=3 uid="uid://brjhxprvdgpl0"]
+
+[ext_resource type="Script" path="res://scripts/resources/dialogue/prompt_resource.gd" id="1_tjeoc"]
+
+[resource]
+script = ExtResource("1_tjeoc")
+text = "*sigh* Alright. What do you want?"
+choices = Array[Resource("res://scripts/resources/dialogue/choice_resource.gd")]([])
+next_node = -1

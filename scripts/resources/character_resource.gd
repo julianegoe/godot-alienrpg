@@ -11,13 +11,13 @@ class_name CharacterResource extends Resource
 @export_range(0, 100, 5) var charisma: int = 0
 @export_range(0, 100, 5) var survival: int = 0
 
-func get_skill_value(skill: GameTypes.Skills):
+func get_skill_value(skill: Types.Skills):
 	match skill:
-		GameTypes.Skills.STRENGTH:
+		Types.Skills.STRENGTH:
 			return strength
-		GameTypes.Skills.INTELLIGENCE:
+		Types.Skills.INTELLIGENCE:
 			return intelligence
-		GameTypes.Skills.CHARISMA:
+		Types.Skills.CHARISMA:
 			return charisma
-		GameTypes.Skills.SURVIVAL:
+		Types.Skills.SURVIVAL:
 			return survival

@@ -14,8 +14,7 @@ class_name InventoryFiles extends Control
 @onready var intelligence_progress = $StatsContainer/IntelligenceProgress
 @onready var charisma_progress = $StatsContainer/CharismaProgress
 @onready var survival_progress = $StatsContainer/SurvivalProgress
-
-
+@onready var quest_display = $QuestDisplay
 
 @onready var category_type: InventoryFileCategory.FileCategory:
 	set(value):
@@ -28,16 +27,24 @@ func _ready():
 func update_file():
 	show()
 	if category_type == InventoryFileCategory.FileCategory.DETAILS:
+		quest_display.hide()
 		category_label.text = "Details"
 		portrait_photo.resource = item_resource
 		item_description.text = item_resource.description
 		stats_container.hide()
 	elif category_type == InventoryFileCategory.FileCategory.STATS:
+		quest_display.hide()
 		category_label.text = "Stats"
 		portrait_photo.resource = character_resource
 		item_description.text = ""
 		stats_container.show()
 		update_stat_progress()
+	elif category_type == InventoryFileCategory.FileCategory.ASSIGNMENTS:
+		category_label.text = "Assignments"
+		stats_container.hide()
+		portrait_photo.hide()
+		item_description.hide()
+		quest_display.show()
 
 func update_stat_progress():
 	strength_progress.value = character_resource.strength

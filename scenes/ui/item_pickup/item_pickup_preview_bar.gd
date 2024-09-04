@@ -14,7 +14,7 @@ func _on_item_added(item: ItemResource):
 	preview_container.add_child(preview)
 	preview.modulate.a = 0
 	preview.display_name.text = item.display_name
-	preview.item_icon.texture = item.icon_texture
+	preview.item_icon.texture.region.position = item.texture_region_rect.position
 	tween.tween_property(preview, "modulate:a", 1, 0.5)
 
 	

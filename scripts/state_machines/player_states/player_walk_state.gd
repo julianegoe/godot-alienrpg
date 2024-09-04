@@ -12,7 +12,7 @@ func exit():
 	set_walk(false)
 	
 func on_input(event):
-	if event.is_action_pressed("skip") and player.speechbubble.is_activated:
+	if event.is_action_pressed("skip") and player.speechbubble.is_active:
 		player.speechbubble.skip_text()
 	if event.is_action_pressed("interact") and player.equipped_item_type == ItemResource.ItemType.WEAPON:
 		match player.equipped_item.weapon_type:
