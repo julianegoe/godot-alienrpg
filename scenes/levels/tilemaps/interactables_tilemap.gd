@@ -26,7 +26,6 @@ func get_custom_data_at(tile_pos: Vector2, data_layer: String) -> Variant:
 		return data.get_custom_data(data_layer)
 	else: return null
 
-
 func get_dialogue_node_for(interactable: String):
 	var lookup = {
 		"default": 0,

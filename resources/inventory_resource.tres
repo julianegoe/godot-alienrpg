@@ -1,8 +1,0 @@
-[gd_resource type="Resource" script_class="InventoryResource" load_steps=3 format=3 uid="uid://6ajlrcmxrjts"]
-
-[ext_resource type="Resource" uid="uid://cporn16b38m2p" path="res://resources/items/snowball_resource.tres" id="1_fcrgv"]
-[ext_resource type="Script" path="res://scripts/resources/inventory_resource.gd" id="2_ufn7o"]
-
-[resource]
-script = ExtResource("2_ufn7o")
-items = Array[Resource("res://scripts/resources/item_resource.gd")]([ExtResource("1_fcrgv")])

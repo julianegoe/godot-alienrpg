@@ -2,13 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://bq8rcc5d8ojhe" path="res://scenes/levels/base_level.tscn" id="1_iitfh"]
 [ext_resource type="PackedScene" uid="uid://br174ejjc2ao2" path="res://scenes/buildings/tent.tscn" id="2_752a5"]
-[ext_resource type="PackedScene" uid="uid://35mmfwmhfhoy" path="res://scenes/misc/level_teleporter.tscn" id="2_q1m4x"]
-[ext_resource type="PackedScene" uid="uid://dligkucy2lppl" path="res://scenes/enemies/alien_flower.tscn" id="3_ycia7"]
-[ext_resource type="PackedScene" uid="uid://b6j1wu22ysa6s" path="res://scenes/enemies/humanoid.tscn" id="4_1ml11"]
-[ext_resource type="PackedScene" uid="uid://dlga8od4nqbbh" path="res://scenes/enemies/shroom_small.tscn" id="5_ywmxe"]
-[ext_resource type="PackedScene" uid="uid://blhdcyyd4j5v5" path="res://scenes/enemies/ground_kraken.tscn" id="6_t3t6c"]
-[ext_resource type="PackedScene" uid="uid://bmpwu7w7xyhfv" path="res://scenes/collectables/axe_item.tscn" id="6_t8cq1"]
-[ext_resource type="PackedScene" uid="uid://drw2of6u7hb5b" path="res://scenes/collectables/fresh_snow.tscn" id="8_260v5"]
+[ext_resource type="PackedScene" uid="uid://35mmfwmhfhoy" path="res://scenes/levels/level_transition/level_teleporter.tscn" id="2_q1m4x"]
+[ext_resource type="PackedScene" uid="uid://dligkucy2lppl" path="res://scenes/enemies/physical_enemies/alien_flower/alien_flower.tscn" id="3_ycia7"]
+[ext_resource type="PackedScene" uid="uid://b6j1wu22ysa6s" path="res://scenes/enemies/tethered_enemies/humanoid/humanoid.tscn" id="4_1ml11"]
+[ext_resource type="PackedScene" uid="uid://dlga8od4nqbbh" path="res://scenes/collectables/shroom_small/shroom_small.tscn" id="5_ywmxe"]
+[ext_resource type="PackedScene" uid="uid://blhdcyyd4j5v5" path="res://scenes/enemies/physical_enemies/ground_kraken.tscn" id="6_t3t6c"]
+[ext_resource type="PackedScene" uid="uid://bmpwu7w7xyhfv" path="res://scenes/collectables/axe/axe_item.tscn" id="6_t8cq1"]
+[ext_resource type="PackedScene" uid="uid://drw2of6u7hb5b" path="res://scenes/collectables/snow/fresh_snow.tscn" id="8_260v5"]
 
 [node name="LevelA1" instance=ExtResource("1_iitfh")]
 level_dimension = Vector2(513, 545)

@@ -8,7 +8,7 @@ class_name DiceRollResource extends Resource
 ## will make the test not be repeatable regardless of the outcome.
 @export var one_shot: bool = false
 
-var player_stats = preload("res://resources/player_resource.tres")
+var player_stats = preload("res://scenes/characters/player/player_resource.tres")
 
 func calculate_probability():
 	var target = difficulty - player_stats.get_skill_value(skill) / 10
@@ -29,4 +29,3 @@ func calculate_probability():
 
 func calculate_difficulty():
 	return difficulty - player_stats.get_skill_value(skill) / 10
-

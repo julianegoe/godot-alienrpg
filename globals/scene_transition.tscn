@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://crkmim6342gxh"]
 
 [ext_resource type="Script" path="res://globals/navigation_manager.gd" id="1_o78j6"]
-[ext_resource type="Resource" uid="uid://8uujifrqsy1" path="res://resources/locked_doors.tres" id="2_4nbmq"]
+[ext_resource type="Resource" uid="uid://8uujifrqsy1" path="res://scenes/levels/level_transition/locked_doors.tres" id="2_4nbmq"]
 
 [sub_resource type="Animation" id="Animation_my33n"]
 resource_name = "fade_in"

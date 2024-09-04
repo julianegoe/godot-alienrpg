@@ -1,0 +1,71 @@
+[gd_scene load_steps=11 format=3 uid="uid://dligkucy2lppl"]
+
+[ext_resource type="Script" path="res://scenes/enemies/physical_enemies/alien_flower/alien_flower.gd" id="1_s7s68"]
+[ext_resource type="Shader" path="res://shaders/wind_sway.gdshader" id="2_3uvml"]
+[ext_resource type="Resource" uid="uid://c60uhp61acit4" path="res://scenes/enemies/physical_enemies/alien_flower/alien_flower_resource.tres" id="2_mydl1"]
+[ext_resource type="Texture2D" uid="uid://cqs0osv22tsve" path="res://assets/enemies/alien_flower_01.png" id="3_077xf"]
+[ext_resource type="Script" path="res://scripts/components/hurtbox.gd" id="4_hpfyo"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u381f"]
+render_priority = 0
+shader = ExtResource("2_3uvml")
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_isnqr"]
+size = Vector2(24, 9)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_oul6j"]
+radius = 13.0
+
+[sub_resource type="Animation" id="Animation_5mv8n"]
+resource_name = "hit"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2h8ba"]
+_data = {
+"hit": SubResource("Animation_5mv8n")
+}
+
+[node name="AlienFlowers01" type="CharacterBody2D"]
+y_sort_enabled = true
+collision_layer = 32
+collision_mask = 160
+input_pickable = true
+script = ExtResource("1_s7s68")
+resource = ExtResource("2_mydl1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+material = SubResource("ShaderMaterial_u381f")
+texture = ExtResource("3_077xf")
+offset = Vector2(2.08165e-12, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 17)
+shape = SubResource("RectangleShape2D_isnqr")
+debug_color = Color(0.686275, 0.419608, 0.721569, 0.419608)
+
+[node name="HurtBox" type="Area2D" parent="."]
+collision_layer = 2
+monitorable = false
+script = ExtResource("4_hpfyo")
+type = 1
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(0, 8)
+shape = SubResource("CapsuleShape2D_oul6j")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_2h8ba")
+}

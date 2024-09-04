@@ -2,12 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://bq8rcc5d8ojhe" path="res://scenes/levels/base_level.tscn" id="1_qg1bt"]
 [ext_resource type="PackedScene" uid="uid://br174ejjc2ao2" path="res://scenes/buildings/tent.tscn" id="3_jbiqe"]
-[ext_resource type="PackedScene" uid="uid://d0m6l0xlyba88" path="res://scenes/enemies/shroom_big.tscn" id="4_0wjev"]
+[ext_resource type="PackedScene" uid="uid://d0m6l0xlyba88" path="res://scenes/enemies/tethered_enemies/shroom_big/shroom_big.tscn" id="4_0wjev"]
 [ext_resource type="PackedScene" uid="uid://1fj606mknj3t" path="res://scenes/lights/streetlamp_light.tscn" id="5_kpbkp"]
-[ext_resource type="PackedScene" uid="uid://dlga8od4nqbbh" path="res://scenes/enemies/shroom_small.tscn" id="5_wyobe"]
-[ext_resource type="PackedScene" uid="uid://l6sud75gac2f" path="res://scenes/plants/infected_reeds.tscn" id="6_ifkcw"]
+[ext_resource type="PackedScene" uid="uid://dlga8od4nqbbh" path="res://scenes/collectables/shroom_small/shroom_small.tscn" id="5_wyobe"]
+[ext_resource type="PackedScene" uid="uid://l6sud75gac2f" path="res://scenes/collectables/infected_reeds/infected_reeds.tscn" id="6_ifkcw"]
 [ext_resource type="Material" uid="uid://biepwm5ftmcuf" path="res://resources/shaders/god_ray_forest.tres" id="7_54ga0"]
-[ext_resource type="PackedScene" uid="uid://35mmfwmhfhoy" path="res://scenes/misc/level_teleporter.tscn" id="7_ppahi"]
+[ext_resource type="PackedScene" uid="uid://35mmfwmhfhoy" path="res://scenes/levels/level_transition/level_teleporter.tscn" id="7_ppahi"]
 
 [sub_resource type="CanvasTexture" id="CanvasTexture_pih3h"]
 

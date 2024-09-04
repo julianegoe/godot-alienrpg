@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://cr0mflrmnfrd6"]
 
 [ext_resource type="PackedScene" uid="uid://bq8rcc5d8ojhe" path="res://scenes/levels/base_level.tscn" id="1_qu7n3"]
-[ext_resource type="PackedScene" uid="uid://uxy3fisb2ycr" path="res://scenes/misc/door.tscn" id="2_0oc4y"]
-[ext_resource type="PackedScene" uid="uid://bv6xpju5vv6ms" path="res://scenes/characters/npc_shopkeeper.tscn" id="2_ueab1"]
+[ext_resource type="PackedScene" uid="uid://uxy3fisb2ycr" path="res://scenes/levels/level_transition/door.tscn" id="2_0oc4y"]
+[ext_resource type="PackedScene" uid="uid://bv6xpju5vv6ms" path="res://scenes/characters/npc/shopkeeper/npc_shopkeeper.tscn" id="2_ueab1"]
 [ext_resource type="Texture2D" uid="uid://dawdkypupmowy" path="res://assets/lights/circle.png" id="3_7tjpb"]
 [ext_resource type="Texture2D" uid="uid://od1jkf65mr0i" path="res://assets/lights/front_window.png" id="5_abh5y"]
 

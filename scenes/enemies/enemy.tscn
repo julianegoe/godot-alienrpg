@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://cj11p3r3hu5r8"]
 
-[ext_resource type="Script" path="res://scripts/classes/enemy.gd" id="1_b1ced"]
+[ext_resource type="Script" path="res://scenes/enemies/enemy.gd" id="1_b1ced"]
 [ext_resource type="Script" path="res://scripts/components/hurtbox.gd" id="1_by28c"]
 [ext_resource type="Script" path="res://scripts/components/hitbox.gd" id="2_mhs5x"]
 

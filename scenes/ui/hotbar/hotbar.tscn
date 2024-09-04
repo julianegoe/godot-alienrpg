@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c44lg1xi25r51"]
 
 [ext_resource type="Script" path="res://scenes/ui/hotbar/hotbar.gd" id="1_g8t81"]
-[ext_resource type="Resource" uid="uid://6ajlrcmxrjts" path="res://resources/inventory_resource.tres" id="2_cxtfg"]
+[ext_resource type="Resource" uid="uid://6ajlrcmxrjts" path="res://scenes/ui/inventory/inventory_resource.tres" id="2_cxtfg"]
 [ext_resource type="Texture2D" uid="uid://bn6swwro8y0mr" path="res://assets/ui/misc/hotbar_selector.png" id="2_sj65b"]
 
 [node name="HotBar" type="Control"]

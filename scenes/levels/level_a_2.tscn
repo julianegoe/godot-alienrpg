@@ -1,11 +1,11 @@
 [gd_scene load_steps=12 format=3 uid="uid://dm6ryg7an6pt5"]
 
 [ext_resource type="PackedScene" uid="uid://bq8rcc5d8ojhe" path="res://scenes/levels/base_level.tscn" id="1_qu62r"]
-[ext_resource type="PackedScene" uid="uid://35mmfwmhfhoy" path="res://scenes/misc/level_teleporter.tscn" id="3_owjfg"]
-[ext_resource type="PackedScene" uid="uid://4x35w3alrv7k" path="res://scenes/buildings/home.tscn" id="5_88wb3"]
-[ext_resource type="PackedScene" uid="uid://qkqmcn3rv4jh" path="res://scenes/buildings/shop.tscn" id="5_rd76n"]
-[ext_resource type="PackedScene" uid="uid://drw2of6u7hb5b" path="res://scenes/collectables/fresh_snow.tscn" id="5_xerbt"]
-[ext_resource type="PackedScene" uid="uid://bv6xpju5vv6ms" path="res://scenes/characters/npc_shopkeeper.tscn" id="7_quk8o"]
+[ext_resource type="PackedScene" uid="uid://35mmfwmhfhoy" path="res://scenes/levels/level_transition/level_teleporter.tscn" id="3_owjfg"]
+[ext_resource type="PackedScene" uid="uid://4x35w3alrv7k" path="res://scenes/buildings/home/home_exterior.tscn" id="5_88wb3"]
+[ext_resource type="PackedScene" uid="uid://qkqmcn3rv4jh" path="res://scenes/buildings/shop_exterior.tscn" id="5_rd76n"]
+[ext_resource type="PackedScene" uid="uid://drw2of6u7hb5b" path="res://scenes/collectables/snow/fresh_snow.tscn" id="5_xerbt"]
+[ext_resource type="PackedScene" uid="uid://bv6xpju5vv6ms" path="res://scenes/characters/npc/shopkeeper/npc_shopkeeper.tscn" id="7_quk8o"]
 [ext_resource type="Texture2D" uid="uid://cql1h7tkl8jk4" path="res://resources/lights/streetlamp.tres" id="7_tf8m5"]
 [ext_resource type="PackedScene" uid="uid://b4rj27gqg6rud" path="res://scenes/lights/shop_door_light.tscn" id="8_7qlfu"]
 [ext_resource type="PackedScene" uid="uid://1fj606mknj3t" path="res://scenes/lights/streetlamp_light.tscn" id="8_36p3g"]
@@ -18,11 +18,11 @@ level_dimension = Vector2(1025, 481)
 [node name="Interactables" parent="WorldTilemap" index="3" node_paths=PackedStringArray("player")]
 player = NodePath("../../Characters/Player")
 
-[node name="Home" parent="Buildings" index="0" instance=ExtResource("5_88wb3")]
+[node name="HomeExterior" parent="Buildings" index="0" instance=ExtResource("5_88wb3")]
 y_sort_enabled = true
 position = Vector2(89, 303)
 
-[node name="Shop" parent="Buildings" index="1" instance=ExtResource("5_rd76n")]
+[node name="ShopExterior" parent="Buildings" index="1" instance=ExtResource("5_rd76n")]
 position = Vector2(863, 217)
 
 [node name="Player" parent="Characters" index="0" node_paths=PackedStringArray("camera")]

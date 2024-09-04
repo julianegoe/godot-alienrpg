@@ -10,7 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://v6sjgp0mh0oy" path="res://assets/ui/inventory/inventory_ui_infos.png" id="6_h5o44"]
 [ext_resource type="PackedScene" uid="uid://6n7315tuj01t" path="res://scenes/ui/inventory/inventory_slot.tscn" id="7_ssc46"]
 [ext_resource type="PackedScene" uid="uid://c6asyecb5m4sb" path="res://scenes/ui/inventory/inventory_label.tscn" id="8_0cgy3"]
-[ext_resource type="Resource" uid="uid://6khgkcxvuhbl" path="res://resources/player_resource.tres" id="12_6iup0"]
+[ext_resource type="Resource" uid="uid://6khgkcxvuhbl" path="res://scenes/characters/player/player_resource.tres" id="12_6iup0"]
 [ext_resource type="PackedScene" uid="uid://bejivrrxehwm1" path="res://scenes/ui/inventory/inventory_details_tab.tscn" id="12_hd6lk"]
 [ext_resource type="PackedScene" uid="uid://dlonkna2yl1rm" path="res://scenes/ui/inventory/inventory_files.tscn" id="15_fd48u"]
 

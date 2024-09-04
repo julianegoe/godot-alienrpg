@@ -39,13 +39,7 @@ func set_location_properties():
 			hot_bar.disabled = false
 
 func _on_dialogue_started():
-	match scene_location:
-		Types.LocationType.INDOORS:
-			hot_bar.disabled = true
-		Types.LocationType.FOREST:
-			hot_bar.disabled = true
-		Types.LocationType.DEFAULT:
-			hot_bar.disabled = true
+	hot_bar.disabled = true
 
 func _on_dialogue_ended():
 	match scene_location:
