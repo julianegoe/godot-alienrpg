@@ -4,7 +4,7 @@
 [ext_resource type="TileSet" uid="uid://ca5m17ajimq8v" path="res://resources/tilesets/terrain_tileset.tres" id="1_xiw1o"]
 [ext_resource type="PackedScene" uid="uid://crvo6u3r2wtnv" path="res://scenes/characters/player/player.tscn" id="3_cm83x"]
 [ext_resource type="PackedScene" uid="uid://d4h6xgyyklhx8" path="res://scenes/ui/inventory/inventory.tscn" id="3_m5kab"]
-[ext_resource type="Script" path="res://scripts/misc/level_tilemap.gd" id="3_owwb2"]
+[ext_resource type="Script" path="res://scenes/levels/tilemaps/interactables_tilemap.gd" id="3_sbqrl"]
 [ext_resource type="PackedScene" uid="uid://c44lg1xi25r51" path="res://scenes/ui/hotbar/hotbar.tscn" id="4_x3idk"]
 [ext_resource type="Resource" uid="uid://6ajlrcmxrjts" path="res://resources/inventory_resource.tres" id="4_yryc0"]
 [ext_resource type="Script" path="res://scenes/misc/player_camera.gd" id="5_2jrav"]
@@ -17,23 +17,29 @@
 y_sort_enabled = true
 script = ExtResource("1_41pqk")
 
-[node name="LevelTilemap" type="TileMap" parent="." node_paths=PackedStringArray("player")]
+[node name="WorldTilemap" type="Node2D" parent="."]
 unique_name_in_owner = true
 y_sort_enabled = true
+
+[node name="Ground" type="TileMapLayer" parent="WorldTilemap"]
+use_parent_material = true
 tile_set = ExtResource("1_xiw1o")
 rendering_quadrant_size = 32
-format = 2
-layer_0/name = "Ground"
-layer_1/name = "Ground Decoration"
-layer_2/name = "Shadows"
-layer_2/modulate = Color(1, 1, 1, 0.501961)
-layer_2/y_sort_origin = -50
-layer_3/name = "Objects"
-layer_3/y_sort_enabled = true
-layer_4/name = "Items"
-layer_4/y_sort_enabled = true
-script = ExtResource("3_owwb2")
-player = NodePath("../Characters/Player")
+
+[node name="Decoration Ground" type="TileMapLayer" parent="WorldTilemap"]
+use_parent_material = true
+tile_set = ExtResource("1_xiw1o")
+
+[node name="Decoration" type="TileMapLayer" parent="WorldTilemap"]
+y_sort_enabled = true
+use_parent_material = true
+tile_set = ExtResource("1_xiw1o")
+
+[node name="Interactables" type="TileMapLayer" parent="WorldTilemap"]
+y_sort_enabled = true
+use_parent_material = true
+tile_set = ExtResource("1_xiw1o")
+script = ExtResource("3_sbqrl")
 
 [node name="Buildings" type="Node2D" parent="."]
 y_sort_enabled = true
@@ -68,6 +74,7 @@ script = ExtResource("7_um420")
 process_mode = 3
 
 [node name="Ui" type="CanvasLayer" parent="."]
+visible = false
 
 [node name="HotBar" parent="Ui" instance=ExtResource("4_x3idk")]
 slot_path = "res://scenes/ui/hotbar/hotbar_slot.tscn"

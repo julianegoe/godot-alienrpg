@@ -7,11 +7,13 @@ var hand_cursor = preload("res://assets/cursors/arrow_outlined.png")
 @onready var hot_bar = $Ui/HotBar
 @onready var inventory = $Ui/Inventory
 @onready var characters_container = $Characters
+@onready var ui: CanvasLayer = $Ui
 
 @export var level_dimension: Vector2 = Vector2(10000000, 10000000)
 @export var scene_location: Types.LocationType = Types.LocationType.DEFAULT
 
 func _ready():
+	ui.show()
 	Input.set_custom_mouse_cursor(hand_cursor, Input.CURSOR_POINTING_HAND)
 	camera_2d.limit_right = level_dimension.x
 	camera_2d.limit_bottom = level_dimension.y

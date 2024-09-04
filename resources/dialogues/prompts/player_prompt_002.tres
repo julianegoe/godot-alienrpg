@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PromptResource" load_steps=3 format=3 uid="uid://bngfsdjwvhuls"]
+
+[ext_resource type="Script" path="res://scripts/resources/dialogue/choice_resource.gd" id="1_7xgjo"]
+[ext_resource type="Script" path="res://scripts/resources/dialogue/prompt_resource.gd" id="2_mcg6k"]
+
+[resource]
+script = ExtResource("2_mcg6k")
+text = "Old and new magazins."
+choices = Array[ExtResource("1_7xgjo")]([])
+next_node = -1

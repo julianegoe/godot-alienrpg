@@ -1,42 +1,14 @@
-[gd_resource type="Resource" script_class="DialogueResource" load_steps=10 format=3 uid="uid://bya3v4oox0cyl"]
+[gd_resource type="Resource" script_class="DialogueResource" load_steps=7 format=3 uid="uid://bya3v4oox0cyl"]
 
-[ext_resource type="Resource" uid="uid://c1c2m3lo61f5f" path="res://resources/dialogues/prompts/player_prompt_001.tres" id="1_si3gd"]
+[ext_resource type="Resource" uid="uid://cr8ku83pt32op" path="res://resources/dialogues/prompts/player_prompt_001.tres" id="1_si3gd"]
 [ext_resource type="Script" path="res://scripts/resources/dialogue/prompt_resource.gd" id="2_6kjlm"]
-[ext_resource type="Script" path="res://scripts/resources/dialogue/choice_resource.gd" id="3_1xtbu"]
+[ext_resource type="Resource" uid="uid://c1c2m3lo61f5f" path="res://resources/dialogues/prompts/player_prompt_000_debug.tres" id="2_l6ex3"]
+[ext_resource type="Resource" uid="uid://bngfsdjwvhuls" path="res://resources/dialogues/prompts/player_prompt_002.tres" id="4_7hl1n"]
 [ext_resource type="Script" path="res://scripts/resources/dialogue/dialogue_resource.gd" id="5_0j3b5"]
-
-[sub_resource type="Resource" id="Resource_fk42p"]
-script = ExtResource("2_6kjlm")
-text = ""
-choices = Array[ExtResource("3_1xtbu")]([])
-next_node = 0
-
-[sub_resource type="Resource" id="Resource_qjjb8"]
-script = ExtResource("2_6kjlm")
-text = ""
-choices = Array[ExtResource("3_1xtbu")]([])
-next_node = 0
-
-[sub_resource type="Resource" id="Resource_3fpbx"]
-script = ExtResource("2_6kjlm")
-text = "This fruit looks so fresh."
-choices = Array[ExtResource("3_1xtbu")]([])
-next_node = 0
-
-[sub_resource type="Resource" id="Resource_aqust"]
-script = ExtResource("2_6kjlm")
-text = "Old and new magazins."
-choices = Array[ExtResource("3_1xtbu")]([])
-next_node = 0
-
-[sub_resource type="Resource" id="Resource_qplb1"]
-script = ExtResource("2_6kjlm")
-text = "The rug looks curious."
-choices = Array[ExtResource("3_1xtbu")]([])
-next_node = 0
+[ext_resource type="Resource" uid="uid://prxowgcr5ylr" path="res://resources/dialogues/prompts/player_prompt_003.tres" id="5_m00ok"]
 
 [resource]
 script = ExtResource("5_0j3b5")
 start_node = 0
 display_name = "Renate"
-prompts = Array[ExtResource("2_6kjlm")]([ExtResource("1_si3gd"), SubResource("Resource_fk42p"), SubResource("Resource_qjjb8"), SubResource("Resource_3fpbx"), SubResource("Resource_aqust"), SubResource("Resource_qplb1")])
+prompts = Array[ExtResource("2_6kjlm")]([ExtResource("2_l6ex3"), ExtResource("1_si3gd"), ExtResource("4_7hl1n"), ExtResource("5_m00ok")])

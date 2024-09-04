@@ -9,10 +9,8 @@
 [node name="ShopInterior" instance=ExtResource("1_qu7n3")]
 scene_location = 2
 
-[node name="LevelTilemap" parent="." index="0"]
-layer_0/tile_data = PackedInt32Array(458759, 524294, 0, 393223, 393222, 0, 327687, 393222, 0, 262151, 393222, 0, 524290, 524294, 268435456, 524291, 458758, 0, 524292, 524294, 0, 458757, 327686, 1, 458758, 458758, 0, 458756, 589830, 0, 393220, 393222, 1, 327684, 393222, 1, 262148, 393222, 1, 262147, 393222, 1, 262146, 393222, 268435456, 327682, 393222, 268435456, 393218, 393222, 268435456, 458754, 393222, 268435456, 458755, 393222, 1, 393219, 393222, 1, 327683, 393222, 1, 262149, 393222, 1, 262150, 393222, 1, 327686, 393222, 1, 393222, 393222, 1, 393221, 393222, 1, 327685, 393222, 1, 131074, 131078, 0, 196610, 131078, 1, 131075, 196614, 0, 196611, 196614, 1, 131076, 196614, 0, 196612, 196614, 1, 131077, 196614, 0, 196613, 196614, 1, 131078, 196614, 0, 196614, 196614, 1, 131079, 262150, 0, 196615, 262150, 1)
-layer_3/tile_data = PackedInt32Array(327687, 262145, 268435466, 393223, 917505, 268435462, 262151, 1703937, 5)
-layer_4/tile_data = PackedInt32Array(196611, 262145, 7, 196613, 1, 7, 327683, 393217, 10, 327685, 393217, 268435466, 458755, 1, 10)
+[node name="Interactables" parent="WorldTilemap" index="3" node_paths=PackedStringArray("player")]
+player = NodePath("../../Characters/Player")
 
 [node name="Player" parent="Characters" index="0"]
 position = Vector2(81, 240)
@@ -35,9 +33,6 @@ destination_door = "ShopExterior"
 
 [node name="SpawnMarker" parent="LevelTeleporters/Door_ShopInterior" index="1"]
 position = Vector2(0, -30)
-
-[node name="Ui" parent="." index="10"]
-visible = false
 
 [node name="WindowLight" type="PointLight2D" parent="." index="12"]
 position = Vector2(115, 187)

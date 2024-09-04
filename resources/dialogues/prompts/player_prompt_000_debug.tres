@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PromptResource" load_steps=3 format=3 uid="uid://c1c2m3lo61f5f"]
+
+[ext_resource type="Script" path="res://scripts/resources/dialogue/choice_resource.gd" id="1_ulkoa"]
+[ext_resource type="Script" path="res://scripts/resources/dialogue/prompt_resource.gd" id="2_s8j46"]
+
+[resource]
+script = ExtResource("2_s8j46")
+text = "[Debug] There is no dialogue defined."
+choices = Array[ExtResource("1_ulkoa")]([])
+next_node = -1

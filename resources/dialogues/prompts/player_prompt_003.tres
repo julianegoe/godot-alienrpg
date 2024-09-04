@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="PromptResource" load_steps=3 format=3 uid="uid://prxowgcr5ylr"]
+
+[ext_resource type="Script" path="res://scripts/resources/dialogue/choice_resource.gd" id="1_bqa17"]
+[ext_resource type="Script" path="res://scripts/resources/dialogue/prompt_resource.gd" id="2_alw5x"]
+
+[resource]
+script = ExtResource("2_alw5x")
+text = "The rug looks curious."
+choices = Array[ExtResource("1_bqa17")]([])
+next_node = -1

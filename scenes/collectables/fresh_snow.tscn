@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://dbys8wqeufkii" path="res://assets/objects/fresh_snow.png" id="1_gnf3m"]
 [ext_resource type="Script" path="res://scripts/components/collectable_item.gd" id="2_ohocl"]
-[ext_resource type="Script" path="res://scenes/objects/fresh_snow.gd" id="2_qg8oq"]
+[ext_resource type="Script" path="res://scenes/collectables/fresh_snow.gd" id="2_qg8oq"]
 [ext_resource type="Resource" uid="uid://cporn16b38m2p" path="res://resources/items/snowball_resource.tres" id="4_8j61t"]
 [ext_resource type="PackedScene" uid="uid://c4exovrcqgwjg" path="res://scenes/ui/misc/sparkle_notification.tscn" id="4_go12p"]
 
