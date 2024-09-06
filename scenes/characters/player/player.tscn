@@ -5167,7 +5167,7 @@ height = 14.0
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 position = Vector2(2.08165e-12, 2.08165e-12)
 collision_layer = 128
-collision_mask = 224
+collision_mask = 480
 script = ExtResource("1_os17o")
 stats = ExtResource("2_stmy2")
 status = ExtResource("3_8xa28")
@@ -5180,7 +5180,6 @@ shape = SubResource("CapsuleShape2D_hd7is")
 [node name="Shadow" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0.482353)
 texture = ExtResource("3_iyafg")
-flip_h = true
 hframes = 112
 
 [node name="Body" type="Node2D" parent="."]
@@ -5189,30 +5188,25 @@ material = SubResource("ShaderMaterial_i01h4")
 [node name="Legs" type="Sprite2D" parent="Body"]
 use_parent_material = true
 texture = ExtResource("4_1a5c6")
-flip_h = true
 hframes = 112
 frame = 64
 
 [node name="Body" type="Sprite2D" parent="Body"]
 use_parent_material = true
 texture = ExtResource("5_4neo7")
-flip_h = true
 hframes = 112
 frame = 64
 
 [node name="Head" type="Sprite2D" parent="Body"]
 use_parent_material = true
 texture = ExtResource("7_2kxq0")
-flip_h = true
 hframes = 112
 frame = 64
 
 [node name="MeleeTool" type="Sprite2D" parent="Body"]
 visible = false
 texture = ExtResource("8_gbp6e")
-flip_h = true
 hframes = 112
-frame = 58
 
 [node name="Container" type="Node2D" parent="Body/MeleeTool"]
 
@@ -5227,6 +5221,7 @@ shape = SubResource("CircleShape2D_4gwhi")
 disabled = true
 
 [node name="RangedWeaponSpawner" type="Marker2D" parent="Body"]
+z_as_relative = false
 position = Vector2(-1, -7)
 
 [node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]

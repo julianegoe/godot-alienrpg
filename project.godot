@@ -142,7 +142,7 @@ hotkey={
 2d_physics/layer_6="Entity"
 2d_physics/layer_7="DoorWays"
 2d_physics/layer_8="Characters"
-2d_physics/layer_9="Raycasts"
+2d_physics/layer_9="Objects"
 
 [rendering]
 

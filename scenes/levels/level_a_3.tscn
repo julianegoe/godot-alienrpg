@@ -15,6 +15,9 @@
 level_dimension = Vector2(526, 384)
 scene_location = 1
 
+[node name="Interactables#InfectedReeds" parent="." index="0" instance=ExtResource("6_ifkcw")]
+position = Vector2(439, 218)
+
 [node name="Interactables" parent="WorldTilemap" index="3" node_paths=PackedStringArray("player")]
 player = NodePath("../../Characters/Player")
 
@@ -44,9 +47,6 @@ position = Vector2(363, 270)
 [node name="ShroomSmall3" parent="Enemies" index="3" instance=ExtResource("5_wyobe")]
 position = Vector2(330, 274)
 
-[node name="InfectedReeds" parent="Interactables" index="0" instance=ExtResource("6_ifkcw")]
-position = Vector2(439, 218)
-
 [node name="StreetlampLeft" parent="Lights" index="0" instance=ExtResource("5_kpbkp")]
 position = Vector2(272, 160)
 energy = 0.5
@@ -55,7 +55,7 @@ energy = 0.5
 position = Vector2(336, 93)
 energy = 0.5
 
-[node name="SunRays" parent="." index="7"]
+[node name="SunRays" parent="." index="8"]
 position = Vector2(1, -1)
 
 [node name="Sunrays" type="Sprite2D" parent="SunRays" index="0"]

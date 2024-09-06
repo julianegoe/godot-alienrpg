@@ -76,9 +76,11 @@ position = Vector2(78, 255)
 
 [node name="Axe" parent="Collectables" index="0" instance=ExtResource("6_t8cq1")]
 position = Vector2(72, 74)
+texture = null
 
 [node name="FreshSnow" parent="Collectables" index="1" instance=ExtResource("8_260v5")]
 position = Vector2(199, 131)
+texture = null
 
 [node name="Door_S" parent="LevelTeleporters" index="0" instance=ExtResource("2_q1m4x")]
 position = Vector2(142, 439)

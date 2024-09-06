@@ -9,6 +9,7 @@ signal item_changed_hotbar_position(item: ItemResource, new_position: int)
 signal item_changed_inventory_position(item: ItemResource, new_position: int)
 
 @onready var inventory_data: InventoryResource = preload("res://scenes/ui/inventory/inventory_resource.tres")
+
 func add_item(new_item: ItemResource, quantity: int):
 	if inventory_data.items.has(new_item):
 		new_item.increase_quantity_by(quantity, ItemResource.QuantityType.INVENTORY)
